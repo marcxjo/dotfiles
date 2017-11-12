@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. ~/.cache/wal/colors-bspwm.sh
+
+SB="${color0}"
+SF="${color6}"
+NB="${colorbg}"
+NF="${colorfg}"
+FN="Terminus:style=bold:pixelsize=14"
+OPTIONS="-c -p -1 -u $NB -U $NF -t $SB -T $SF"
+
+exec tabbed ${OPTIONS} "$@"

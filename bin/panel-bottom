@@ -1,0 +1,81 @@
+#!/bin/bash
+
+. ${HOME}/.cache/wal/colors-bspwm.sh
+
+wksp() {
+	desktop=1
+	ws=""
+	IFS=':' read -a array <<< $(bspc wm --get-status)
+
+	wksp1="Kvar"
+	wksp2="Kvin"
+	wksp3="Ses"
+
+	# This is a pretty ugly hack, but for the meantime,
+	# I haven't found another way to make it work.
+
+	for (( i=0; i<${#array[@]}; i++ )); do
+	    if [[ "${array[i]#?}" == "${wksp1}" ]]; then
+	        array=( "${array[@]:0:$i}" "${array[@]:$((i + 1))}" )
+	    fi
+	done
+
+	for (( j=0; j<${#array[@]}; j++ )); do
+	    if [[ "${array[j]#?}" == "${wksp2}" ]]; then
+	        array=( "${array[@]:0:$j}" "${array[@]:$((j + 1))}" )
+	    fi
+	done
+
+	for (( k=0; k<${#array[@]}; k++ )); do
+	    if [[ "${array[k]#?}" == "${wksp3}"  ]]; then
+	        array=( "${array[@]:0:$k}" "${array[@]:$((k + 1))}" )
+	    fi
+	done
+
+	for item in "${array[@]}"
+	do
+		name=${item#?}
+		if [ "$item" == "LT" ]
+		then
+			ws="${ws}%{S+}"
+		else
+			desk=""
+			case $item in
+				O*) # focused occupied
+					desk="%{F#B3${colorbg:1}}%{B#B3${colorfg:1}} ${name} %{F-}%{B-}"
+				;;
+				F*) # focused free
+					desk="%{F#B3${colorbg:1}}%{B#B3${colorfg:1}} ${name} %{F-}%{B-}"
+				;;
+				U*) # focused urgent
+					desk="%{F#B3${colorbg:1}}%{B#B3${colorfg:1}} ${name} %{F-}%{B-}"
+				;;
+				o*) # occupied
+					desk=" ${name} "
+				;;
+				f*) # free
+					desk="%{F#B3${color6:1}} ${name} %{F-}"
+				;;
+				u*) # urgent
+					desk=" ${name} "
+				;;
+			esac
+			shift
+			if [ "$desk" != "" ]
+			then
+				ws="${ws}%{A:bspc desktop -f ^$desktop:}${desk}%{A}"
+				desktop=$((desktop+1))
+			fi
+		fi
+	done
+	echo "${ws}"
+}
+
+while :; do
+	if pgrep -x "Xorg" > /dev/null ; then
+#	echo "%{l}%{B${color6}}     %{B${color1}}     %{B${color0}}     %{B-}$(wksp)%{r}$(echo "Today is a good day to be alive.")   "
+	echo "%{l}%{B#B3${color6:1}}     %{B#B3${color1:1}}     %{B#B3${color0:1}}     %{B-}$(wksp)%{r}$(echo "Today is a good day to be alive.")   "
+	sleep 1
+	fi
+#done | lemonbar -b -F "${colorfg}" -B "${colorbg}" -f "-xos4-terminus-medium-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -g 1856x32+32+8 -u 8 -n "panel-bottom" | sh
+done | lemonbar -b -F "#B3${colorfg:1}" -B "#B3${colorbg:1}" -f "-xos4-terminus-bold-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -g 1856x32+32+8 -u 8 -n "panel-bottom" | sh

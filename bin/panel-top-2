@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# Marĉjo's Second Top LemonBar Panel
+# Note that printf is used extensively in place of echo for alignment.
+# Color codes are assumed to add 16 characters to any string,
+# hence long string lengths for variables that include them.
+
+. ${HOME}/.cache/wal/colors-bspwm.sh
+*. ${HOME}/bin/screenvars
+*. ${HOME}/bin/panel-monitors
+
+#VERT_POS = $(echo "scale=0; ${XRES_LG x }")
+
+SEPARATOR="%{F#B3${color0:1}}¤%{F-}"
+
+# Battery information on laptops.
+
+bat () {
+STATUS=$(cat /sys/class/power_supply/BAT0/status)
+CHARGE=$((100*$(cat /sys/class/power_supply/BAT0/charge_now)/$(cat /sys/class/power_supply/BAT0/charge_full)))
+
+string=""
+if [ "$STATUS" = "Discharging" ]; then
+	if [ "$CHARGE" -le "15" ] ; then
+		string+="  DC  "
+	elif [ "$CHARGE" -le "30" ] ; then
+		string+="  DC  "
+	else
+		string+="  DC  "
+	fi
+elif [ "$STATUS" = "Full" ] ; then
+	string+="    AC  "
+else string+="  CH  "
+fi
+
+if [ "$CHARGE" -ge "100" ] ; then
+     string+="$CHARGE"
+ elif [ "$CHARGE" -ge "10" ] ; then
+     string+="  $CHARGE"
+ else
+     string+="    $CHARGE"
+fi
+
+echo "Battery: $string  "
+}
+
+# Current temperature of the computer.
+
+temp () {
+temp=$((($(cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon*/temp1_input)+$(cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon*/temp2_input)+$(cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon*/temp3_input)+$(cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon*/temp4_input)+$(cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon*/temp5_input))/5000))
+#temp=$(($(cat /sys/class/thermal/thermal_zone3/temp)/1000))
+
+if [ "$temp" -ge "100" ] ; then
+	echo "$temp"
+elif [ "$temp" -ge "10" ] ; then
+	echo " $temp"
+else
+	echo "  $temp"
+fi
+}
+
+# Free space on /home partition.
+
+diskperc () {
+diskperc=$(df -h --output=avail /dev/sdb1 | sed -n -e '2{p;q}')
+
+if [ ${diskperc%?} -gt 200 ]; then
+	dcolor="%{F#B3${color6:1}}"
+else
+	dcolor="%{F#B3${color1:1}}"
+fi
+
+printf "%-4s %11s%3d %7s" "" "${dcolor}" "${diskperc%?}" "GB%{F-}"
+}
+
+# Current percentage of RAM in use.
+
+memperc () {
+memperc=$(free -m | grep Mem | awk '{print $4}')
+
+if [ ${memperc} -gt 500 ]; then
+	mcolor="%{F#B3${color6:1}}"
+else
+	mcolor="%{F#B3${color1:1}}"
+fi
+
+printf "%-4s %11s%4d %7s" "" "${mcolor}" "${memperc}" "MB%{F-}"
+}
+
+# Current percentage of swap in use.
+
+swapperc () {
+swapperc=$(free -m | grep Swap | awk '{print $4}')
+
+if [ ${swapperc} -eq 4094 ]; then
+	scolor="%{F#B3${color6:1}}"
+else
+	scolor="%{F#B3${color1:1}}"
+fi
+
+printf "%-4s %11s%4d %7s" "" "${scolor}" "${swapperc}" "MB%{F-}"
+}
+
+while :; do
+	if pgrep -x "Xorg" > /dev/null ; then
+#	echo "%{l}%{B${color6}}     %{B${color1}}     %{B${color0}}     %{F-}%{B-}%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}$(diskperc)         $(memperc)         $(swapperc)     "
+	echo "%{l}%{B#B3${color6:1}}     %{B#B3${color1:1}}     %{B#B3${color0:1}}     %{F-}%{B-}%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}$(diskperc)         $(memperc)         $(swapperc)     "
+	sleep 1
+	fi
+#done | lemonbar -F "${colorfg}" -B "${colorbg}" -f "-xos4-terminus-medium-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" -g 1536x32+1952+8 -u 8 -n "panel-top-2" | sh
+done | lemonbar -F "#B3${colorfg:1}" -B "#B3${colorbg:1}" -f "-xos4-terminus-bold-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" -g 1536x32+1952+8 -u 8 -n "panel-top-2" | sh

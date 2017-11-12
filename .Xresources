@@ -1,0 +1,30 @@
+Xxftcursor.theme: capitaine-cursors
+
+Xft.dpi: 96
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.rgba: rgb
+Xft.autohint: 1
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdlight
+
+*font: xft:Terminus:size=10,xft:Monospace:size=10
+*faceName: Terminus:size=10
+*.locale: true
+*.internalBorder: 32
+URxvt.geometry: 80x24
+
+*cursorBlink: false
+*scrollBar: false
+*VT100*scrollBar: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Home: \033[7~
+URxvt.keysym.End: \033[8~
+
+URxvt.depth: 32

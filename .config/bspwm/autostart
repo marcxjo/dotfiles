@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Start compositor
+compton &
+
+# Set desktop colors.
+xrdb -merge ~/.cache/wal/colors-bspwm.xresources
+
+# Start notification daemon.
+dunst &
+
+# Set background.
+~/.fehbg
+
+# Start panels.
+start-panels &
