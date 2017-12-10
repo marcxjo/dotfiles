@@ -8,8 +8,8 @@ Xft.autohint: 1
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
-*font: xft:Terminus:size=10,xft:Monospace:size=10
-*faceName: Terminus:size=10
+*font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+*VT100.font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
 *.locale: true
 *.internalBorder: 32
 URxvt.geometry: 80x24
@@ -28,3 +28,5 @@ URxvt.keysym.Home: \033[7~
 URxvt.keysym.End: \033[8~
 
 URxvt.depth: 32
+
+rofi.font: Terminus 10
