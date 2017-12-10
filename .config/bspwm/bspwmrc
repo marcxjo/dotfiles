@@ -3,43 +3,50 @@
 bspc monitor DVI-1 -n LG      -d Unu Du Tri
 bspc monitor DVI-0 -n Samsung -d Kvar Kvin Ses
 
-bspc config border_width              4
-bspc config window_gap               32
+bspc config border_width               2
+bspc config window_gap                30
 
 # Pad everything far to the right to make
 # room for notifications.
 # They get in the way when you're not
 # making much use of the mouse.
 
-bspc config top_padding              32
-bspc config right_padding             0
-bspc config bottom_padding           32
-bspc config left_padding            240
+bspc config top_padding               28
+bspc config right_padding             30
+bspc config bottom_padding             0
+bspc config left_padding              30
 
 # Per-monitor split ratios.
 # Samsung is quite a bit narrower than LG,
 # making terminal rendering difficult.
 
-bspc config -m LG split_ratio      0.50
-bspc config -m Samsung split_ratio 0.55
-bspc config borderless_monocle     true
-bspc config gapless_monocle        true
-bspc config click_to_focus         true
+bspc config split_ratio              0.50
+bspc config borderless_monocle       true
+bspc config gapless_monocle          true
+
+# Pointer settings.
+bspc config click_to_focus        button1
+bspc config focus_follows_pointer   false
+bspc config pointer_follows_focus   false
+
+# Pointer events.
+
+bspc config pointer_modifier      control
+bspc config pointer_action1 resize_corner
+bspc config pointer_action3          move
 
 # Border colors.
 
-. ${HOME}/.cache/wal/colors-bspwm.sh
+. ${HOME}/.cache/wal/bspwm-colors.sh
 
-bspc config normal_border_color ${color1}
-bspc config active_border_color ${color0}
-bspc config focused_border_color ${color6}
+bspc config normal_border_color  ${color0}
+bspc config active_border_color  ${color1}
+bspc config focused_border_color ${color2}
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
+bspc rule -a Gimp      desktop='^8' state=floating follow=on
+bspc rule -a Chromium  desktop='^2'
+bspc rule -a mplayer2  state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a '*:yad' state=floating
-bspc config external_rules_command "~/.config/bspwm/external_rules"
-
-~/.config/bspwm/autostart &
+bspc rule -a '*:yad'   state=floating
+bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"

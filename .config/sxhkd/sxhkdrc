@@ -8,6 +8,9 @@ super + Return
 
 # program launcher
 alt + F2
+	rofi -show run
+
+super + space
 	dmenu_launch
 
 # make sxhkd reload its configuration files:
@@ -38,6 +41,10 @@ super + y
 super + g
 	bspc node -s biggest
 
+# balance the desktop (see https://github.com/Chrysostomus/bspwm-scripts for the referenced script)
+super + b
+	euclid_balancer
+
 #
 # state/flags
 #
@@ -62,13 +69,13 @@ super + {_,shift + }{h,j,k,l}
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous node
+# focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}
+	bspc node -f {next,prev}.local
 
-# focus the next/previous desktop
+# focus the next/previous desktop in the current monitor
 ctrl + alt + {Left,Right}
-	bspc desktop -f {prev,next}
+	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -138,4 +145,9 @@ XF86AudioLowerVolume
 
 # mute volume
 XF86AudioMute
-	pamixer -m
+	pamixer -t
+
+#
+# mouse controls
+#
+

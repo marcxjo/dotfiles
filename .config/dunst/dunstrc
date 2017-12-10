@@ -64,7 +64,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "208x5+32+64"
+    geometry = "240x5-60+60"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -73,7 +73,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 30
+    transparency = 6.25
     
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -114,7 +114,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 4
+    separator_height = 2
     
     # Padding between text and separator.
     padding = 8
@@ -148,8 +148,8 @@
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-    width = 4
-    color = "#1F1E1D"
+    width = 2
+    color = "#030B09"
 
 [shortcuts]
 
@@ -175,18 +175,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1F1E1D"
-    foreground = "#D8DAE8"
-    timeout = 10
+    background = "#030B09"
+    foreground = "#1C625A"
+    timeout = 0
 
 [urgency_normal]
-    background = "#1F1E1D"
-    foreground = "#614532"
-    timeout = 10
+    background = "#030B09"
+    foreground = "#526035"
+    timeout = 0
 
 [urgency_critical]
-    background = "#1F1E1D"
-    foreground = "#5D2B14"
+    background = "#030B09"
+    foreground = "#2C5628"
     timeout = 0
 
 

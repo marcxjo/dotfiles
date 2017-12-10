@@ -4,10 +4,10 @@
 compton &
 
 # Set desktop colors.
-xrdb -merge ~/.cache/wal/colors-bspwm.xresources
+xrdb -merge ~/.cache/wal/bspwm-colors.xresources
 
 # Start notification daemon.
-dunst &
+dunst_wrapper &
 
 # Set background.
 ~/.fehbg
