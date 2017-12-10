@@ -1,9 +1,9 @@
 #!/bin/sh
 
-. ~/.cache/wal/colors-bspwm.sh
+. ~/.cache/wal/bspwm-colors.sh
 
-SB="${color0}"
-SF="${color6}"
+SB="${color2}"
+SF="${color10}"
 NB="${colorbg}"
 NF="${colorfg}"
 FN="Terminus:style=bold:pixelsize=14"
