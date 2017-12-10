@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Current percentage of RAM in use.
+
+memperc=$(free -m | grep Mem | awk '{print $4}')
+
+if [ ${memperc} -gt 500 ]; then
+	mcolor="%{F${color2}}"
+else
+	mcolor="%{F${color0}}"
+fi
+
+printf "%-4s %11s%4d %7s" "" "${mcolor}" "${memperc}" "MB%{F-}"

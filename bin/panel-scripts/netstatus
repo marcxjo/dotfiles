@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Network ID for the wifi connection.
+
+a="$(nmcli connection show --active | grep "802-11-wireless" | awk '{print $1}')"
+if [ "$a" != "" ] ; then
+	connected="%{F${color2}}$a%{F-}"
+else
+	connected="%{F${color8}}not connected%{F-}"
+fi
+
+# ESSIDs can be up to 16 characters long, so technically
+# we should allow a string of up to 14 characters
+# for the ESSID.
+
+# However, that's stupid. 32 should do it and still
+# look pretty decent.
+printf "%-4s %32s" "" "$connected"

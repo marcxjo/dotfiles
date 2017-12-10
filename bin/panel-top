@@ -5,83 +5,9 @@
 # Color codes are assumed to add 16 characters to any string,
 # hence long string lengths for variables that include them.
 
-. ${HOME}/.cache/wal/colors-bspwm.sh
-*. ${HOME}/bin/screenvars
-*. ${HOME}/bin/panel-monitors
-
-#VERT_POS = $(echo "scale=0; ${XRES_LG x }")
-
-SEPARATOR="%{F#B3${color0:1}}¤%{F-}"
-
-# Network ID for the wifi connection.
-
-netstatus () {
-a="$(nmcli connection show --active | grep "802-11-wireless" | awk '{print $1}')"
-if [ "$a" != "" ] ; then
-	connected="%{F#B3${color6:1}}$a%{F-}"
-else
-	connected="%{F#B3${color8:1}}not connected%{F-}"
-fi
-
-# ESSIDs can be up to 16 characters long, so technically
-# we should allow a string of up to 14 characters
-# for the ESSID.
-
-# However, that's stupid. 32 should do it and still
-# look pretty decent.
-printf "%-4s %32s" "" "$connected"
-}
-
-# Current system volume.
-# TODO: left- and right-click to lower and raise volume respectively.
-
-vol () {
-vol=$(pamixer --get-volume)
-
-if [ $vol -ge 80 ] ; then
-	vcolor="%{F#B3${color1:1}}"
-elif [ $vol -ge 20 ] ; then
-	vcolor="%{F#B3${color6:1}}"
-else
-	vcolor="%{F#B3${color8:1}}"
-fi
-
-printf "%-4s %14s%%%5s" "" "${vcolor}${vol}" "%{F-}"
-}
-
-# Status of the Num Lock key.
-
-num () {
-num=$(xset -q | grep Caps | awk '{print $8}')
-
-if [ "$num" = "on" ]; then
-	ncolor="%{F#B3${color6:1}}"
-else
-	ncolor="%{F#B3${color1:1}}"
-fi
-
-printf "%-4s %19s" "" "${ncolor}${num}%{F-}"
-}
-
-# Status of the Caps Lock key.
-
-caps () {
-caps=$(xset -q | grep Caps | awk '{print $4}')
-
-if [ "$caps" = "off" ]; then
-	ccolor="%{F#B3${color6:1}}"
-else
-	ccolor="%{F#B3${color1:1}}"
-fi
-
-printf "%-4s %19s" "" "${ccolor}${caps}%{F-}"
-}
-
 while :; do
 	if pgrep -x "Xorg" > /dev/null ; then
-#	echo "%{l}%{B${color6}}     %{B${color1}}     %{B${color0}}     %{F-}%{B-}%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}     $(netstatus)     %{F-}$(vol)     $(num)     $(caps)     "
-	echo "%{l}%{B#B3${color6:1}}     %{B#B3${color1:1}}     %{B#B3${color0:1}}     %{F-}%{B-}%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}     $(netstatus)     %{F-}$(vol)     $(num)     $(caps)     "
-	sleep 1
+	echo "%{l}   $(${HOME}/.local/bin/panel-scripts/wksp)%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}     $(${HOME}/.local/bin/panel-scripts/netstatus)     %{F-}$(${HOME}/.local/bin/panel-scripts/vol)     $(${HOME}/.local/bin/panel-scripts/num)     $(${HOME}/.local/bin/panel-scripts/caps)     $(< /etc/passwd grep marcxjo | cut -d: -f5 | cut -d, -f1)   "
+	sleep "1s"
 	fi
-#done | lemonbar -F "${colorfg}" -B "${colorbg}" -f "-xos4-terminus-medium-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" -g 1856x32+32+8 -u 2 -n "panel-top" | sh
-done | lemonbar -F "#B3${colorfg:1}" -B "#B3${colorbg:1}" -f "-xos4-terminus-bold-r-normal--12-*-*-*-*-*-*-*" -f "-urw-nimbus mono l-medium-r-normal--17-120-100-100-m-0-*-uni" -f "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1" -g 1856x32+32+8 -u 2 -n "panel-top" | sh
+done | $P_STRING1 | sh

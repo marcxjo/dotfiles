@@ -1,7 +1,9 @@
 #!/bin/bash
 
-for x in panel{-top,-top-2,-bottom,-bottom-2}; do
-	if [ "! ps ax | grep -v grep | grep $x" ]; then
+. ${HOME}/.config/bspwm/panel/profile
+
+for x in panel-top{,-2}; do
+	if [ "! pgrep -c -x $x" ]; then
 		$x &
 	fi
 done

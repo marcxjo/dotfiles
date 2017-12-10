@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for x in panel{-top,-top-2,-bottom,-bottom-2}; do
+for x in panel-top{,-2}; do
 		pkill -x $x
 done
 
