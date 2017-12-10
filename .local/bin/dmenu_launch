@@ -1,0 +1,35 @@
+#!/bin/sh
+# end a command with ; to run in a terminal
+
+. ~/.cache/wal/bspwm-colors.sh
+
+# l10n support
+case $LANG in
+    eo_* ) TEXT="Lanĉi:" ;; # Russian
+    en_* ) TEXT="run:" ;; # English
+esac
+
+SB="-sb ${color2}"
+SF="-sf ${color10}"
+NB="-nb ${colorbg}"
+NF="-nf ${colorfg}"
+FN="-fn Terminus:style=bold:size=10"
+OPTIONS="$FN $NB $NF $SB $SF -p $TEXT -i"
+#OPTIONS="$NB $NF $SB $SF -p $TEXT -i"
+
+DMENU="dmenu -i $OPTIONS"
+TERMI="st -e"
+CACHE="$HOME/.cache/dmenu_cache_recent"
+
+touch $CACHE
+MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
+RUN=`(echo "$MOST_USED"; dmenu_path | grep -vxF "$MOST_USED") | $DMENU $@` &&
+(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
+mv $CACHE.$$ $CACHE
+
+case $RUN in
+    *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;
+    *)   exec $RUN;;
+esac
+
+exit 0

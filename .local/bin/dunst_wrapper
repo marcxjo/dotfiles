@@ -1,0 +1,100 @@
+#!/bin/sh
+
+. ${HOME}/.cache/wal/bspwm-colors.sh
+
+# Cosmetic variables.
+
+D_FONT="-fn Terminus 10"
+
+D_COLOR_LB="-lb ${colorbg}"
+D_COLOR_NB="-nb ${colorbg}"
+D_COLOR_CB="-cb ${colorbg}"
+
+D_COLOR_LF="-lf ${color4}"
+D_COLOR_NF="-nf ${color3}"
+D_COLOR_CF="-cf ${color4}"
+
+D_GEOM="-geometry 240x5-\
+$(($(bspc config window_gap)+$(bspc config right_padding)))+\
+$(($(bspc config window_gap)+$(bspc config top_padding)))"
+
+D_STRING="$D_FONT $D_COLOR_LB $D_COLOR_NB $D_COLOR_CB $D_COLOR_LF $D_COLOR_NF \
+$D_COLOR_CF $D_GEOM"
+
+# Delete any tmpdirs from previous runs of the script.
+rm -rf /tmp/$(basename $0)-${USER}.*
+
+# We need to set up a tmpfile to configure
+# the frame colors and a few other features.
+
+
+read -r -d '' D_CONF_FILE << CONF-FILE
+[global]
+    allow_markup = yes
+    format = "<b>%s</b>\n%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = -1
+    word_wrap = yes
+    ignore_newline = no
+    shrink = no
+    transparency = 10
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    history_length = 20
+    show_indicators = yes
+    line_height = 16
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    separator_color = frame
+    startup_notification = false
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    icon_position = off
+    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+[frame]
+    width = 2
+    color = ${colorbg}
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    timeout = 0
+
+[urgency_normal]
+    timeout = 0
+
+[urgency_critical]
+    timeout = 0
+
+# vim: ft=cfg
+CONF-FILE
+
+case $1 in
+	"")
+		D_TMPDIR=$(mktemp -d /tmp/$(basename $0)-${USER}.XXXXXX)
+		# Reload dunst if it has already been started.
+		if [ "pgrep -c -x dunst" ]; then
+			# dunst won't properly reload if we
+			# use `pkill` in place of `killall`.
+			killall -e dunst 2 > /dev/null 2>&1
+		fi
+		echo "$D_CONF_FILE" > $D_TMPDIR/dunstrc
+		exec dunst $D_STRING -config $D_TMPDIR/dunstrc
+		;;
+	*)
+		# Don't tolerate stupidity.
+		echo "Usage: $(basename $0)"
+		exit 2
+		;;
+esac
