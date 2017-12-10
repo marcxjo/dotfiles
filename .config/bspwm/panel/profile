@@ -1,0 +1,74 @@
+# Panel colors
+
+. ${HOME}/.cache/wal/bspwm-colors.sh
+
+ALPHA_PREFIX="#E6"
+
+export colorbg="${ALPHA_PREFIX}${colorbg:1}"
+export colorfg="${ALPHA_PREFIX}${colorfg:1}"
+export color0="${ALPHA_PREFIX}${color0:1}"
+export color1="${ALPHA_PREFIX}${color1:1}"
+export color2="${ALPHA_PREFIX}${color2:1}"
+export color3="${ALPHA_PREFIX}${color3:1}"
+export color4="${ALPHA_PREFIX}${color4:1}"
+export color5="${ALPHA_PREFIX}${color5:1}"
+export color6="${ALPHA_PREFIX}${color6:1}"
+export color7="${ALPHA_PREFIX}${color7:1}"
+export color8="${ALPHA_PREFIX}${color8:1}"
+export color9="${ALPHA_PREFIX}${color9:1}"
+export color10="${ALPHA_PREFIX}${color10:1}"
+export color11="${ALPHA_PREFIX}${color11:1}"
+export color12="${ALPHA_PREFIX}${color12:1}"
+export color13="${ALPHA_PREFIX}${color13:1}"
+export color14="${ALPHA_PREFIX}${color14:1}"
+export color15="${ALPHA_PREFIX}${color15:1}"
+
+P_FG="-F ${colorfg}"
+P_BG="-B ${colorbg}"
+
+# Panel fonts and text options
+
+P_FONT1="-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+P_FONT2="-f -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1"
+P_FONT3="-f -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1"
+
+# Separator symbol.
+
+SEPARATOR="%{F${color5}}¤%{F-}"
+export SEPARATOR
+
+# Uniform height and padding for all panels
+
+P_XRES1=$(xrandr --listactivemonitors | sed -n '2p' | awk '{print $3}' | \
+cut -d'/' -f1)
+P_XRES2=$(xrandr --listactivemonitors | sed -n '3p' | awk '{print $3}' | \
+cut -d'/' -f1)
+P_HEIGHT=$(bspc config top_padding)
+P_XPADDING=0
+P_YPADDING=0
+
+# Panel width equals screen resolution minus xpadding.
+# Remember, though, we're padding on two sides here.
+
+P_WIDTH1=$((${P_XRES1} - 2 * ${P_XPADDING}))
+P_WIDTH2=$((${P_XRES2} - 2 * ${P_XPADDING}))
+
+# Panel layout.
+
+P_GEOM1="-g ${P_WIDTH1}x${P_HEIGHT}+${P_XPADDING}+${P_YPADDING}"
+P_GEOM2="-g ${P_WIDTH2}x${P_HEIGHT}+$((${P_XRES1} + ${P_XPADDING}))+${P_YPADDING}"
+
+# Underline height
+
+P_ULINE="-u 1"
+
+# WM_NAME atom for the panel.
+P_NAME=$(basename ${0})
+
+# Panel formatting string.
+
+P_STRING="lemonbar ${P_FG} ${P_BG} ${P_FONT1} ${P_FONT2} ${P_FONT3} ${P_ULINE} ${P_NAME}"
+P_STRING1="${P_STRING} ${P_GEOM1}"
+P_STRING2="${P_STRING} ${P_GEOM2}"
+export P_STRING1
+export P_STRING2
