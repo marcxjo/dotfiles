@@ -7,7 +7,7 @@
 
 while :; do
 	if pgrep -x "Xorg" > /dev/null ; then
-	echo "%{l}   $(${HOME}/.local/bin/panel-scripts/wksp)%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}     $(${HOME}/.local/bin/panel-scripts/netstatus)     %{F-}$(${HOME}/.local/bin/panel-scripts/vol)     $(${HOME}/.local/bin/panel-scripts/num)     $(${HOME}/.local/bin/panel-scripts/caps)     $(< /etc/passwd grep marcxjo | cut -d: -f5 | cut -d, -f1)   "
+	echo "%{l}   $(${HOME}/.local/bin/panel-scripts/wksp)%{c}${SEPARATOR}     $(date '+%A, %B %d, %Y')         $(date '+%l:%M %p')     ${SEPARATOR}%{r}     $(${HOME}/.local/bin/panel-scripts/netstatus)     %{F-}$(${HOME}/.local/bin/panel-scripts/vol)     $(${HOME}/.local/bin/panel-scripts/num)     $(${HOME}/.local/bin/panel-scripts/caps)     $(< /etc/passwd grep "${USER}" | cut -d: -f5 | cut -d, -f1)   "
 	sleep "1s"
 	fi
 done | $P_STRING1 | sh

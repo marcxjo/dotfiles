@@ -1,11 +1,11 @@
 #!/bin/sh
 
-. ~/.cache/wal/bspwm-colors.sh
+. ~/.local/share/themes/bspwm/colors.sh
 
 SB="${color2}"
 SF="${color10}"
-NB="${colorbg}"
-NF="${colorfg}"
+NB="${color0}"
+NF="${color15}"
 FN="Terminus:style=bold:pixelsize=14"
 OPTIONS="-c -p -1 -u $NB -U $NF -t $SB -T $SF"
 

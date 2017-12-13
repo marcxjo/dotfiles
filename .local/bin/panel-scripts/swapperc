@@ -7,7 +7,7 @@ swapperc=$(free -m | grep Swap | awk '{print $4}')
 if [ ${swapperc} -eq 4094 ]; then
 	scolor="%{F${color2}}"
 else
-	scolor="%{F${color0}}"
+	scolor="%{F${color1}}"
 fi
 
 printf "%-4s %11s%4d %7s" "" "${scolor}" "${swapperc}" "MB%{F-}"

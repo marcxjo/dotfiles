@@ -1,30 +1,13 @@
 # Panel colors
 
-. ${HOME}/.cache/wal/bspwm-colors.sh
+. ${HOME}/.local/share/themes/bspwm/colors.sh
 
 ALPHA_PREFIX="#E6"
 
-export colorbg="${ALPHA_PREFIX}${colorbg:1}"
-export colorfg="${ALPHA_PREFIX}${colorfg:1}"
 export color0="${ALPHA_PREFIX}${color0:1}"
-export color1="${ALPHA_PREFIX}${color1:1}"
-export color2="${ALPHA_PREFIX}${color2:1}"
-export color3="${ALPHA_PREFIX}${color3:1}"
-export color4="${ALPHA_PREFIX}${color4:1}"
-export color5="${ALPHA_PREFIX}${color5:1}"
-export color6="${ALPHA_PREFIX}${color6:1}"
-export color7="${ALPHA_PREFIX}${color7:1}"
-export color8="${ALPHA_PREFIX}${color8:1}"
-export color9="${ALPHA_PREFIX}${color9:1}"
-export color10="${ALPHA_PREFIX}${color10:1}"
-export color11="${ALPHA_PREFIX}${color11:1}"
-export color12="${ALPHA_PREFIX}${color12:1}"
-export color13="${ALPHA_PREFIX}${color13:1}"
-export color14="${ALPHA_PREFIX}${color14:1}"
-export color15="${ALPHA_PREFIX}${color15:1}"
 
-P_FG="-F ${colorfg}"
-P_BG="-B ${colorbg}"
+P_BG="-B ${color0}"
+P_FG="-F ${color15}"
 
 # Panel fonts and text options
 

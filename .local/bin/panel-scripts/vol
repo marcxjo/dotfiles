@@ -6,7 +6,7 @@
 vol=$(pamixer --get-volume)
 
 if [ $vol -ge 80 ] ; then
-	vcolor="%{F${color0}}"
+	vcolor="%{F${color1}}"
 elif [ $vol -ge 20 ] ; then
 	vcolor="%{F${color2}}"
 else

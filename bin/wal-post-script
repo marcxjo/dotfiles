@@ -1,0 +1,167 @@
+#!/bin/bash
+
+# Set up initial variables
+cache_dir="${HOME}/.cache/wal"
+theme_prefix="${HOME}/.local/share/themes"
+declare -a wal_files
+wal_files=( colors colors.reg colors.scss colors.sh colors.xresources firefox.css sequences )
+
+# Give our color theme a name.
+# This also makes sure our theme files aren't lost when we run wal again.
+echo "Give this theme a name."
+echo "For best results, stick to symbols from [0-9a-z_-]."
+
+read theme_name
+
+if [ ! -n "${theme_name}" ]
+then
+	echo "This won't work if you don't name your theme."
+	exit 2
+fi
+
+theme_dir="${theme_prefix}/${theme_name}"
+
+if [ ! -d "${theme_dir}" ]
+then
+	echo "Creating theme directory..."
+	mkdir -p ${theme_dir}
+else
+	rm -rf ${theme_dir}/*
+fi
+
+echo "Moving config files to the theme directory..."
+for x in "${wal_files[@]}"
+do
+	mv -t ${theme_dir}/ ${cache_dir}/$x
+done
+
+# Export new colors to re-theme main desktop components.
+sed -i 's|^\(color[0-9]\{1,2\}\)|export \1|' ${theme_dir}/colors.sh
+
+# Source shell script to recolor window borders and panels.
+. ${theme_dir}/colors.sh
+
+# Create stupidterm config file.
+cat <<-STUPIDTERM_INI >${theme_dir}/stupidterm.ini
+	[options]
+	font = Terminus 10
+	lines = 5000
+	allow-bold = true
+	scroll-on-output = false
+	scroll-on-keystroke = true
+	mouse-autohide = true
+	sync-clipboard = true
+	urgent-on-bell = true
+
+	[colors]
+
+	## ${theme_name}
+
+	## Main Colors
+	background = $(printf "rgba(%d,%d,%d,0.9)" "0x${color0:1:2}" "0x${color0:3:2}" "0x${color0:5:2}")
+	foreground = $color15
+
+	## Switch foreground and background when highlighted.
+	highlight            = $color15
+	highlight-foreground = $color0
+
+	## ANSI Colors
+	color0  = $color0
+	color1  = $color1
+	color2  = $color2
+	color3  = $color3
+	color4  = $color4
+	color5  = $color5
+	color6  = $color6
+	color7  = $color7
+	color8  = $color8
+	color9  = $color9
+	color10 = $color10
+	color11 = $color11
+	color12 = $color12
+	color13 = $color13
+	color14 = $color14
+	color15 = $color15
+
+	[urlmatch]
+	program = /usr/bin/tabbed_wrapper surf -e
+	regex = (((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"])?
+	STUPIDTERM_INI
+
+# Create dunst config file.
+
+cat <<DUNSTRC >${theme_dir}/dunstrc
+[global]
+    font = Terminus 10
+    allow_markup = yes
+    format = "<b>%s</b>\n%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    geometry = "240x5-$(( $(bspc config window_gap) + $(bspc config right_padding) ))+$(( $(bspc config window_gap) + $(bspc config top_padding) ))"
+    shrink = no
+    transparency = 10
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    history_length = 20
+    show_indicators = yes
+    line_height = 16
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    separator_color = frame
+    startup_notification = false
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    icon_position = off
+    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+[frame]
+    width = 2
+    color = "${color0}"
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "${color0}"
+    foreground = "${color4}"
+    timeout = 0
+
+[urgency_normal]
+    background = "${color0}"
+    foreground = "${color3}"
+    timeout = 0
+
+[urgency_critical]
+    background = "${color0}"
+    foreground = "${color2}"
+    timeout = 0
+
+# vim: ft=cfg
+DUNSTRC
+
+# Set up symlinks for our bspwm scripts.
+ln -sfn ${theme_dir} ${theme_prefix}/bspwm
+
+# Refresh bspwm colors.
+bspc config normal_border_color  ${color4}
+bspc config active_border_color  ${color3}
+bspc config focused_border_color ${color2}
+
+# Set X colors.
+xrdb ${HOME}/.Xresources
+xrdb -merge ${theme_dir}/colors.xresources
+
+unset cache_dir
+unset theme_prefix
+unset theme_dir

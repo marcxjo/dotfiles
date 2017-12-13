@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec wal -n -t -x -i $(tail -n1 "${HOME}/.fehbg" | sed "s|^.*'\(.*\)'.*$|\1|") -o ${HOME}/bin/wal-post-script
+
+exit 0

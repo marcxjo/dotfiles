@@ -3,14 +3,14 @@
 # Start compositor
 compton &
 
+# Set background.
+~/.fehbg
+
 # Set desktop colors.
-xrdb -merge ~/.cache/wal/bspwm-colors.xresources
+#set-desktop-colors
 
 # Start notification daemon.
 dunst_wrapper &
-
-# Set background.
-~/.fehbg
 
 # Start panels.
 start-panels &

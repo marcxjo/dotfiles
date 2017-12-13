@@ -1,7 +1,7 @@
 #!/bin/sh
 # end a command with ; to run in a terminal
 
-. ~/.cache/wal/bspwm-colors.sh
+. ~/.local/share/themes/bspwm/colors.sh
 
 # l10n support
 case $LANG in
@@ -11,8 +11,8 @@ esac
 
 SB="-sb ${color2}"
 SF="-sf ${color10}"
-NB="-nb ${colorbg}"
-NF="-nf ${colorfg}"
+NB="-nb ${color0}"
+NF="-nf ${color15}"
 FN="-fn Terminus:style=bold:size=10"
 OPTIONS="$FN $NB $NF $SB $SF -p $TEXT -i"
 #OPTIONS="$NB $NF $SB $SF -p $TEXT -i"
