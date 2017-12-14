@@ -7,6 +7,12 @@ compton &
 ~/.fehbg
 
 # Set desktop colors.
+
+if [ -e "${HOME}/.local/share/themes/bspwm ]
+then
+	set-desktop-colors bspwm
+fi
+
 #set-desktop-colors
 
 # Start notification daemon.
