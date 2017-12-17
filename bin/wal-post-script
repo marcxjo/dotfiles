@@ -4,7 +4,7 @@
 cache_dir="${HOME}/.cache/wal"
 theme_prefix="${HOME}/.local/share/themes"
 declare -a wal_files
-wal_files=( colors colors.reg colors.scss colors.sh colors.xresources firefox.css sequences )
+wal_files=( colors colors.reg colors.scss colors.sh colors.xresources firefox.css sequences wal )
 
 # Give our color theme a name.
 # This also makes sure our theme files aren't lost when we run wal again.
