@@ -31,15 +31,24 @@ set_theme () {
 	fi
 }
 
-if find_theme
+if ! find_theme
 then
-	set_theme
-else
 	wal -n -t -x -i $(tail -n1 "${HOME}/.fehbg" | sed "s|^.*'\(.*\)'.*$|\1|") -o ${HOME}/bin/wal-post-script
 fi
 
+set_theme
+
+. $HOME/.local/share/themes/bspwm/colors.sh
+
+# Refresh bspwm colors.
+bspc config normal_border_color  ${color4}
+bspc config active_border_color  ${color3}
+bspc config focused_border_color ${color2}
+
+# Set X colors.
+xrdb -merge $HOME/.local/share/themes/bspwm/colors.xresources
+
 dunst_wrapper &
 reload-panels &
-xrdb -merge $HOME/.local/share/themes/bspwm/colors.xresources
 
 exit 0

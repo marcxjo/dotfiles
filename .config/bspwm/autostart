@@ -8,9 +8,3 @@ compton &
 
 # Set desktop colors.
 set-desktop-colors &
-
-# Start notification daemon.
-dunst_wrapper &
-
-# Start panels.
-start-panels &
