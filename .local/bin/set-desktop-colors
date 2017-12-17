@@ -1,5 +1,45 @@
 #!/bin/sh
 
-exec wal -n -t -x -i $(tail -n1 "${HOME}/.fehbg" | sed "s|^.*'\(.*\)'.*$|\1|") -o ${HOME}/bin/wal-post-script
+#
+# A simple bspwm desktop theming script
+#
+
+# Check the background pic last set by feh to determine whether
+# we really need to run wal.
+_pic=$(cat ~/.fehbg | tail -n1 | sed "s|.*'\(.*\)'.*|\1|")
+
+find_theme () {
+	for wal_file in $(find $HOME/.local/share/themes -name wal)
+	do
+		grep "$_pic" $wal_file
+
+		if [ $? -eq 0 ]
+		then
+			export theme_match="${wal_file}"
+			echo "Huzzah! $(echo $theme_match | sed 's|.*themes/\(.*\)/wal|\1|') is a matching theme!"
+			return 0
+
+		fi
+	done
+	return 1
+}
+
+set_theme () {
+	if [ ! "${theme_match%/wal}" = "$(file $HOME/.local/share/themes/bspwm | awk '{print $5}')" ]
+	then
+		ln -snf ${theme_match%/wal} $HOME/.local/share/themes/bspwm
+	fi
+}
+
+if find_theme
+then
+	set_theme
+else
+	wal -n -t -x -i $(tail -n1 "${HOME}/.fehbg" | sed "s|^.*'\(.*\)'.*$|\1|") -o ${HOME}/bin/wal-post-script
+fi
+
+dunst_wrapper &
+reload-panels &
+xrdb -merge $HOME/.local/share/themes/bspwm/colors.xresources
 
 exit 0
