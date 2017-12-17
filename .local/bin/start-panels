@@ -2,7 +2,7 @@
 
 . ${HOME}/.config/bspwm/panel/profile
 
-for x in panel-top{,-2}; do
+for x in panel-{top,bottom}{,-2}; do
 	if [ "! pgrep -c -x $x" ]; then
 		$x &
 	fi

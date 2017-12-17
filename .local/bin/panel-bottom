@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Marĉjo's Top LemonBar Panel
+# Note that printf is used extensively in place of echo for alignment.
+# Color codes are assumed to add 16 characters to any string,
+# hence long string lengths for variables that include them.
+
+while :; do
+	if pgrep -x "Xorg" > /dev/null ; then
+	echo "%{l}   $(${HOME}/.local/bin/bar-scripts/wlist)   %{r}$(${HOME}/.local/bin/bar-scripts/wksp)   "
+	sleep "0.2s"
+	fi
+done | $P_STRING1 -b | sh
