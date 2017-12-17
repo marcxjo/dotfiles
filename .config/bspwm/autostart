@@ -4,16 +4,10 @@
 compton &
 
 # Set background.
-~/.fehbg
+~/.fehbg &
 
 # Set desktop colors.
-
-if [ -e "${HOME}/.local/share/themes/bspwm ]
-then
-	set-desktop-colors bspwm
-fi
-
-#set-desktop-colors
+set-desktop-colors &
 
 # Start notification daemon.
 dunst_wrapper &
