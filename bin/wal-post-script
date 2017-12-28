@@ -102,7 +102,6 @@ cat <<DUNSTRC >${theme_dir}/dunstrc
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    geometry = "240x5-$(( $(bspc config window_gap) + $(bspc config right_padding) ))-$(( $(bspc config window_gap) + $(bspc config top_padding) ))"
     shrink = no
     transparency = 10
     idle_threshold = 120

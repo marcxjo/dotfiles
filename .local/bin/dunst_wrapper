@@ -8,4 +8,11 @@ then
 	killall -e dunst > /dev/null 2>&1
 fi
 
-exec dunst -config ${HOME}/.local/share/themes/bspwm/dunstrc
+_WIDTH="$(( $(bspc config right_padding) - $(bspc config window_gap) ))"
+_HEIGHT="5"
+_XOFF="$(bspc config window_gap)"
+_YOFF="$(( $(bspc config window_gap) + $(bspc config bottom_padding) ))"
+_GEOM="-geometry ${_WIDTH}x${_HEIGHT}-${_XOFF}-${_YOFF}"
+_RCFILE="-config ${HOME}/.local/share/themes/bspwm/dunstrc"
+
+exec dunst ${_GEOM} ${_RCFILE}
