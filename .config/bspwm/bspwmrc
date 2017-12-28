@@ -5,24 +5,23 @@ sxhkd &
 bspc monitor DVI-1 -n LG      -d Unu Du Tri
 bspc monitor DVI-0 -n Samsung -d Kvar Kvin Ses
 
-bspc config border_width               2
-bspc config window_gap                32
+bspc config border_width                2
+bspc config window_gap                 32
 
-# Padding for pixel space above the panel.
+# Padding for pixel space between panels and display edges.
 # Chintzy and wasteful? Sure. But nice-looking.
-bspc config top_padding               40
+bspc config top_padding                36
 bspc config bottom_padding \
 $(bspc config top_padding)
 
-bspc config left_padding              64
-bspc config right_padding \
-$(bspc config left_padding)
+bspc config left_padding                0
+bspc config right_padding             320
 
 bspc config split_ratio              0.50
 
-# Against, wasteful, but attractive
-bspc config borderless_monocle       false
-bspc config gapless_monocle          false
+# Again, wasteful, but attractive.
+bspc config borderless_monocle      false
+bspc config gapless_monocle         false
 
 # Pointer settings.
 bspc config click_to_focus        button1
@@ -34,12 +33,12 @@ bspc config pointer_modifier      control
 bspc config pointer_action1 resize_corner
 bspc config pointer_action3          move
 
-bspc rule -a Gimp      desktop='^8' state=floating follow=on
-bspc rule -a Chromium  desktop='^2'
-bspc rule -a mpv       desktop='^4'
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a '*:yad'   state=floating
+bspc rule -a Gimp     desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mpv      desktop='^4'
+bspc rule -a '*:yad'  state=floating
+bspc rule -a Pidgin   desktop='^1' split_ratio=0.15
+bspc rule -a Gajim    desktop='^2' split_ratio=0.15
 bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
 
 ${HOME}/.config/bspwm/autostart &
