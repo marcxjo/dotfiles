@@ -1,0 +1,5 @@
+#!/bin/sh
+
+feh --bg-fill "$(cat ~/.local/share/themes/${1}/wal)"
+
+exit 0
