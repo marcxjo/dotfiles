@@ -4,10 +4,4 @@
 
 memperc=$(free -m | grep Mem | awk '{print $4}')
 
-if [ ${memperc} -gt 500 ]; then
-	mcolor="%{F${color2}}"
-else
-	mcolor="%{F${color1}}"
-fi
-
-printf "%-4s %11s%4d %7s" "" "${mcolor}" "${memperc}" "MB%{F-}"
+printf "%s%-5s%s%4d %-3s" "%{F${color6}}" "" "%{F-}" "${memperc}" "MB"

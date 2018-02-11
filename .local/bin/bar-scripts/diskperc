@@ -4,10 +4,4 @@
 
 diskperc=$(df -h --output=avail /dev/sdb1 | sed -n -e '2{p;q}')
 
-if [ ${diskperc%?} -gt 200 ]; then
-	dcolor="%{F${color2}}"
-else
-	dcolor="%{F${color1}}"
-fi
-
-printf "%-4s %11s%3d %7s" "" "${dcolor}" "${diskperc%?}" "GB%{F-}"
+printf "%s%-5s%s%4d %-3s" "%{F${color6}}" "" "%{F-}" "${diskperc%?}" "GB"

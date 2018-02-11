@@ -32,6 +32,9 @@ xsetroot -cursor_name left_ptr
 xset +fp ~/.fonts
 xset fp rehash
 
+# Start PulseAudio.
+start-pulseaudio-x11 &
+
 xscreensaver -no-splash &
 
 exec bspwm

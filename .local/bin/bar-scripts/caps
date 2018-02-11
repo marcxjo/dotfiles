@@ -4,10 +4,4 @@
 
 caps=$(xset -q | grep Caps | awk '{print $4}')
 
-if [ "$caps" = "off" ]; then
-	ccolor="%{F${color2}}"
-else
-	ccolor=" %{F${color1}}"
-fi
-
-printf "%-4s %19s" "" "${ccolor}%{A:xdotool key Caps_Lock:}${caps}%{A}%{F-}"
+printf "%s%-5s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Caps_Lock:}" "${caps}" "%{A}"

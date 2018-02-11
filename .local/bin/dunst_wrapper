@@ -8,11 +8,28 @@ then
 	killall -e dunst > /dev/null 2>&1
 fi
 
-_WIDTH="$(( $(bspc config right_padding) - $(bspc config window_gap) ))"
+# Geometry and placement
+
+_WIDTH="$(( $(bspc config left_padding) - $(bspc config window_gap) ))"
 _HEIGHT="5"
 _XOFF="$(bspc config window_gap)"
 _YOFF="$(( $(bspc config window_gap) + $(bspc config bottom_padding) ))"
-_GEOM="-geometry ${_WIDTH}x${_HEIGHT}-${_XOFF}-${_YOFF}"
+
+_GEOM="-geometry ${_WIDTH}x${_HEIGHT}+${_XOFF}-${_YOFF}"
+
+# Colors
+
+. "${HOME}/.local/share/themes/bspwm/colors.sh"
+
+_LB="-lb ${colorbg}"
+_NB="-nb ${colorbg}"
+_CB="-cb ${colorbg}"
+_LF="-lf ${colorfg}"
+_NF="-nf ${color6}"
+_CF="-cf ${color1}"
+
+_COLORS="${_LB} ${_NB} ${_CB} ${_LF} ${_NF} ${_CF}"
+
 _RCFILE="-config ${HOME}/.local/share/themes/bspwm/dunstrc"
 
-exec dunst ${_GEOM} ${_RCFILE}
+exec dunst ${_GEOM} ${_RCFILE} ${_COLORS}

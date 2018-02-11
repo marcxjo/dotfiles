@@ -35,8 +35,14 @@ do
 	mv -t ${theme_dir}/ ${cache_dir}/$x
 done
 
+get_color_val () {
+	grep $1 ${theme_dir}/colors.sh | sed "s|^.*'\(.*\)'.*$|\1|"
+}
+
 # Export new colors to re-theme main desktop components.
-sed -i 's|^\(color[0-9]\{1,2\}\)|export \1|' ${theme_dir}/colors.sh
+sed -i "2 i colorbg=\'$(get_color_val color0)\'" ${theme_dir}/colors.sh
+sed -i "3 i colorfg=\'$(get_color_val color15)\'" ${theme_dir}/colors.sh
+sed -i 's|^\(color[0-9bfg]\{1,2\}\)|export \1|' ${theme_dir}/colors.sh
 
 # Source shell script to recolor window borders and panels.
 . ${theme_dir}/colors.sh
@@ -58,12 +64,12 @@ cat <<-STUPIDTERM_INI >${theme_dir}/stupidterm.ini
 	## ${theme_name}
 
 	## Main Colors
-	background = $(printf "rgba(%d,%d,%d,0.9)" "0x${color0:1:2}" "0x${color0:3:2}" "0x${color0:5:2}")
-	foreground = $color15
+	background = $(printf "rgba(%d,%d,%d,0.9)" "0x${colorbg:1:2}" "0x${colorbg:3:2}" "0x${colorbg:5:2}")
+	foreground = ${colorfg}
 
 	## Switch foreground and background when highlighted.
-	highlight            = $color15
-	highlight-foreground = $color0
+	highlight            = ${colorfg}
+	highlight-foreground = ${colorbg}
 
 	## ANSI Colors
 	color0  = $color0
@@ -123,7 +129,7 @@ cat <<DUNSTRC >${theme_dir}/dunstrc
 
 [frame]
     width = 2
-    color = "${color0}"
+    color = "${colorbg}"
 
 [shortcuts]
     close = ctrl+space
@@ -132,25 +138,19 @@ cat <<DUNSTRC >${theme_dir}/dunstrc
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "${color0}"
-    foreground = "${color4}"
     timeout = 0
 
 [urgency_normal]
-    background = "${color0}"
-    foreground = "${color3}"
     timeout = 0
 
 [urgency_critical]
-    background = "${color0}"
-    foreground = "${color2}"
     timeout = 0
 
 # vim: ft=cfg
 DUNSTRC
 
 # Set up symlinks for our bspwm scripts.
-ln -sfn ${theme_dir} ${theme_prefix}/bspwm
+#ln -sfn ${theme_dir} ${theme_prefix}/bspwm
 
 unset cache_dir
 unset theme_prefix

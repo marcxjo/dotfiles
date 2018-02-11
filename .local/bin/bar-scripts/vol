@@ -3,14 +3,9 @@
 # Current system volume.
 # TODO: left- and right-click to lower and raise volume respectively.
 
-vol=$(pamixer --get-volume)
+#vol=$(pamixer --get-volume)
+#vol=$(awk '/%/ {gsub(/[\[\]]/,""); print $5}' <(amixer sget Master) | head -n1)
+vol=$(amixer sget Master | awk -F"[][]" '/%/ { print $2 }' | head -n1)
 
-if [ "${vol}" -ge 80 ] ; then
-	vcolor="%{F${color1}}"
-elif [ "${vol}" -ge 20 ] ; then
-	vcolor="%{F${color2}}"
-else
-	vcolor="%{F${color8}}"
-fi
-
-printf "%-4s %14s%%%5s" "" "${vcolor}${vol}" "%{F-}"
+# Add blank space to correct offsetting issues with subsequent status icons.
+printf "%s%-5s%5s%-6s" "%{F${color6}}"  "" "%{F-}" "${vol}"

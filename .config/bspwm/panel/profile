@@ -6,10 +6,11 @@
 
 ALPHA_PREFIX="#E6"
 
-export color0="${ALPHA_PREFIX}${color0:1}"
+export colorbg="${ALPHA_PREFIX}${colorbg:1}"
+export colorfg="${ALPHA_PREFIX}${colorfg:1}"
 
-P_BG="-B ${color0}"
-P_FG="-F ${color15}"
+P_BG="-B ${colorbg}"
+P_FG="-F ${colorfg}"
 
 #
 # Panel fonts and text options
@@ -25,7 +26,7 @@ P_FONT2="-f -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1"
 P_FONT3="-f -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1"
 
 # Separator symbol
-SEPARATOR="%{F${color5}}¤%{F-}"
+SEPARATOR="%{F${color1}}¤%{F-}"
 export SEPARATOR
 
 #
@@ -39,7 +40,7 @@ cut -d'/' -f1)
 
 # Pad panel edges parallel to windows
 
-P_XPADDING=$(( $(bspc config window_gap) + $(bspc config left_padding) ))
+P_XPADDING=$(bspc config window_gap)
 
 # For that cute, Unix-y look...
 

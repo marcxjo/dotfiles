@@ -4,10 +4,4 @@
 
 num=$(xset -q | grep Caps | awk '{print $8}')
 
-if [ "$num" = "on" ]; then
-	ncolor=" %{F${color2}}"
-else
-	ncolor="%{F${color1}}"
-fi
-
-printf "%-4s %19s" "" "${ncolor}%{A:xdotool key Num_Lock:}${num}%{A}%{F-}"
+printf "%s%-5s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Num_Lock:}" "${num}" "%{A}"

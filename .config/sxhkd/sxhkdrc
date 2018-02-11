@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 alt + F2
-	rofi -show run
+	rofi -show run -lines 1 -columns 1 -width 20% -location 0
 
 super + space
 	dmenu_launch
@@ -70,7 +70,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
+alt + {_,shift + }Tab
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -137,17 +137,21 @@ ctrl + alt + l
 
 # raise volume
 XF86AudioRaiseVolume
-	pamixer -i 5
+#	pamixer -i 5
+	amixer sset Master 5%+
 
 # lower volume
 XF86AudioLowerVolume
-	pamixer -d 5
+#	pamixer -d 5
+	amixer sset Master 5%-
 
 # mute volume
 XF86AudioMute
 	pamixer -t
 
 #
-# mouse controls
+# custom placement
 #
 
+super + shift + p
+	finch-window
