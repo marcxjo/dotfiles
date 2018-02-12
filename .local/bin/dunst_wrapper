@@ -15,7 +15,7 @@ _HEIGHT="5"
 _XOFF="$(bspc config window_gap)"
 _YOFF="$(( $(bspc config window_gap) + $(bspc config bottom_padding) ))"
 
-_GEOM="-geometry ${_WIDTH}x${_HEIGHT}+${_XOFF}-${_YOFF}"
+_GEOM="-geometry ${_WIDTH}x${_HEIGHT}+${_XOFF}+${_YOFF}"
 
 # Colors
 
