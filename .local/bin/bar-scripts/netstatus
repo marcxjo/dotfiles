@@ -12,4 +12,4 @@ fi
 # ESSIDs can be up to 32 characters long.
 # However, that's stupid. 16 should do it and still
 # look pretty decent.
-printf "%s%-5s%5s%s" "%{F${color6}}" "" "%{F-}"  "$connected"
+printf "%s%-4s%5s%s" "%{F${color6}}" "" "%{F-}"  "$connected"

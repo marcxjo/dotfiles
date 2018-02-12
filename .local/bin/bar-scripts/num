@@ -4,4 +4,4 @@
 
 num=$(xset -q | grep Caps | awk '{print $8}')
 
-printf "%s%-5s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Num_Lock:}" "${num}" "%{A}"
+printf "%s%-4s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Num_Lock:}" "${num}" "%{A}"

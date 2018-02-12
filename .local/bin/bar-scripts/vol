@@ -8,4 +8,4 @@
 vol=$(amixer sget Master | awk -F"[][]" '/%/ { print $2 }' | head -n1)
 
 # Add blank space to correct offsetting issues with subsequent status icons.
-printf "%s%-5s%5s%-6s" "%{F${color6}}"  "" "%{F-}" "${vol}"
+printf "%s%-4s%5s%-6s" "%{F${color6}}"  "" "%{F-}" "${vol}"
