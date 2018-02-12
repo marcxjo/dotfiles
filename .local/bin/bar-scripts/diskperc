@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Free space on /home partition.
-
-diskperc=$(df -h --output=avail /dev/sdb1 | sed -n -e '2{p;q}')
-
-printf "%s%-5s%s%4d %-3s" "%{F${color6}}" "" "%{F-}" "${diskperc%?}" "GB"

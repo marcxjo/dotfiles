@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Current percentage of swap in use.
-
-swapperc=$(free -m | grep Swap | awk '{print $4}')
-
-printf "%s%-5s%s%4d %-3s" "%{F${color6}}" "" "%{F-}" "${swapperc}" "MB"

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Current percentage of RAM in use.
-
-memperc=$(free -m | grep Mem | awk '{print $4}')
-
-printf "%s%-5s%s%4d %-3s" "%{F${color6}}" "" "%{F-}" "${memperc}" "MB"
