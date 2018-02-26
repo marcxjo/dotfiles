@@ -1,0 +1,30 @@
+#!/bin/sh
+
+windows=( $(bspc query -N -d Samsung:focused) )
+fwindows=( $(bspc query -N -n .focused -m Samsung) )
+
+function in_focus () {
+    local n=$#
+    local value=${!n}
+    for (( i = 1 ; i < $n; i++ )) {
+        if [ "${!i}" == "${value}" ]; then
+            echo "y"
+            return 0
+        fi
+    }
+    echo "n"
+    return 1
+}
+
+for item in "${windows[@]}"
+do
+	if [[ "$(in_focus "${fwindows[@]}" "$item")" = "y" && -n "$(xtitle $item)" ]]
+	then
+		_win+="  %{F${color6}}%{A3:bspc node "$item" -g hidden:}$(xtitle ${item} | cut -c -32)%{A}%{F-}  ${P_SEP}"
+	elif [ -n "$(xtitle $item)" ]
+	then
+                _win+=" %{A:bspc node -f "$item":}%{A3:bspc node "$item" -g hidden:} $(xtitle ${item} | cut -c -32) %{A}%{A} ${P_SEP}"
+	fi
+done
+
+echo "${_win%${P_SEP}}"
