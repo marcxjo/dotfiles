@@ -7,7 +7,7 @@
 
 while :; do
 	if pgrep -x "Xorg" > /dev/null ; then
-	echo "%{l}   $(${HOME}/.local/bin/bar-scripts/wlist-2)   %{r}$(${HOME}/.local/bin/bar-scripts/wksp-2)   "
+	echo "%{l} $(${HOME}/.local/bin/bar-scripts/show-desktop-2)$(${HOME}/.local/bin/bar-scripts/wlist-2)   %{r}$(${HOME}/.local/bin/bar-scripts/wksp-2)   "
 	sleep "0.2s"
 	fi
 done | $P_STRING2 -b | sh

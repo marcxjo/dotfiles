@@ -26,8 +26,8 @@ P_FONT2="-f -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1"
 P_FONT3="-f -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1"
 
 # Separator symbol
-SEPARATOR="%{F${color1}}¤%{F-}"
-export SEPARATOR
+P_SEP="%{F${color1}}¤%{F-}"
+export P_SEP
 
 #
 # Height and padding
@@ -72,7 +72,7 @@ P_NAME=$(basename ${0})
 
 # Panel formatting string.
 
-P_STRING="lemonbar ${P_FG} ${P_BG} ${P_FONT1} ${P_FONT2} ${P_FONT3} ${P_ULINE} ${P_NAME}"
+P_STRING="lemonbar ${P_FG} ${P_BG} ${P_FONT1} ${P_FONT2} ${P_FONT3} ${P_ULINE} ${P_NAME} -a 32"
 P_STRING1="${P_STRING} ${P_GEOM1}"
 P_STRING2="${P_STRING} ${P_GEOM2}"
 
