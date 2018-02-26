@@ -1,0 +1,9 @@
+#!/bin/sh
+
+hwindows=( $(bspc query -N -d LG:focused -n .hidden) )
+
+for x in "${hwindows[@]}"
+do
+	bspc node "$x" -g hidden=off
+done
+
