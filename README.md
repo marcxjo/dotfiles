@@ -13,3 +13,15 @@ A few starter color schemes are included. Most of the files are {minorly ,un-}mo
 * Links to wallpapers that match included color schemes for a nice theme starter.
 
 * Easy automation of switching themes non-destructively (i.e., without just needlessly re-writing existing copies of files.)
+
+---
+
+# About directories
+
+Config files are placed in the usual xdg directory.
+
+Themes are placed under ~/.local/share to match the conventions of system-level themes for frameworks like GTK+. This does not accord with the convention of ~/.themes for home themes in order to keep X11 theme elements from creating directories which conflict with GTK+ or other themes.
+
+Scripts are roughly placed into two categories. Scripts under ~/bin represent simple, specialized helper programs which don't necessarily affect the desktop experience directly.
+
+Scripts under ~/.local/bin affect the user experience directly, most often in terms of aesthetics or productivity. This is why the wal post script is under ~/bin but the themer scripts which use it are under ~/.local/bin.
