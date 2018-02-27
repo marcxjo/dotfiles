@@ -5,7 +5,7 @@ uwindows=( $(bspc query -N -d LG:focused -n .\!hidden) )
 for x in "${uwindows[@]}"
 do
 	echo $x
-	if [ -n "$(xtitle $x)" ]
+	if [ -n "$(wtitle $x)" ]
 	then
 		bspc node "$x" -g hidden=on
 	fi

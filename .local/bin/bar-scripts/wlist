@@ -18,12 +18,12 @@ function in_focus () {
 
 for item in "${windows[@]}"
 do
-	if [[ "$(in_focus "${fwindows[@]}" "$item")" = "y" && -n "$(xtitle $item)" ]]
+	if [[ "$(in_focus "${fwindows[@]}" "$item")" = "y" && -n "$(wtitle $item)" ]]
 	then
-		_win+="  %{F${color6}}%{A3:bspc node "$item" -g hidden:}$(xtitle ${item} | cut -c -32)%{A}%{F-}  ${P_SEP}"
-	elif [ -n "$(xtitle $item)" ]
+		_win+="  %{F${color6}}%{A3:bspc node "$item" -g hidden:}$(wtitle ${item} | cut -c -32)%{A}%{F-}  ${P_SEP}"
+	elif [ -n "$(wtitle $item)" ]
 	then
-                _win+=" %{A:bspc node -f "$item":}%{A3:bspc node "$item" -g hidden:} $(xtitle ${item} | cut -c -32) %{A}%{A} ${P_SEP}"
+                _win+=" %{A:bspc node -f "$item":}%{A3:bspc node "$item" -g hidden:} $(wtitle ${item} | cut -c -32) %{A}%{A} ${P_SEP}"
 	fi
 done
 
