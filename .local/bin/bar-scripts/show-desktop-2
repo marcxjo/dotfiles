@@ -2,9 +2,9 @@
 
 if [ -z "$(bspc query -N -d Samsung:focused -n .\!hidden)" ]
 then
-	d_status="%{A:toggle_unhide:}  %{A}"
+	d_status="%{A:toggle_unhide-2:}  %{A}"
 else
-	d_status="%{F${color2}}%{A:toggle_hide:}  %{A}%{F-}"
+	d_status="%{F${color2}}%{A:toggle_hide-2:}  %{A}%{F-}"
 fi
 
 echo "$d_status"
