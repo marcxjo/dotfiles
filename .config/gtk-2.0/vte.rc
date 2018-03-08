@@ -1,0 +1,5 @@
+style "vte-terminal" {
+	VteTerminal::inner-border = { 24, 24, 24, 24 }
+}
+
+widget "*Terminal*"	style "vte-terminal"
