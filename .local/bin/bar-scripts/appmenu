@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Status of the Caps Lock key.
+
+printf "%s%-4s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:;;:}" "Applications" "%{A}"
