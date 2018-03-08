@@ -1,9 +1,0 @@
-#!/bin/sh
-
-hwindows=( $(bspc query -N -d Samsung:focused -n .hidden) )
-
-for x in "${hwindows[@]}"
-do
-	bspc node "$x" -g hidden=off
-done
-

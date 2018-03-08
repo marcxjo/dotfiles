@@ -1,0 +1,36 @@
+#!/bin/sh
+
+uwindows=( $(bspc query -N -n .\!hidden) )
+hwindows=( $(bspc query -N -n .hidden) )
+fwindows=( $(bspc query -N -n .focused) )
+
+# Check whether the current wid is in another array.
+function in_array () {
+  local n=$#
+  local value=${!n}
+  for (( i = 1 ; i < $n; i++ )) {
+  if [ "${!i}" == "${value}" ]; then
+    echo "y"
+    return 0
+  fi
+  }
+  echo "n"
+  return 1
+}
+
+if [ "$(in_array "${hwindows[@]}" "$1")" = "y" ]
+then
+  bspc node "$1" -g hidden=off
+  bspc node -f "$1"
+  exit 0
+elif [[ "$(in_array "${uwindows[@]}" "$1")" = "y" && "$(in_array "${fwindows[@]}" "$1")" = "y" ]]
+then
+  bspc node "$1" -g hidden=on
+  exit 0
+elif [[ "$(in_array "${uwindows[@]}" "$1")" = "y" && "$(in_array "${fwindows[@]}" "$1")" = "n" ]]
+then
+  bspc node -f "$1"
+  exit 0
+fi
+
+exit 1
