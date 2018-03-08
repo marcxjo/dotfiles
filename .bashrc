@@ -14,7 +14,14 @@ export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] » "
 # User specific aliases and functions
 
 function wtitle () {
-	xprop -id ${1} _NET_WM_NAME 2>/dev/null | awk '{gsub(/"/, "");print $3}'
+_nstring=$(xprop -id ${1} _NET_WM_NAME 2>/dev/null | cut -d"\"" -f2)
+
+if [ "$_nstring" = "_NET_WM_NAME" ]
+then
+	printf %s
+else
+	printf %s "$_nstring"
+fi
 }
 
 export -f wtitle

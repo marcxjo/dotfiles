@@ -1,13 +1,11 @@
 #!/bin/sh
 
-uwindows=( $(bspc query -N -d LG:focused -n .\!hidden) )
+uwindows=( $(bspc query -N -d $MON:focused -n .\!hidden) )
 
 for x in "${uwindows[@]}"
 do
-	echo $x
-	if [ -n "$(wtitle $x)" ]
-	then
-		bspc node "$x" -g hidden=on
-	fi
+  if [ -n "$(wtitle $x)" ]
+  then
+    bspc node "$x" -g hidden=on
+  fi
 done
-

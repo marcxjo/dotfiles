@@ -15,28 +15,28 @@ read theme_name
 
 if [ ! -n "${theme_name}" ]
 then
-	echo "This won't work if you don't name your theme."
-	exit 2
+  echo "This won't work if you don't name your theme."
+  exit 2
 fi
 
 theme_dir="${theme_prefix}/${theme_name}"
 
 if [ ! -d "${theme_dir}" ]
 then
-	echo "Creating theme directory..."
-	mkdir -p ${theme_dir}
+  echo "Creating theme directory..."
+  mkdir -p ${theme_dir}
 else
-	rm -rf ${theme_dir}/*
+  rm -rf ${theme_dir}/*
 fi
 
 echo "Moving config files to the theme directory..."
 for x in "${wal_files[@]}"
 do
-	mv -t ${theme_dir}/ ${cache_dir}/$x
+  mv -t ${theme_dir}/ ${cache_dir}/$x
 done
 
 get_color_val () {
-	grep $1 ${theme_dir}/colors.sh | sed "s|^.*'\(.*\)'.*$|\1|"
+  grep $1 ${theme_dir}/colors.sh | sed "s|^.*'\(.*\)'.*$|\1|"
 }
 
 # Export new colors to re-theme main desktop components.
@@ -49,50 +49,50 @@ sed -i 's|^\(color[0-9bfg]\{1,2\}\)|export \1|' ${theme_dir}/colors.sh
 
 # Create stupidterm config file.
 cat <<-STUPIDTERM_INI >${theme_dir}/stupidterm.ini
-	[options]
-	font = Terminus 10
-	lines = 5000
-	allow-bold = true
-	scroll-on-output = false
-	scroll-on-keystroke = true
-	mouse-autohide = true
-	sync-clipboard = true
-	urgent-on-bell = true
+  [options]
+  font = Terminus 10
+  lines = 5000
+  allow-bold = true
+  scroll-on-output = false
+  scroll-on-keystroke = true
+  mouse-autohide = true
+  sync-clipboard = true
+  urgent-on-bell = true
 
-	[colors]
+  [colors]
 
-	## ${theme_name}
+  ## ${theme_name}
 
-	## Main Colors
-	background = $(printf "rgba(%d,%d,%d,0.9)" "0x${colorbg:1:2}" "0x${colorbg:3:2}" "0x${colorbg:5:2}")
-	foreground = ${colorfg}
+  ## Main Colors
+  background = $(printf "rgba(%d,%d,%d,0.9)" "0x${colorbg:1:2}" "0x${colorbg:3:2}" "0x${colorbg:5:2}")
+  foreground = ${colorfg}
 
-	## Switch foreground and background when highlighted.
-	highlight            = ${colorfg}
-	highlight-foreground = ${colorbg}
+  ## Switch foreground and background when highlighted.
+  highlight            = ${colorfg}
+  highlight-foreground = ${colorbg}
 
-	## ANSI Colors
-	color0  = $color0
-	color1  = $color1
-	color2  = $color2
-	color3  = $color3
-	color4  = $color4
-	color5  = $color5
-	color6  = $color6
-	color7  = $color7
-	color8  = $color8
-	color9  = $color9
-	color10 = $color10
-	color11 = $color11
-	color12 = $color12
-	color13 = $color13
-	color14 = $color14
-	color15 = $color15
+  ## ANSI Colors
+  color0  = $color0
+  color1  = $color1
+  color2  = $color2
+  color3  = $color3
+  color4  = $color4
+  color5  = $color5
+  color6  = $color6
+  color7  = $color7
+  color8  = $color8
+  color9  = $color9
+  color10 = $color10
+  color11 = $color11
+  color12 = $color12
+  color13 = $color13
+  color14 = $color14
+  color15 = $color15
 
-	[urlmatch]
-	program = /usr/bin/tabbed_wrapper surf -e
-	regex = (((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"])?
-	STUPIDTERM_INI
+  [urlmatch]
+  program = /usr/bin/ttabbed surf -e
+  regex = (((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"])?
+  STUPIDTERM_INI
 
 # Create dunst config file.
 

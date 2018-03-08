@@ -4,12 +4,12 @@
 
 a="$(nmcli connection show --active | grep "802-11-wireless" | awk '{print $1}')"
 if [ "$a" != "" ] ; then
-	connected="$a"
+  connected="up"
 else
-	connected="not connected"
+  connected="down"
 fi
 
 # ESSIDs can be up to 32 characters long.
 # However, that's stupid. 16 should do it and still
 # look pretty decent.
-printf "%s%-4s%5s%s" "%{F${color6}}" "" "%{F-}"  "$connected"
+printf "%s%-4s%5s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:notify-send \"Network Connection\" \"$a\":}" "$connected" "%{A}"

@@ -2,8 +2,17 @@
 
 sxhkd &
 
-bspc monitor DVI-1 -n LG      -d Unu Du Tri
-bspc monitor DVI-0 -n Samsung -d Kvar Kvin Ses
+_MONITORS=( $(xrandr --listactivemonitors | awk 'FNR > 1 {print $NF}') )
+
+i=1
+
+for mon in ${_MONITORS[@]}
+do
+  bspc monitor $mon -n mon_$i -d wksp_${i}_1 wksp_${i}_2 wksp_${i}_3
+  i=$(( $i + 1 ))
+done
+
+unset i
 
 bspc config border_width                0
 bspc config window_gap                 32
@@ -18,10 +27,9 @@ $(bspc config top_padding)
 # The narrower setting is desktop-wide to allow room for
 # dunst notifications to be placed without overlapping
 # windows.
-bspc config left_padding              320
-bspc config -m LG left_padding        480
-bspc config right_padding             320
-bspc config -mg LG right_padding      480
+bspc config left_padding              240
+bspc config right_padding \
+$(bspc config left_padding)
 
 bspc config split_ratio              0.50
 

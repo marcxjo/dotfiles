@@ -5,9 +5,11 @@
 # Color codes are assumed to add 16 characters to any string,
 # hence long string lengths for variables that include them.
 
+export MON="mon_2"
+
 while :; do
-	if pgrep -x "Xorg" > /dev/null ; then
-	echo "%{l} $(${HOME}/.local/bin/bar-scripts/show-desktop-2)$(${HOME}/.local/bin/bar-scripts/wlist-2)   %{r}$(${HOME}/.local/bin/bar-scripts/wksp-2)   "
-	sleep "0.2s"
-	fi
+  if pgrep -x "Xorg" > /dev/null ; then
+    echo "%{l} $(${HOME}/.local/bin/bar-scripts/show-desktop)$(${HOME}/.local/bin/bar-scripts/wlist)   %{r}$(${HOME}/.local/bin/bar-scripts/wksp)   "
+    sleep "0.2s"
+  fi
 done | $P_STRING2 -b | sh

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+n=0
+
+_led=$(xset -q | grep LED | awk '{print $10}')
+
+if [[ "$_led" = "00000000" || "$_led" = "00000001" || "$_led" = "00000002" || "$_led" = "00000003" ]]
+then
+  kbd="us"
+else
+  kbd="eo"
+fi
+
+printf "%s%-4s%5s%-4s" "%{F${color6}}" "" "%{F-}" "$kbd"
