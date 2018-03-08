@@ -1,7 +1,0 @@
-#!/bin/bash
-
-for x in panel-{top,bottom}{,-2}; do
-		pkill -x $x
-done
-
-exit 0

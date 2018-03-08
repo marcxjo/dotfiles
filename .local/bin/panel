@@ -1,0 +1,36 @@
+#!/bin/bash
+
+. ${HOME}/.config/panel/profile
+
+PANELS=( panel-top panel-bottom panel-top-2 panel-bottom-2 )
+
+function start_panels () {
+  for x in ${PANELS[@]}; do
+    if [ "! pgrep -c -x $x" ]; then
+      P_NAME="$x"
+      $x &
+    fi
+  done
+}
+
+function stop_panels () {
+  for x in ${PANELS[@]}; do
+    pkill -x $x
+  done
+}
+
+case "$1" in
+  -s|--start)
+    start_panels
+    ;;
+  -k|--stop)
+    stop_panels
+    ;;
+  -r|--reload|--refresh)
+    stop_panels
+    sleep "0.2"
+    start_panels
+    ;;
+esac
+
+exit 0

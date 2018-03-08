@@ -1,7 +1,0 @@
-#!/bin/sh
-
-stop-panels &
-sleep "0.2s"
-start-panels &
-
-exit 0
