@@ -3,19 +3,19 @@
 # Reload dunst if it has already been started.
 if [ "pgrep -c -x dunst" ]
 then
-	# dunst won't properly reload if we
-	# use `pkill` in place of `killall`.
-	killall -e dunst > /dev/null 2>&1
+  # dunst won't properly reload if we
+  # use `pkill` in place of `killall`.
+  killall -e dunst > /dev/null 2>&1
 fi
 
 # Geometry and placement
 
-_WIDTH="$(( $(bspc config left_padding) - $(bspc config window_gap) ))"
+_WIDTH="$(( 2 * $(bspc config left_padding) - $(bspc config window_gap) ))"
 _HEIGHT="5"
 _XOFF="$(bspc config window_gap)"
 _YOFF="$(( $(bspc config window_gap) + $(bspc config bottom_padding) ))"
 
-_GEOM="-geometry ${_WIDTH}x${_HEIGHT}+${_XOFF}+${_YOFF}"
+_GEOM="-geometry ${_WIDTH}x${_HEIGHT}-${_XOFF}+${_YOFF}"
 
 # Colors
 
