@@ -73,11 +73,11 @@ for item in "${windows[@]}"
 do
   if [[ "$(in_focus "${fwindows[@]}" "$item")" = "y" && -n "$(wtitle $item)" ]]
   then
-    _win+=" %{A:toggle_window "$item":} $(iconize "$item") %{A} ${P_SEP}"
+    _win+=" ${P_SEP} %{A:toggle_window "$item":}$(iconize "$item")%{A} "
   elif [ -n "$(wtitle $item)" ]
   then
-    _win+="  %{F${color6}}%{A:toggle_window "$item":}$(iconize "$item")%{A}%{F-}  ${P_SEP}"
+    _win+=" ${P_SEP} %{F${color6}}%{A:toggle_window "$item":}$(iconize "$item")%{A}%{F-} "
   fi
 done
 
-echo "${_win%${P_SEP}}"
+echo "${_win} ${P_SEP}"
