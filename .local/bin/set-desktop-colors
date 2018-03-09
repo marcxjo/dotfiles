@@ -11,6 +11,7 @@ _pic=$(cat ~/.fehbg | tail -n1 | sed "s|.*'\(.*\)'.*|\1|")
 find_theme () {
   for wal_file in $(find $HOME/.local/share/themes -name wal)
   do
+    grep "$_pic" $wal_file
     if [ $? -eq 0 ]
     then
       export theme_match="${wal_file}"
