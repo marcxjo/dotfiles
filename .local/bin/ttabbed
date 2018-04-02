@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ~/.local/share/themes/bspwm/colors.sh
+. ${HOME}/.local/share/themes/bspwm/colors.sh
 
 NB="${color0}"
 NF="${color15}"
