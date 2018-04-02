@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Status of the Num Lock key.
-
-num=$(xset -q | grep Caps | awk '{print $8}')
-
-printf "%s%-4s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Num_Lock:}" "${num}" "%{A}"

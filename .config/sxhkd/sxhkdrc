@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 alt + F2
-	rofi -show run -lines 1 -columns 1 -width 20% -location 0
+	rofi -show run -lines 5 -columns 1 -width 20% -location 0
 
 super + space
 	dmenu_launch

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Status of the Caps Lock key.
-
-caps=$(xset -q | grep Caps | awk '{print $4}')
-
-printf "%s%-4s%s%s%-4s%s" "%{F${color6}}" "" "%{F-}" "%{A:xdotool key Caps_Lock:}" "${caps}" "%{A}"

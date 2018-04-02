@@ -1,35 +1,39 @@
 #!/bin/bash
 
-. ${HOME}/.config/panel/profile
+. ${HOME}/.config/bspwm/panel/profile
 
-PANELS=( panel-top panel-bottom panel-top-2 panel-bottom-2 )
+PANELS=( top bottom top-2 bottom-2 )
+#PANELS=( top top-2 )
 
-function start_panels () {
-  for x in ${PANELS[@]}; do
-    if [ "! pgrep -c -x $x" ]; then
-      P_NAME="$x"
-      $x &
-    fi
-  done
+function start_panel () {
+  ppolybar $1 &
 }
 
-function stop_panels () {
-  for x in ${PANELS[@]}; do
-    pkill -x $x
-  done
+function stop_panel () {
+  pkill -x $1
 }
 
 case "$1" in
   -s|--start)
-    start_panels
+    for x in ${PANELS[@]}; do
+      if [ "! pgrep -c -x $x" ]; then
+        start_panel $x
+      fi
+    done
     ;;
-  -k|--stop)
-    stop_panels
+  -k|-kill|--stop)
+#    for x in ${PANELS[@]}; do
+#      stop_panel $x
+#    done
+    killall polybar
     ;;
   -r|--reload|--refresh)
-    stop_panels
-    sleep "0.2"
-    start_panels
+    killall polybar
+    sleep 0.2s
+    for x in ${PANELS[@]}; do
+#      stop_panel $x
+      start_panel $x
+    done
     ;;
 esac
 
