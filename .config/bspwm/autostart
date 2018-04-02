@@ -4,7 +4,9 @@
 compton &
 
 # Set background.
-~/.fehbg &
+set-background bspwm &
 
 # Set desktop colors.
-set-desktop-colors &
+# Will uncomment once
+# stupid stuff is fixed.
+#set-desktop-colors &
