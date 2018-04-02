@@ -2,10 +2,10 @@
 
 . ~/.local/share/themes/bspwm/colors.sh
 
-SB="${color2}"
-SF="${color10}"
 NB="${color0}"
 NF="${color15}"
+SB="${colorbg}"
+SF="${colorfg}"
 FN="Terminus:style=bold:pixelsize=14"
 OPTIONS="-c -p -1 -u $NB -U $NF -t $SB -T $SF"
 
