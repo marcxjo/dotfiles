@@ -1,5 +1,5 @@
 style "vte-terminal" {
-	VteTerminal::inner-border = { 24, 24, 24, 24 }
+	VteTerminal::inner-border = { 32, 32, 32, 32 }
 }
 
 widget "*Terminal*"	style "vte-terminal"
