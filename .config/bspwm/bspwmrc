@@ -8,7 +8,7 @@ i=1
 
 for mon in ${_MONITORS[@]}
 do
-  bspc monitor $mon -n mon_$i -d wksp_${i}_1 wksp_${i}_2 wksp_${i}_3
+  bspc monitor $mon -d wksp_${i}_1 wksp_${i}_2 wksp_${i}_3
   i=$(( $i + 1 ))
 done
 
