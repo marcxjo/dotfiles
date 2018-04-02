@@ -1,5 +1,15 @@
 #!/bin/sh
 
-feh --bg-fill "$(cat ~/.local/share/themes/${1}/wal)"
+i=0
+num_mon=$(xrandr --listactivemonitors | awk '/Monitors:/ {print $2}')
+wal_pic=$(cat ~/.local/share/themes/${1}/wal)
+command=''
+
+while [[ $i -lt $num_mon ]]; do
+  command+="--on $i -f $wal_pic "
+  i=$(( $i + 1 ))
+done
+
+setroot ${command::(-1)}
 
 exit 0
