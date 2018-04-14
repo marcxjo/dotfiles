@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec stupidterm -c ${HOME}/.local/share/themes/bspwm/stupidterm.ini "$@"
