@@ -37,8 +37,6 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	font-1 = unifont:fontformat=truetype:size=8:antialias=false;2
 	font-2 = siji:pixelsize=10;2
 
-	; See https://github.com/anchnk/dotfiles
-	; for the weather module below.
 	modules-left = memory cpu xkeyboard volume
 	modules-center = bspwm
 	modules-right = player wlan weather date
