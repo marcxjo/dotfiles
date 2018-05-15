@@ -4,9 +4,15 @@
 compton &
 
 # Set background.
-set-background bspwm &
+set-background -t bspwm -w &
 
 # Set desktop colors.
 # Will uncomment once
 # stupid stuff is fixed.
 #set-desktop-colors &
+
+# Start panels.
+panel -s &
+
+# Start notifier.
+ddunst &
