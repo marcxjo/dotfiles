@@ -15,30 +15,20 @@ done
 unset i
 
 bspc config border_width                0
-bspc config window_gap                 32
-
-# Padding for pixel space between panels and display edges.
-# Chintzy and wasteful? Sure. But nice-looking.
-bspc config top_padding                32
-bspc config bottom_padding \
-$(bspc config top_padding)
-
-# Monitor-specific adjustments due to size discrepancies.
-# The narrower setting is desktop-wide to allow room for
-# dunst notifications to be placed without overlapping
-# windows.
-bspc config left_padding              240
-bspc config right_padding \
-$(bspc config left_padding)
+bspc config window_gap                 64
+bspc config top_padding                 8
+bspc config bottom_padding              8
+bspc config left_padding              176
+bspc config right_padding             176
 
 bspc config split_ratio              0.50
 
-# Again, wasteful, but attractive.
+# Wasteful, but attractive.
 bspc config borderless_monocle      false
 bspc config gapless_monocle         false
 
 # Pointer settings.
-bspc config click_to_focus        button1
+bspc config click_to_focus           true
 bspc config focus_follows_pointer   false
 bspc config pointer_follows_focus   false
 
@@ -49,11 +39,7 @@ bspc config pointer_action2 resize_corner
 bspc config pointer_action3          move
 
 bspc rule -a Gimp     desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
 bspc rule -a mpv      desktop='^4'
-bspc rule -a '*:yad'  state=floating
-bspc rule -a Pidgin   desktop='^1' split_ratio=0.175
-bspc rule -a Gajim    desktop='^2' split_ratio=0.175
 bspc rule -a Surf     desktop='^3' state=tiled follow=on
 bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
 
