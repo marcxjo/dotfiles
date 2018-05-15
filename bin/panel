@@ -3,35 +3,40 @@
 . ${HOME}/.config/bspwm/panel/profile
 
 PANELS=( top bottom top-2 bottom-2 )
-#PANELS=( top top-2 )
+
+function get_panel_pid () {
+  ps ax | awk -v pname="$1" '$5=="polybar" && $6==pname {print $1; exit}'
+}
 
 function start_panel () {
-  ppolybar $1 &
+  if [ -z "$(get_panel_pid $1)" ]; then
+    polybar "$1" &
+  fi
 }
 
 function stop_panel () {
-  pkill -x $1
+  if [ -n "$(get_panel_pid $1)" ]; then
+    kill "$(get_panel_pid $1)"
+  fi
 }
 
 case "$1" in
   -s|--start)
     for x in ${PANELS[@]}; do
-      if [ "! pgrep -c -x $x" ]; then
-        start_panel $x
-      fi
+      start_panel $x
     done
     ;;
   -k|-kill|--stop)
-#    for x in ${PANELS[@]}; do
-#      stop_panel $x
-#    done
-    killall polybar
+    for x in ${PANELS[@]}; do
+      stop_panel $x
+    done
     ;;
   -r|--reload|--refresh)
-    killall polybar
-    sleep 0.2s
     for x in ${PANELS[@]}; do
-#      stop_panel $x
+      stop_panel $x
+    done
+    sleep "0.5s"
+    for x in ${PANELS[@]}; do
       start_panel $x
     done
     ;;
