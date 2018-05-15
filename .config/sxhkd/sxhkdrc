@@ -4,11 +4,15 @@
 
 # terminal emulator
 super + Return
-	sstupidterm
+	stupidterm
 
 # program launcher
 alt + F2
-	rofi -show run -lines 5 -columns 1 -width 20% -location 0
+	rofi -show run -lines 5 -threads 0 -columns 1 -width 20% -location 0
+
+# webapp launcher
+alt + F3
+	rofi_webapp_launcher
 
 super + space
 	dmenu_launch
@@ -23,7 +27,7 @@ super + Escape
 
 # quit bspwm normally
 super + alt + Escape
-	stop-panels; bspc quit
+	panel -k; bspc quit
 
 # close and kill
 super + {_,shift + }w
@@ -70,8 +74,8 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-alt + {_,shift + }Tab
-	bspc node -f {next,prev}.local
+super + bracket{left,right}
+	bspc node -f {prev,next}.local
 
 # focus the next/previous desktop in the current monitor
 ctrl + alt + {Left,Right}
