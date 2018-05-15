@@ -9,7 +9,9 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
 *font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+!*font: -t-cherry-Medium-R-Normal--13-120-96-96-C-100-ISO8859-1
 *VT100.font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+!*VT100.font: -t-cherry-Medium-R-Normal--13-120-96-96-C-100-ISO8859-1
 *.locale: true
 *.internalBorder: 32
 URxvt.geometry: 80x24
@@ -29,4 +31,5 @@ URxvt.keysym.End: \033[8~
 
 URxvt.depth: 32
 
+!rofi.font: Cherry 10
 rofi.font: Terminus 10
