@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Set up initial variables
+PATH="${PATH}:${HOME}/bin/themer-scripts"
 cache_dir="${HOME}/.cache/wal"
-theme_prefix="${HOME}/.local/share/themes"
+export theme_prefix="${HOME}/.local/share/themes"
 declare -a wal_files
 wal_files=( colors colors.reg colors.scss colors.sh colors.xresources firefox.css sequences wal )
 
@@ -19,7 +20,7 @@ then
   exit 2
 fi
 
-theme_dir="${theme_prefix}/${theme_name}"
+export theme_dir="${theme_prefix}/${theme_name}"
 
 if [ ! -d "${theme_dir}" ]
 then
@@ -46,318 +47,16 @@ sed -i 's|^\(color[0-9bfg]\{1,2\}\)|export \1|' ${theme_dir}/colors.sh
 . ${theme_dir}/colors.sh
 
 # Create stupidterm config file.
-cat <<-STUPIDTERM_INI >${theme_dir}/stupidterm.ini
-	[options]
-	font = Terminus 10
-	lines = 5000
-	allow-bold = true
-	scroll-on-output = false
-	scroll-on-keystroke = true
-	mouse-autohide = true
-	sync-clipboard = true
-	urgent-on-bell = true
 
-	[colors]
-
-	## ${theme_name}
-
-	## Main Colors
-	background = $(printf "rgba(%d,%d,%d,0.9)" "0x${colorbg:1:2}" "0x${colorbg:3:2}" "0x${colorbg:5:2}")
-	foreground = ${colorfg}
-
-	## ANSI Colors
-	color0  = $color0
-	color1  = $color1
-	color2  = $color2
-	color3  = $color3
-	color4  = $color4
-	color5  = $color5
-	color6  = $color6
-	color7  = $color7
-	color8  = $color8
-	color9  = $color9
-	color10 = $color10
-	color11 = $color11
-	color12 = $color12
-	color13 = $color13
-	color14 = $color14
-	color15 = $color15
-
-	[urlmatch]
-	program = /usr/bin/ttabbed surf -e
-	regex = (((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"])?
-STUPIDTERM_INI
+stupidterm_ini_gen &
 
 # Create dunst config file.
 
-cat <<DUNSTRC >${theme_dir}/dunstrc
-[global]
-    font = Terminus 10
-    allow_markup = yes
-    format = "<b>%s</b>\n%b"
-    sort = yes
-    indicate_hidden = yes
-    alignment = left
-    bounce_freq = 0
-    show_age_threshold = 60
-    word_wrap = yes
-    ignore_newline = no
-    shrink = no
-    transparency = 10
-    idle_threshold = 120
-    monitor = 0
-    follow = mouse
-    sticky_history = yes
-    history_length = 20
-    show_indicators = yes
-    line_height = 16
-    separator_height = 2
-    padding = 8
-    horizontal_padding = 8
-    separator_color = frame
-    startup_notification = false
-    dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
-    icon_position = off
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+dunstrc_gen &
 
-[frame]
-    width = 2
-    color = "${colorbg}"
+# Create polybar config file.
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
-
-[urgency_low]
-    timeout = 0
-
-[urgency_normal]
-    timeout = 0
-
-[urgency_critical]
-    timeout = 0
-
-# vim: ft=cfg
-DUNSTRC
-
-cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
-	[colors]
-	background = "${colorbg}"
-	background-alt = "${color0}"
-	foreground = "${colorfg}"
-	foreground-alt = "${color15}"
-	primary = "${color3}"
-	secondary = "${color2}"
-	alert = "${color1}"
-
-	[bar/top]
-	monitor = \${env:MONITOR:DVI-1}
-	width = 1856
-	height = 24
-	offset-x = 32
-	offset-y = 8
-	radius = 0
-	fixed-center = true
-
-	background = "#E6${colorbg:1}"
-	foreground = "#E6${colorfg:1}"
-
-	; Why a color if I'm not even using it?
-	; Eh... sometimes I do.
-	border-size = 0
-	border-color = "#E6${color4:1}"
-
-	padding-left = 2
-	padding-right = 2
-
-	module-margin-left = 2
-	module-margin-right = 2
-
-	font-0 = terminus:pixelsize=12;2
-	font-1 = unifont:fontformat=truetype:size=8:antialias=false;2
-	font-2 = siji:pixelsize=10;2
-
-	; See https://github.com/anchnk/dotfiles
-	; for the weather module below.
-	modules-left = xkeyboard memory cpu
-	modules-center = date weather
-	modules-right = wlan volume
-
-	tray-position = right
-	tray-padding = 2
-
-	wm-restack = bspwm
-
-	override-redirect = false
-
-	scroll-up = bspwm-desknext
-	scroll-down = bspwm-deskprev
-
-	cursor-click = pointer
-	cursor-scroll = ns-resize
-
-	[bar/bottom]
-
-	inherit = bar/top
-	modules-left = xwindow
-	modules-center =
-	modules-right = bspwm
-
-	bottom = true
-
-	padding-right = 0
-
-	[bar/top-2]
-	inherit = bar/top
-	monitor = ${env:MONITOR:DVI-0}
-	width = 1536
-
-	[bar/bottom-2]
-	inherit = bar/bottom
-	monitor = ${env:MONITOR:DVI-0}
-	width = 1536
-
-	[module/xwindow]
-	type = internal/xwindow
-	label = %title:0:29:...%
-
-	[module/xkeyboard]
-	type = internal/xkeyboard
-	blacklist-0 = num lock
-	blacklist-1 = caps lock
-
-	format-prefix = " "
-	format-prefix-foreground = \${colors.foreground-alt}
-
-	label-layout = %layout%
-
-	label-indicator-padding = 2
-	label-indicator-margin = 1
-	label-indicator-background = \${colors.secondary}
-
-	[module/bspwm]
-	type = internal/bspwm
-
-	ws-icon-0 = wksp_1_1;I
-	ws-icon-1 = wksp_1_2;II
-	ws-icon-2 = wksp_1_3;III
-	ws-icon-3 = wksp_2_1;IV
-	ws-icon-4 = wksp_2_2;V
-	ws-icon-5 = wksp_2_3;VI
-	ws-icon-default = *
-
-	label-focused = %icon%
-	label-focused-background = \${colors.background-alt}
-	label-focused-padding = 2
-
-	label-occupied = %icon%
-	label-occupied-foreground = \${colors.foreground-alt}
-	label-occupied-padding = 2
-
-	label-urgent = %icon%!
-	label-urgent-background = \${colors.alert}
-	label-urgent-padding = 2
-
-	label-empty = %icon%
-	label-empty-foreground = \${colors.foreground}
-	label-empty-padding = 2
-
-	[module/cpu]
-	type = internal/cpu
-	interval = 2
-	format-prefix = " "
-	format-prefix-foreground = \${colors.foreground-alt}
-	label = %percentage:2%%
-
-	[module/memory]
-	type = internal/memory
-	interval = 2
-	format-prefix = " "
-	format-prefix-foreground = \${colors.foreground-alt}
-	label = %percentage_used%%
-
-	[module/wlan]
-	type = internal/network
-	interface = tun-easytether
-	interval = 3.0
-
-	format-connected = <ramp-signal> <label-connected>
-	label-connected = %ifname%
-
-	format-disconnected = <label-disconnected>
-	label-disconnected = %ifname% down
-	label-disconnected-foreground = \${colors.foreground}
-
-	ramp-signal-0 = 
-	ramp-signal-1 = 
-	ramp-signal-2 = 
-	ramp-signal-3 = 
-	ramp-signal-4 = 
-	ramp-signal-foreground = \${colors.foreground-alt}
-
-	[module/date]
-	type = internal/date
-	interval = 5
-
-	date =
-	date-alt = " %Y-%m-%d"
-
-	time = %l:%M %p
-	time-alt = %l:%M %p
-
-	format-prefix = 
-	format-prefix-foreground = \${colors.foreground-alt}
-
-	label = %date% %time%
-
-	[module/weather]
-	type = custom/script
-	interval = 3600
-	format = <label>
-	format-prefix = " "
-	format-prefix-foreground = ${colors.foreground-alt}
-	exec = ~/.config/polybar/weather
-
-	[module/volume]
-	type = internal/volume
-
-	format-volume = <label-volume> <bar-volume>
-	label-volume = 
-	label-volume-foreground = \${root.foreground}
-
-	format-muted-prefix = " "
-	format-muted-foreground = \${colors.foreground-alt}
-	label-muted = sound muted
-
-	bar-volume-width = 10
-	bar-volume-foreground-0 = \${colors.primary}
-	bar-volume-foreground-1 = \${colors.primary}
-	bar-volume-foreground-2 = \${colors.primary}
-	bar-volume-foreground-3 = \${colors.primary}
-	bar-volume-foreground-4 = \${colors.primary}
-	bar-volume-foreground-5 = \${colors.secondary}
-	bar-volume-foreground-6 = \${colors.alert}
-	bar-volume-gradient = false
-	bar-volume-indicator = |
-	bar-volume-indicator-font = 2
-	bar-volume-fill = ─
-	bar-volume-fill-font = 2
-	bar-volume-empty = ─
-	bar-volume-empty-font = 2
-	bar-volume-empty-foreground = \${colors.foreground-alt}
-
-	[settings]
-	screenchange-reload = true
-
-	[global/wm]
-	margin-top = 0
-	margin-bottom = 0
-
-	; vim:ft=dosini
-POLYBAR_CONFIG
+polybar_config_gen &
 
 # Set up symlinks for our bspwm scripts.
 if [ ! -h "${theme_prefix}/bspwm" ]; then
