@@ -7,9 +7,14 @@ compton &
 set-background -t bspwm -w &
 
 # Set desktop colors.
-# Will uncomment once
-# stupid stuff is fixed.
+# TODO: fix symlinking in themer script.
 #set-desktop-colors &
+
+xrdb ~/.Xresources &
+
+if [ -f "${HOME}/.local/share/themes/bspwm/colors.xresources" ]; then
+  xrdb -merge "${HOME}/.local/share/themes/bspwm/colors.xresources"
+fi
 
 # Start panels.
 panel -s &
