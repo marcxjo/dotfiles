@@ -14,12 +14,12 @@ done
 
 unset i
 
-bspc config border_width                0
-bspc config window_gap                 64
-bspc config top_padding                 8
-bspc config bottom_padding              8
-bspc config left_padding              176
-bspc config right_padding             176
+bspc config border_width                2
+bspc config window_gap                 48
+bspc config top_padding                16
+bspc config bottom_padding             16
+bspc config left_padding              132
+bspc config right_padding             132
 
 bspc config split_ratio              0.50
 
@@ -38,9 +38,9 @@ bspc config pointer_action1   resize_side
 bspc config pointer_action2 resize_corner
 bspc config pointer_action3          move
 
-bspc rule -a Gimp     desktop='^8' state=floating follow=on
+bspc rule -a Gimp     state=floating
 bspc rule -a mpv      desktop='^4'
-bspc rule -a Surf     desktop='^3' state=tiled follow=on
+bspc rule -a Surf     state=tiled
 bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
 
 ${HOME}/.config/bspwm/autostart &
