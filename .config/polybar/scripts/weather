@@ -2,9 +2,6 @@
 # -*- coding: utf-8 -*-
 # vim:filetype=python
 
-# This file is a slight modification of the script found at
-# https://github.com/anchnk/dotfiles/blob/master/polybar/.config/polybar/weather
-
 import urllib.request, json
 
 city = "denver,us"
