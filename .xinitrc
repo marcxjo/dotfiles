@@ -1,4 +1,6 @@
-. /etc/X11/xinit/xinitrc-common
+if [[ -e /etc/X11/xinit/xinitrc-common ]] ; then
+  . /etc/X11/xinit/xinitrc-common
+fi
 
 # Set up proper monitor alignment before login.
 # Thisis helpful to get things set up right in bspwm.
