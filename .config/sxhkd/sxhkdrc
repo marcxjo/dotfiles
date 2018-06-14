@@ -10,6 +10,10 @@ super + Return
 alt + F2
 	rofi -show run -lines 5 -threads 0 -columns 1 -width 20% -location 0
 
+# program launcher
+alt + Tab
+	rofi -show window -lines 5 -threads 0 -columns 1 -width 20% -location 0
+
 # webapp launcher
 alt + F3
 	rofi_webapp_launcher
@@ -48,6 +52,10 @@ super + g
 # balance the desktop (see https://github.com/Chrysostomus/bspwm-scripts for the referenced script)
 super + b
 	euclid_balancer
+
+# insert a receptacle node
+super + i
+	bspc node -i
 
 #
 # state/flags
@@ -152,6 +160,10 @@ XF86AudioLowerVolume
 # mute volume
 XF86AudioMute
 	pamixer -t
+
+# toggle music
+XF86AudioPlay
+	playerctl play-pause
 
 #
 # custom placement
