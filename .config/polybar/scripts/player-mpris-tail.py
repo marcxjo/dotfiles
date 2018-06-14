@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-# This file is a slight modification of the script found at
-# https://github.com/x70b1/polybar-scripts/blob/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py
-# See the aforementioned git repo for the accompanying shell script.
-
 import time
 import sys
 import subprocess
@@ -82,7 +78,7 @@ class PlayerStatus:
                 break
 
             except:
-                self._print_flush(PLAYER_CLOSED_ICON)
+                self._print_flush('{:<34.34}'.format(PLAYER_CLOSED_ICON))
                 time.sleep(2)
 
     def _on_metadata(self, player, e):
@@ -103,8 +99,12 @@ class PlayerStatus:
         self._init_player()
 
     def _print_song(self):
-        self._print_flush(
-            '{:1} {:16.16}'.format(self._icon, self._title))
+        if len(self._title) <=32:
+            self._print_flush(
+                '{:1} {:>32.32}'.format(self._icon, self._title))
+        else:
+            self._print_flush(
+                '{:1} {:<29.29}...'.format(self._icon, self._title))
 
     """
     Seems to assure print() actually prints when no terminal is connected
