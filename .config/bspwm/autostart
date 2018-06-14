@@ -16,6 +16,14 @@ if [ -f "${HOME}/.local/share/themes/bspwm/colors.xresources" ]; then
   xrdb -merge "${HOME}/.local/share/themes/bspwm/colors.xresources"
 fi
 
+if [ -x "${HOME}/.local/share/themes/bspwm/colors.sh" ]; then
+  . "${HOME}/.local/share/themes/bspwm/colors.sh"
+fi
+
+if [ -x "${HOME}/.local/share/themes/bspwm/post_theme" ]; then
+  sh -c "${HOME}/.local/share/themes/bspwm/post_theme" &
+fi
+
 # Start panels.
 panel -s &
 
