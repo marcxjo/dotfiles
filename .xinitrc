@@ -3,7 +3,7 @@ if [[ -e /etc/X11/xinit/xinitrc-common ]] ; then
 fi
 
 # Set up proper monitor alignment before login.
-# Thisis helpful to get things set up right in bspwm.
+# This is helpful to get things set up right in bspwm.
 
 MONITORS=$(xrandr --listactivemonitors | grep -E "DVI-[01]$" | wc -l)
 
