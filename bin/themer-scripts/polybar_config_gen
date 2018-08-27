@@ -181,7 +181,7 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	format-disconnected = <label-disconnected>
 	label-disconnected = dn
 	format-disconnected-prefix = " "
-	format-disconnected-prefix-foreground = ${colors.color7}
+	format-disconnected-prefix-foreground = \${colors.color7}
 
 	[module/date]
 	type = internal/date
