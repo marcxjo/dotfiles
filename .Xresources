@@ -8,8 +8,9 @@ Xft.autohint: 1
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
-*font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-UW-*
-*VT100.font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-UW-*
+*font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-ISO10646-1
+URxvt.font: xft:UW Ttyp0:style=Regular:pixelsize=14
+*VT100.font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-ISO10646-1
 *.locale: true
 *.internalBorder: 32
 URxvt.geometry: 80x24
@@ -28,5 +29,7 @@ URxvt.keysym.Home: \033[7~
 URxvt.keysym.End: \033[8~
 
 URxvt.depth: 32
+
+URxvt.perl-ext-common: default,tabbed
 
 rofi.font: Ttyp0 10
