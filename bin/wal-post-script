@@ -20,6 +20,7 @@ then
   exit 2
 fi
 
+export theme_name
 export theme_dir="${theme_prefix}/${theme_name}"
 
 if [ ! -d "${theme_dir}" ]
@@ -58,10 +59,20 @@ dunstrc_gen &
 
 polybar_config_gen &
 
+# Create xfce4-terminal theme.
+
+xfce4-terminal_theme_gen &
+
 # Set up symlinks for our bspwm scripts.
 if [ ! -h "${theme_prefix}/bspwm" ]; then
   ln -snf ${theme_dir} ${theme_prefix}/bspwm
 fi
+
+if [ ! -d "$HOME/.local/share/xfce4/terminal/colorschemes" ]; then
+  mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
+fi
+
+ln -s ${theme_dir}/${theme_name}.theme $HOME/.local/share/xfce4/terminal/colorschemes/
 
 unset cache_dir
 unset theme_prefix
