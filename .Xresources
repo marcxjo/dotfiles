@@ -13,7 +13,9 @@ URxvt.font: xft:UW Ttyp0:style=Regular:pixelsize=14
 *VT100.font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-ISO10646-1
 *.locale: true
 *.internalBorder: 32
-URxvt.geometry: 80x24
+
+! Adjust geometry after setting internal border for URxvt.
+URxvt.geometry: 88x29
 
 *cursorBlink: false
 *scrollBar: false
