@@ -6,3 +6,4 @@ gtk-button-images = 0
 gtk-menu-images = 0
 
 include "/home/marcxjo/.config/gtk-2.0/vte.rc"
+include "/home/marcxjo/.config/gtk-2.0/xfce.rc"
