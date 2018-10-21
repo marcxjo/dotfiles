@@ -34,4 +34,4 @@ URxvt.depth: 32
 
 URxvt.perl-ext-common: default,tabbed
 
-rofi.font: Ttyp0 10
+rofi.font: UW Ttyp0 10
