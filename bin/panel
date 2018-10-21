@@ -1,8 +1,6 @@
 #!/bin/bash
 
-. ${HOME}/.config/bspwm/panel/profile
-
-PANELS=( top bottom top-2 bottom-2 )
+PANELS=( top bottom )
 
 function get_panel_pid () {
   ps ax | awk -v pname="$1" '$5=="polybar" && $6==pname {print $1; exit}'
