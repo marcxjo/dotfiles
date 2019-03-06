@@ -2,7 +2,7 @@
 
 # xfce4-terminal theme generator for themer.
 
-cat <<-TERMINALRC >${HOME}/.local/share/xfce4/terminal/${theme_name}.theme
+cat <<-TERMINALRC >${HOME}/.local/share/xfce4/terminal/colorschemes/${theme_name}.theme
 	[Scheme]
 	Name=${theme_name}
 	ColorForeground=${colorfg}

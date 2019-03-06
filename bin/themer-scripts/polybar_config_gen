@@ -24,33 +24,32 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	color15 = "${color15}"
 
 	[bar/top]
-	monitor = \${env:MONITOR:DVI-1}
+	monitor = \${env:MONITOR:VGA-1}
 	width = 1824
-	height = 20
+	height = 24
 	offset-x = 48
-	offset-y = 8
+	offset-y = 6
 	radius = 0
 	fixed-center = true
 
-	background = "#E6${colorbg:1}"
-	foreground = "#E6${colorfg:1}"
+	background = "#F2${colorbg:1}"
+	foreground = "#F2${colorfg:1}"
 
-	border-size = 2
-	border-color = "#E6${color0:1}"
+	border-size = 0
+	border-color = "#F2${color0:1}"
 
-	padding-left = 2
+	padding-left = 0
 	padding-right = 2
 
 	module-margin-left = 2
 	module-margin-right = 2
 
-	font-0 = ttyp0:pixelsize=12;2
-	font-1 = unifont:fontformat=truetype:size=8:antialias=false;2
-	font-2 = siji:pixelsize=10;2
+	font-2 = wuncon siji:pixelsize=10;2
+	font-0 = xos4 terminus:pixelsize=8;2
 
-	modules-left = wlan memory cpu xkeyboard
-	modules-center = date weather
-	modules-right = volume player
+	modules-left = bspwm xwindow
+	modules-center = player volume
+	modules-right = weather date
 
 	tray-position = right
 	tray-padding = 2
@@ -65,12 +64,6 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	cursor-click = pointer
 	cursor-scroll = ns-resize
 
-	[bar/top-2]
-	inherit = bar/top
-
-	monitor = \${env:MONITOR:DVI-0}
-	width = 1504
-
 	[bar/bottom]
 	inherit = bar/top
 
@@ -80,17 +73,11 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	modules-center =
 	modules-right = bspwm
 
-	[bar/bottom-2]
-	inherit = bar/bottom
-
-	monitor = \${bar/top-2.monitor}
-	width = \${bar/top-2.width}
-
 	[module/xwindow]
 	type = internal/xwindow
 
 	format = <label>
-	format-prefix = "  "
+	format-prefix = " "
 	format-prefix-foreground = \${colors.color14}
 
 	label = "%title:0:64:...%"
@@ -188,11 +175,9 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 
 	interval = 5
 
-	date =
-	date-alt = "%a, %b %d "
+	date = "%a, %b %d "
 
 	time = "%I:%M %p"
-	time-alt = "%I:%M %p"
 
 	format-prefix = " "
 	format-prefix-foreground = \${colors.color12}
@@ -208,12 +193,12 @@ cat <<-POLYBAR_CONFIG >${theme_dir}/polybar
 	format-prefix = " "
 	format-prefix-foreground = \${colors.color9}
 
-	exec = ~/.config/polybar/scripts/weather
+	exec = ~/.config/polybar/scripts/openweathermap-detailed.sh
 
 	[module/volume]
 	type = internal/volume
 
-	format-volume = <label-volume>
+	format-volume = <bar-volume> <label-volume>
 	format-volume-prefix = " "
 	format-volume-prefix-foreground = \${colors.color11}
 

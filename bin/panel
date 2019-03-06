@@ -1,6 +1,8 @@
 #!/bin/bash
 
-PANELS=( top bottom )
+#PANELS=( top bottom )
+PANELS=( top )
+config_light=0
 
 function get_panel_pid () {
   ps ax | awk -v pname="$1" '$5=="polybar" && $6==pname {print $1; exit}'
@@ -8,7 +10,11 @@ function get_panel_pid () {
 
 function start_panel () {
   if [ -z "$(get_panel_pid $1)" ]; then
-    polybar "$1" &
+    if [[ "$config_light" = "1" ]]; then
+      polybar -c $HOME/.config/polybar/config-light "$1" &
+    else
+      polybar "$1" &
+    fi
   fi
 }
 
@@ -17,6 +23,14 @@ function stop_panel () {
     kill "$(get_panel_pid $1)"
   fi
 }
+
+case "$2" in
+  -l|--light)
+    config_light=1
+    ;;
+  *)
+    ;;
+esac
 
 case "$1" in
   -s|--start)

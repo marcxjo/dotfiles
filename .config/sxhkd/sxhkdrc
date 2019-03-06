@@ -4,11 +4,14 @@
 
 # terminal emulator
 super + Return
-	st
+	xfce4-terminal
+
+super + ctrl + Return
+        st -c $HOME/.config/stupidterm-light.ini
 
 # program launcher
 alt + F2
-	rofi -show run -lines 5 -threads 0 -columns 1 -width 20% -location 0
+	rofi_wrapper
 
 # program launcher
 alt + Tab

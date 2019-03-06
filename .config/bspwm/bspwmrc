@@ -5,21 +5,22 @@ sxhkd &
 _MONITORS=( $(xrandr --listactivemonitors | awk 'FNR > 1 {print $NF}') )
 
 i=1
+j=1
 
 for mon in ${_MONITORS[@]}
 do
-  bspc monitor $mon -d wksp_${i}_1 wksp_${i}_2 wksp_${i}_3
+  bspc monitor $mon -d wksp_${i}_1 wksp_${i}_2 wksp_${i}_3 wksp_${i}_4 wksp_${i}_5 wksp_${i}_6
   i=$(( $i + 1 ))
 done
 
 unset i
 
-bspc config border_width                2
-bspc config window_gap                 48
-bspc config top_padding                16
-bspc config bottom_padding             16
-bspc config left_padding              132
-bspc config right_padding             132
+bspc config border_width                1
+bspc config window_gap                 36
+bspc config top_padding                32
+bspc config bottom_padding             -4
+bspc config left_padding                0
+bspc config right_padding             628
 
 bspc config split_ratio              0.50
 
@@ -39,7 +40,8 @@ bspc config pointer_action2 resize_corner
 bspc config pointer_action3          move
 
 bspc rule -a Gimp     state=floating
-bspc rule -a mpv      desktop='^4'
+#bspc rule -a mpv      desktop='^4'
+bspc rule -a mpv      state=floating
 bspc rule -a Surf     state=tiled
 bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
 

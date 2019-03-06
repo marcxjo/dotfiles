@@ -21,7 +21,7 @@ if [ -x "${HOME}/.local/share/themes/bspwm/colors.sh" ]; then
 fi
 
 if [ -x "${HOME}/.local/share/themes/bspwm/post_theme" ]; then
-  sh -c "${HOME}/.local/share/themes/bspwm/post_theme" &
+  . "${HOME}/.local/share/themes/bspwm/post_theme" &
 fi
 
 # Start panels.
