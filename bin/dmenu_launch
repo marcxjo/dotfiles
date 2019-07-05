@@ -5,19 +5,21 @@
 
 # l10n support
 case $LANG in
-    eo_* ) TEXT="Lanĉi:" ;; # Russian
-    en_* ) TEXT="run:" ;; # English
+    eo|eo_* ) TEXT="Lanĉi:" ;; # Russian
+    en|en_* ) TEXT="run:" ;; # English
 esac
 
 SB="-sb ${color2}"
 SF="-sf ${color10}"
 NB="-nb ${color0}"
 NF="-nf ${color15}"
-FN="-fn Terminus:style=bold:size=10"
-OPTIONS="$FN $NB $NF $SB $SF -p $TEXT -i"
+FN="xos4terminus-10"
+OPTIONS="-p $TEXT -fn $FN $NB $NF $SB $SF"
 #OPTIONS="$NB $NF $SB $SF -p $TEXT -i"
 
-DMENU="dmenu -i $OPTIONS"
+echo $OPTIONS
+
+DMENU="dmenu -i $OPTIONS -l 10"
 TERMI="st -e"
 CACHE="$HOME/.cache/dmenu_cache_recent"
 
