@@ -5,7 +5,7 @@ PANELS=( top )
 config_light=0
 
 function get_panel_pid () {
-  ps ax | awk -v pname="$1" '$5=="polybar" && $6==pname {print $1; exit}'
+  ps ax | awk -v pname="$1" '$5=="polybar" && $NF==pname {print $1; exit}'
 }
 
 function start_panel () {
