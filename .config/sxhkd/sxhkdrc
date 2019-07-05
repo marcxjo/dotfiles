@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	xfce4-terminal
+	stupidterm
 
 super + ctrl + Return
         st -c $HOME/.config/stupidterm-light.ini
