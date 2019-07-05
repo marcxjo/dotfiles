@@ -1,7 +1,7 @@
-gtk-theme-name = "Hyrule"
-gtk-icon-theme-name = "Humanity-Dark-Hyrule"
-gtk-cursor-theme-name = "Adwaita"
-gtk-font-name = "xos4 Terminus 10"
+gtk-theme-name = "Apocalypse"
+gtk-icon-theme-name = "Humanity-Light-Apocalypse"
+gtk-cursor-theme-name = "Obsidian"
+gtk-font-name = "Droid Sans 10"
 gtk-button-images = 0
 gtk-menu-images = 0
 

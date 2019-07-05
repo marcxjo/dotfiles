@@ -4,6 +4,5 @@ decoration {
 }
 
 @import url("vte.css");
-/*@import url("window-decorations.css");*/
-@import url("window-decorations-update.css");
-/*@import url("xfce.css");*/
+@import url("window-decorations.css");
+@import url("xfce.css");
