@@ -7,7 +7,7 @@ super + Return
 	stupidterm
 
 super + ctrl + Return
-        st -c $HOME/.config/stupidterm-light.ini
+        stupidterm -c $HOME/.config/stupidterm-light.ini
 
 # program launcher
 alt + F2
