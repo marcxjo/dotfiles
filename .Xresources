@@ -9,7 +9,8 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
 
 *font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-ISO10646-1
-URxvt.font: xft:UW Ttyp0:style=Regular:pixelsize=14
+*URxvt.font: xft:UW Ttyp0:style=Regular:pixelsize=14
+URxvt.font: xft:xos4 Terminus:style=Regular:pixelsize=14
 *VT100.font: -UW-Ttyp0-Medium-R-Normal--11-100-75-75-C-60-ISO10646-1
 *.locale: true
 *.internalBorder: 32
@@ -23,12 +24,13 @@ URxvt.geometry: 88x29
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt.keysym.Control-Up: \033[1;5A
-URxvt.keysym.Control-Down: \033[1;5B
-URxvt.keysym.Control-Left: \033[1;5D
-URxvt.keysym.Control-Right: \033[1;5C
-URxvt.keysym.Home: \033[7~
-URxvt.keysym.End: \033[8~
+!URxvt.keysym.Control-Up: \033[1;5A
+!URxvt.keysym.Control-Down: \033[1;5B
+!URxvt.keysym.Control-Left: \033[1;5D
+!URxvt.keysym.Control-Right: \033[1;5C
+!URxvt.keysym.Home: \033[7~
+!URxvt.keysym.End: \033[8~
+URxvt.buffered: true
 
 URxvt.depth: 32
 

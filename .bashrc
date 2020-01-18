@@ -17,11 +17,15 @@ fi
 #export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] » "
 export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] \$(__git_ps1 '(\[\e[36m\]%s\[\e[m\])\n» ')"
 
+export EDITOR=nano
+
 # Add user base to Python path
 # See https://stackoverflow.com/a/38112757
 export PYTHONPATH=$(python -c "import site, os; print(os.path.join(site.USER_BASE, 'lib', 'python', 'site-packages'))"):$PYTHONPATH
 
 # User specific aliases and functions
+
+alias ls="ls --color=auto"
 
 hex-to-rgb() {
   printf "%-3d %-3d %d" "0x${1:1:2}" "0x${1:3:2}" "0x${1:5:2}"
@@ -61,7 +65,7 @@ gethub() {
 
   case "$1" in
     -g|--github)
-      git clone ${@:4} https://github.com/$2/$3.git ${_GIT_ROOT}/github/$2/$3
+      git clone ${@:4} github:$2/$3.git ${_GIT_ROOT}/github/$2/$3
       ;;
     -a|--aur)
       git clone ${@:3} https://aur.archlinux.org/$2.git ${_GIT_ROOT}/aur/$2

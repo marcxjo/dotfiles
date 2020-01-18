@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PANELS=( top bottom )
-#PANELS=( top )
+#PANELS=( top bottom )
+PANELS=( top )
 config_light=0
 
 function get_panel_pid () {

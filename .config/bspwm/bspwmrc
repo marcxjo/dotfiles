@@ -18,7 +18,7 @@ i=1
 for mon in ${_MONITORS[@]}
 do
   bspc monitor $mon -d wksp_${i}_1
-  for j in {2..3}
+  for j in {2..4}
   do
     bspc monitor $mon -a wksp_${i}_${j}
   done

@@ -9,10 +9,16 @@ https://blog.samalik.com/make-your-gnome-title-bars-smaller/
     font-size: 9pt;
 }
 
+headerbar button.titlebutton image {
+    -gtk-icon-style: symbolic;
+}
+
 .header-bar.default-decoration .button.titlebutton {
     padding: 0px;
+    min-height: 0px;
+    min-width: 0px;
 }
- 
+
 /*
 Gnome 3.20+ - based on 
 https://blog.samalik.com/make-your-gnome-title-bar-smaller-fedora-24-update/
@@ -21,7 +27,7 @@ https://blog.samalik.com/make-your-gnome-title-bar-smaller-fedora-24-update/
 window.ssd headerbar.titlebar {
     padding-top: 1px;
     padding-bottom: 1px;
-    min-height: 0;
+    min-height: 0px;
     border: none;
     background-image: linear-gradient(to bottom,
       shade(@theme_bg_color, 1.05),
@@ -30,18 +36,18 @@ window.ssd headerbar.titlebar {
 
 window.ssd headerbar.titlebar button.titlebutton {
     padding: 0px;
-    min-height: 0;
-    min-width: 0;
+    min-height: 0px;
+    min-width: 0px;
 }
 
 headerbar {
     min-height: 0px;
-    padding-top: 2px;
+    padding-top: 1px;
     padding-bottom: 1px;
     padding-right: 1px;
     padding-left: 1px;
 }
- 
+
 headerbar entry,
 headerbar spinbutton,
 headerbar button,
@@ -49,7 +55,7 @@ headerbar separator {
     margin-top: 0px;
     margin-bottom: 0px;
 }
- 
+
 .titlebar {
     min-height: 0px;
 }
