@@ -1,8 +1,13 @@
 # .bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
+if [ -f /etc/bash.bashrc ]; then
+  . /etc/bash.bashrc
+fi
+
+# Source git prompt definition
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+  . /usr/share/git/completion/git-prompt.sh
 fi
 
 # Source local environment
@@ -15,7 +20,7 @@ fi
 
 # Custom PS1
 #export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] » "
-export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] \$(__git_ps1 '(\[\e[36m\]%s\[\e[m\])\n» ')"
+export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] \$(__git_ps1 '(\[\e[36m\]%s\[\e[m\])')\n» "
 
 export EDITOR=nano
 
