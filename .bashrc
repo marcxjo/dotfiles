@@ -62,20 +62,38 @@ wwindow() {
 }
 
 gethub() {
-  _GIT_ROOT=$HOME/.local/src
-  if [[ ! -d ${_GIT_ROOT} ]]; then
-    mkdir -p ${_GIT_ROOT}
-  fi
+  while getopts :r:p: o; do
+    case "$o" in
+      r)
+        _GIT_ROOT="${OPTARG}"
+        shift 2
+        ;;
+      p)
+        _REPO_PREFIX="${OPTARG}"
+        shift 2
+        ;;
+    esac
+  done
+
+  GIT_ROOT=${_GIT_ROOT:-$HOME/.local/src}
+  [[ ! -d ${GIT_ROOT} ]] && mkdir -p ${GIT_ROOT}
 
   case "$1" in
+    -a|--arch|--abs)
+      REPO_PREFIX=${_REPO_PREFIX:-arch}
+      git clone ${@:3} https://git.archlinux.org/$2.git ${GIT_ROOT}/${REPO_PREFIX}/$2
+      ;;
+    -b|--bitbucket)
+      REPO_PREFIX=${REPO_PREFIX:-bitbucket}
+      git clone ${@:4} bitbucket:$2/$3.git ${GIT_ROOT}/${REPO_PREFIX}/$2/$3
+      ;;
     -g|--github)
-      git clone ${@:4} github:$2/$3.git ${_GIT_ROOT}/github/$2/$3
+      REPO_PREFIX=${_REPO_PREFIX:-github}
+      git clone ${@:4} github:$2/$3.git ${GIT_ROOT}/${REPO_PREFIX}/$2/$3
       ;;
-    -a|--aur)
-      git clone ${@:3} https://aur.archlinux.org/$2.git ${_GIT_ROOT}/aur/$2
-      ;;
-    -b|--arch|--abs)
-      git clone ${@:3} https://git.archlinux.org/$2.git ${_GIT_ROOT}/arch/$2
+    -u|--aur)
+      REPO_PREFIX=${_REPO_PREFIX:-aur}
+      git clone ${@:3} https://aur.archlinux.org/$2.git ${GIT_ROOT}/${REPO_PREFIX}/$2
       ;;
     *)
       echo "Error: must select repo Github, ABS, or AUR."
@@ -84,4 +102,8 @@ gethub() {
   esac
 
   return 0
+}
+
+get-gnome-shell-extension() {
+  gethub -p "gnome-shell-extensions" ${@}
 }
