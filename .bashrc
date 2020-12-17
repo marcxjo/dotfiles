@@ -23,9 +23,9 @@ export PS1='\[\e[34m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\] $(__g
 
 export EDITOR=nano
 
-# Add user base to Python path
-# See https://stackoverflow.com/a/38112757
-export PYTHONPATH=$(python -c "import site, os; print(os.path.join(site.USER_BASE, 'lib', 'python', 'site-packages'))"):$PYTHONPATH
+# Envvars sourced by my custom scripts
+export SCRIPT_TMP_DIR="/tmp/${USER}"
+mkdir -p "${SCRIPT_TMP_DIR}"
 
 # User specific aliases and functions
 
@@ -94,6 +94,10 @@ gethub() {
     -u|--aur)
       REPO_PREFIX=${_REPO_PREFIX:-aur}
       git clone ${@:3} https://aur.archlinux.org/$2.git ${GIT_ROOT}/${REPO_PREFIX}/$2
+      ;;
+    -z|--ado)
+      REPO_PREFIX=${_REPO_PREFIX:-"dev.azure.com"}
+      git clone ${@:5} azure-devops:v3/$2/$3/$4.git ${GIT_ROOT}/${REPO_PREFIX}/$3/$4
       ;;
     *)
       echo "Error: must select repo Github, ABS, or AUR."
