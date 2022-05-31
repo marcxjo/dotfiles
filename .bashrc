@@ -80,30 +80,59 @@ gethub() {
 
   case "$1" in
     -a|--arch|--abs)
+      GIT_REPO="https://git.archlinux.org/$2.git"
       REPO_PREFIX=${_REPO_PREFIX:-arch}
-      git clone ${@:3} https://git.archlinux.org/$2.git ${GIT_ROOT}/${REPO_PREFIX}/$2
+      REPO_SUBTREE="$2"
+
+      shift 2
       ;;
     -b|--bitbucket)
+      GIT_REPO="bitbucket:$2/$3.git"
       REPO_PREFIX=${REPO_PREFIX:-bitbucket}
-      git clone ${@:4} bitbucket:$2/$3.git ${GIT_ROOT}/${REPO_PREFIX}/$2/$3
+      REPO_SUBTREE="$2/$3"
+
+      shift 3
       ;;
     -g|--github)
-      REPO_PREFIX=${_REPO_PREFIX:-github}
-      git clone ${@:4} github:$2/$3.git ${GIT_ROOT}/${REPO_PREFIX}/$2/$3
+      GIT_REPO="github:$2/$3.git"
+      REPO_PREFIX=${REPO_PREFIX:-github}
+      REPO_SUBTREE="$2/$3"
+
+      shift 3
       ;;
     -u|--aur)
-      REPO_PREFIX=${_REPO_PREFIX:-aur}
-      git clone ${@:3} https://aur.archlinux.org/$2.git ${GIT_ROOT}/${REPO_PREFIX}/$2
+      GIT_REPO="https://aur.archlinux.org/$2.git"
+      REPO_PREFIX=${REPO_PREFIX:-aur}
+      REPO_SUBTREE="$2"
+
+      shift 2
       ;;
     -z|--ado)
+      GIT_REPO="azure-devops:v3/$2/$3/$4.git"
       REPO_PREFIX=${_REPO_PREFIX:-"dev.azure.com"}
-      git clone ${@:5} azure-devops:v3/$2/$3/$4.git ${GIT_ROOT}/${REPO_PREFIX}/$3/$4
+      REPO_SUBTREE="$3/$4"
+
+      shift 4
       ;;
     *)
       echo "Error: must select repo Github, ABS, or AUR."
       return 2
       ;;
   esac
+
+  REPO_DIR=${GIT_ROOT}/${REPO_PREFIX}/${REPO_SUBTREE}
+
+  if [[ -d ${REPO_DIR} ]]; then
+    echo "Repo directory already exists on local machine."
+    echo "Updating repository..."
+    pushd ${REPO_DIR} >/dev/null
+    git pull
+    popd >/dev/null
+  else
+    echo "Repo directory does not exist on local machine."
+    echo "Cloning repository..."
+    git clone ${@} ${GIT_REPO} ${REPO_DIR}
+  fi
 
   return 0
 }
