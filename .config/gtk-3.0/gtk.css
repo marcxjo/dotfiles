@@ -8,11 +8,11 @@ decoration {
 }
 
 @import url("vte.css");
+@import url("tilix.css");
+@import url("kermit.css");
 @import url("window-decorations.css");
-@import url("xfce.css");
 
 /*
-#k3rmit-tabLabel > * {
-  color: rgba(255, 204, 0, 0.95);
-}
+@import url("xfce.css");
 */
+
