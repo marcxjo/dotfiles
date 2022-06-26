@@ -11,7 +11,7 @@ super + ctrl + Return
 
 # program launcher
 alt + F2
-	rofi_wrapper
+	rofi -show run -lines 5 -threads 0 -columns 1 -width 20% -location 0
 
 # program launcher
 alt + Tab
@@ -87,6 +87,10 @@ super + {p,b,comma,period}
 # focus the next/previous node in the current desktop
 super + bracket{left,right}
 	bspc node -f {prev,next}.local
+
+# focus the node in the provided cardinal direction relative to the current node
+alt + {Up,Down,Left,Right}
+	bspc node -f {north,south,west,east}.local
 
 # focus the next/previous desktop in the current monitor
 ctrl + alt + {Left,Right}
