@@ -30,8 +30,9 @@ xset +fp ~/.fonts
 xset fp rehash
 
 # Start PulseAudio.
-start-pulseaudio-x11 &
+pulseaudio --start
 
 xscreensaver -no-splash &
 
+#exec bspwm -c ${HOME}/.config/bspwm/bspwmrc
 exec bspwm
