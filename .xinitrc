@@ -4,11 +4,14 @@ fi
 
 # Set up proper monitor alignment before login.
 # This is helpful to get things set up right in bspwm.
-MONITORS=$(xrandr --listactivemonitors | grep -E "DVI-[01]$" | wc -l)
 
-if [ $MONITORS -eq 2 ]; then
-	xrandr --output DVI-1 --primary --left-of DVI-0
-fi
+#xlayoutdisplay -p DP-1-2 -o DP-1-2 -o eDP-1
+
+#MONITORS=$(xrandr --listactivemonitors | grep -E "DVI-[01]$" | wc -l)
+
+#if [ $MONITORS -eq 2 ]; then
+#	xrandr --output DVI-1 --primary --left-of DVI-0
+#fi
 
 # I WANT MY DAMN NUM LOCK ON WHEN I LOG IN.
 NUM_LOCK_STATE=$(xset -q | grep Caps | awk '{print $8}')
@@ -32,7 +35,7 @@ xset fp rehash
 # Start PulseAudio.
 pulseaudio --start
 
-xscreensaver -no-splash &
+#xscreensaver -no-splash &
 
 #exec bspwm -c ${HOME}/.config/bspwm/bspwmrc
 exec bspwm

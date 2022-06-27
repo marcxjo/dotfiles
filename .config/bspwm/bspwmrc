@@ -2,15 +2,6 @@
 
 sxhkd &
 
-. $HOME/.config/profile.d/bspwm.sh
-
-BORDER_WIDTH=${_border_width:-0}
-LEFT_PADDING=${_left_padding:-480}
-RIGHT_PADDING=${_right_padding:-0}
-TOP_PADDING=${_top_padding:-32}
-BOTTOM_PADDING=${_bottom_padding:-0}
-WINDOW_GAP=${_window_gap:-32}
-
 _MONITORS=( $(xrandr --listactivemonitors | awk 'FNR > 1 {print $NF}') )
 
 i=1
@@ -27,12 +18,17 @@ done
 
 unset i
 
-bspc config border_width     $BORDER_WIDTH
-bspc config window_gap         $WINDOW_GAP
-bspc config top_padding       $TOP_PADDING
-bspc config bottom_padding $BOTTOM_PADDING
-bspc config left_padding     $LEFT_PADDING
-bspc config right_padding   $RIGHT_PADDING
+bspc config border_width               0
+bspc config window_gap                32
+bspc config top_padding                0
+bspc config bottom_padding             0
+bspc config left_padding              24
+bspc config right_padding             24
+
+bspc config -m DP-1-2 top_padding     32
+bspc config -m DP-1-2 bottom_padding  32
+bspc config -m DP-1-2 left_padding    240
+bspc config -m DP-1-2 right_padding   240
 
 bspc config split_ratio              0.50
 

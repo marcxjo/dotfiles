@@ -11,7 +11,7 @@ super + ctrl + Return
 
 # program launcher
 alt + F2
-	rofi -show run -lines 5 -threads 0 -columns 1 -width 20% -location 0
+	/home/marcxjo/bin/rofi-scripts/rofi_wrapper
 
 # program launcher
 alt + Tab
