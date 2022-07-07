@@ -88,21 +88,21 @@ gethub() {
       ;;
     -b|--bitbucket)
       GIT_REPO="bitbucket:$2/$3.git"
-      REPO_PREFIX=${REPO_PREFIX:-bitbucket}
+      REPO_PREFIX=${_REPO_PREFIX:-bitbucket}
       REPO_SUBTREE="$2/$3"
 
       shift 3
       ;;
     -g|--github)
       GIT_REPO="github:$2/$3.git"
-      REPO_PREFIX=${REPO_PREFIX:-github}
+      REPO_PREFIX=${_REPO_PREFIX:-github}
       REPO_SUBTREE="$2/$3"
 
       shift 3
       ;;
     -u|--aur)
       GIT_REPO="https://aur.archlinux.org/$2.git"
-      REPO_PREFIX=${REPO_PREFIX:-aur}
+      REPO_PREFIX=${_REPO_PREFIX:-aur}
       REPO_SUBTREE="$2"
 
       shift 2
