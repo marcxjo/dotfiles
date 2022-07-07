@@ -5,8 +5,8 @@
 
 # l10n support
 case $LANG in
-    eo|eo_* ) TEXT="Lanĉi:" ;; # Russian
-    en|en_* ) TEXT="run:" ;; # English
+    eo|eo* ) TEXT="Lanĉi:" ;; # Esperanto
+    en|en* ) TEXT="run:"   ;; # English
 esac
 
 SB="-sb ${color2}"
