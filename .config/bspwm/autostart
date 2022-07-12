@@ -4,7 +4,8 @@
 picom &
 
 # Set background.
-set-background -t bspwm -w &
+#set-background -t bspwm -w &
+${HOME}/.fehbg
 
 # Set desktop colors.
 # TODO: fix symlinking in themer script.
