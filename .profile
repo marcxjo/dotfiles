@@ -9,10 +9,21 @@ appendpath () {
     esac
 }
 
-appendpath "${HOME}/bin"
-appendpath "${HOME}/.local/bin"
-appendpath "${HOME}/.local/share/gem/ruby/3.0.0/bin"
+user_paths=(
+  "${HOME}/bin"
+  "${HOME}/.local/bin"
+  "${HOME}/.local/share/gem/ruby/3.0.0/bin"
+)
 
+for path in ${user_paths[@]}
+do
+  if [[ -d $path ]]
+  then
+    appendpath $path
+  fi
+done
+
+unset user_paths
 unset appendpath
 
 export PATH
