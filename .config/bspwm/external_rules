@@ -1,9 +1,13 @@
 #!/bin/sh
 
+function get_dimensions() {
+  xdotool getwindowgeometry ${1} | grep "Geometry:" | awk '{print $2}' | sed 's|x| |'
+}
+
 fwid=$(bspc query -N -n focused.automatic)
 
 if [ -n "$fwid" ] ; then
-  wattr wh $fwid | {
+  get_dimensions $fwid | {
     read width height
       if [ $width -gt $height ] ; then
         echo "split_dir=east"
