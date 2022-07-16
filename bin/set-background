@@ -32,6 +32,8 @@ done
 
 set_command ${_dim} ${_pic}
 
-setroot ${command::(-1)}
+# setroot is currently failing to build on Arch Linux
+#setroot ${command::(-1)}
+$HOME/.fehbg
 
 exit 0
