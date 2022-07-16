@@ -1,7 +1,7 @@
 #!/bin/bash
 
-notify-send -u low "ALL SYSTEMS GO" "Steady as she goes, Number One."
-notify-send -u normal "YELLOW ALERT" "Open a channel and scan all subspace frequencies."
-notify-send -u critical "RED ALERT" "SHIELDS UP, ARM PHOTON TORPEDOES."
+dunstify -u 0 "ALL SYSTEMS GO" "Steady as she goes, Number One."
+dunstify -u 1 "YELLOW ALERT" "Open a channel and scan all subspace frequencies."
+dunstify -u 2 "RED ALERT" "SHIELDS UP, ARM PHOTON TORPEDOES."
 
 exit 0
