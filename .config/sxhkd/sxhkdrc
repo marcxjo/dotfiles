@@ -15,11 +15,11 @@ alt + F2
 
 # program launcher
 alt + Tab
-	rofi -show window -lines 5 -threads 0 -columns 1 -width 20% -location 0
+	rofi -show window -lines 5 -threads 0 -columns 1 -width 10% -location 0
 
 # webapp launcher
 alt + F3
-	rofi_webapp_launcher
+	/home/marcxjo/bin/rofi-scripts/rofi_webapp_launcher
 
 super + space
 	dmenu_launch
