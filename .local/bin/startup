@@ -1,0 +1,8 @@
+#!/bin/sh
+
+STARTUP_LIB_DIR=${STARTUP_LIB_DIR:-${HOME}/.local/lib/startup}
+
+for module in $(ls ${STARTUP_LIB_DIR})
+do
+  . ${STARTUP_LIB_DIR}/${module}
+done
