@@ -55,7 +55,4 @@ esac
 
 sleep "1s"
 
-bspc config top_padding $(bspc config top_padding)
-bspc config bottom_padding $(bspc config bottom_padding)
-
 exit 0
