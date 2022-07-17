@@ -2,7 +2,9 @@
 
 # TODO - there should be a way to refactor the final PATH config such that we
 # don't have to provide the full startup script path here
-. ${HOME}/.local/bin/startup || true
+if [ -f ${HOME}/.local/bin/startup ]; then
+  . ${HOME}/.local/bin/startup || true
+fi
 
 # Source global definitions
 if [ -f /etc/bash.bashrc ]; then
