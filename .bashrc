@@ -27,7 +27,7 @@ export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__g
 
 # Envvars sourced by my custom scripts
 export SCRIPT_TMP_DIR="/tmp/${USER}"
-mkdir -p "${SCRIPT_TMP_DIR}"
+mkdir -pm 0750 "${SCRIPT_TMP_DIR}"
 
 # User specific aliases and functions
 
