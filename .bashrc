@@ -1,11 +1,5 @@
 # .bashrc
 
-# TODO - there should be a way to refactor the final PATH config such that we
-# don't have to provide the full startup script path here
-if [ -f ${HOME}/.local/bin/startup ]; then
-  . ${HOME}/.local/bin/startup || true
-fi
-
 # Source global definitions
 if [ -f /etc/bash.bashrc ]; then
   . /etc/bash.bashrc
@@ -19,6 +13,10 @@ fi
 # Source local environment
 if [ -f "${HOME}/.profile" ]; then
   . "${HOME}/.profile"
+fi
+
+if [ -f ${HOME}/.local/bin/startup ]; then
+  . ${HOME}/.local/bin/startup || true
 fi
 
 # Primitive transparency for all XTerm windows
