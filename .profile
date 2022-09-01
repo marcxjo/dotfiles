@@ -27,3 +27,19 @@ unset user_paths
 unset appendpath
 
 export PATH
+
+if [[ $(which nvim) ]]
+then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
+if [[ $(which nvim) ]]
+then
+  export VISUAL=nvim
+else
+  export VISUAL=vim
+fi
+
+export BROWSER=firefox
