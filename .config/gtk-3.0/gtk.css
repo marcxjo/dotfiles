@@ -7,11 +7,7 @@ decoration {
   margin: 0;
 }
 
-@import url("vte.css");
 @import url("tilix.css");
-@import url("kermit.css");
+@import url("stulto.css");
 @import url("window-decorations.css");
 
-/*
-@import url("xfce.css");
-*/
