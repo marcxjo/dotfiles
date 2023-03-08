@@ -25,7 +25,7 @@ bspc config pointer_action2 resize_corner
 bspc config pointer_action3          move
 
 bspc rule -a Gimp     state=floating
-bspc rule -a mpv     state=floating sticky=on focus=off
+bspc rule -a mpv      state=tiled sticky=on focus=off
 bspc rule -a Surf     state=tiled
 bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
 
