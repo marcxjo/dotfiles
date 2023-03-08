@@ -7,7 +7,8 @@
 # but there are sensible reasons not to do that for certain files.
 
 REPO_DIR=${REPO_DIR:-"${HOME}/.local/src/github-${USER}-dotfiles"}
-DIFF_DIR=/tmp/dots-${USER}
+TMP_DIR=${XDG_RUNTIME_DIR:-/tmp/${USER}}
+DIFF_DIR=${TMP_DIR}/dots
 
 if [ -d "${DIFF_DIR}" ]
 then

@@ -22,10 +22,6 @@ fi
 # Custom PS1
 export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__git_ps1 "(\[\e[37m\]%s\[\e[m\])")'$'\n\[\e[35m\]»\[\e[m\] '
 
-# Envvars sourced by my custom scripts
-export SCRIPT_TMP_DIR="/tmp/${USER}"
-mkdir -pm 0750 "${SCRIPT_TMP_DIR}"
-
 # User specific aliases and functions
 
 alias ls="ls --color=auto"
