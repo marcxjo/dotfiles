@@ -34,3 +34,9 @@ rgb-to-hex() {
   printf "#%02X%02X%02X" "${1}" "${2}" "${3}"
 }
 
+is_running() {
+  local _process=${1}
+
+  which $_process &>/dev/null && pgrep -x $_process &>/dev/null
+}
+
