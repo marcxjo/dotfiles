@@ -1,32 +1,19 @@
 #!/bin/sh
 
-sxhkd &
+# Bespoke script to handle monitor config
+set-monitor-layout
 
-for script in $(find $HOME/.config/bspwm/monitors)
+# Per-monitor config overrides
+# To adapt this script to your environment, these monitor configs
+# should just be named after the respective monitor name as returned by
+# XRandR (e.g., eDP-1)
+for mon in $HOME/.config/bspwm/monitors/*
 do
-  . ${script}
+  bspc query -M -m $(basename $mon) &>/dev/null && . $mon
 done
 
-bspc config split_ratio              0.50
+for script in $HOME/.config/bspwm/scripts/*
+do
+  . $script
+done
 
-# Wasteful, but attractive.
-bspc config borderless_monocle      false
-bspc config gapless_monocle         false
-
-# Pointer settings.
-bspc config click_to_focus           true
-bspc config focus_follows_pointer   false
-bspc config pointer_follows_focus   false
-
-# Pointer events.
-bspc config pointer_modifier      control
-bspc config pointer_action1   resize_side
-bspc config pointer_action2 resize_corner
-bspc config pointer_action3          move
-
-bspc rule -a Gimp     state=floating
-bspc rule -a mpv      state=tiled sticky=on focus=off
-bspc rule -a Surf     state=tiled
-bspc config external_rules_command "${HOME}/.config/bspwm/external_rules"
-
-${HOME}/.config/bspwm/autostart &

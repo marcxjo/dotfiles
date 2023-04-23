@@ -1,4 +1,5 @@
-#!/bin/sh
+# Basic tiling heuristic
+# In general, split the focused window's longer side
 
 function get_dimensions() {
   xdotool getwindowgeometry ${1} | grep "Geometry:" | awk '{print $2}' | sed 's|x| |'
