@@ -1,1 +1,0 @@
-/home/marcxjo/.local/src/github/x70b1/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py
