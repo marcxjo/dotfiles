@@ -147,7 +147,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # start the screensaver command
-ctrl + alt + l
+ctrl + alt + Delete
 	xscreensaver-command -lock
 
 #
