@@ -10,16 +10,16 @@ set-background -t bspwm -w &
 # TODO: fix symlinking in themer script.
 #set-desktop-colors &
 
-test -f "$HOME/.Xresources" && \
+[[ -f "$HOME/.Xresources" ]] && \
 	xrdb "$HOME/.Xresources" &
 
-test -f "$HOME/.local/share/themes/bspwm/colors.xresources" && \
+[[ -f "$HOME/.local/share/themes/bspwm/colors.xresources" ]] && \
 	xrdb -merge "$HOME/.local/share/themes/bspwm/colors.xresources"
 
-test -x "$HOME/.local/share/themes/bspwm/colors.sh" && \
+[[ -x "$HOME/.local/share/themes/bspwm/colors.sh" ]] && \
 	. "$HOME/.local/share/themes/bspwm/colors.sh"
 
-test -x "$HOME/.local/share/themes/bspwm/post_theme" && \
+[[ -x "$HOME/.local/share/themes/bspwm/post_theme" ]] && \
 	. "$HOME/.local/share/themes/bspwm/post_theme" &
 
 # Start panels.

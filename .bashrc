@@ -37,6 +37,6 @@ rgb-to-hex() {
 is_running() {
   local _process=${1}
 
-  which $_process &>/dev/null && pgrep -x $_process &>/dev/null
+  which $_process &> /dev/null && pgrep -x $_process &> /dev/null
 }
 

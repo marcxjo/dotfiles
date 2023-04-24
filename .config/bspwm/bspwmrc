@@ -9,7 +9,7 @@ set-monitor-layout
 # XRandR (e.g., eDP-1)
 for mon in $HOME/.config/bspwm/monitors/*
 do
-  bspc query -M -m $(basename $mon) &>/dev/null && . $mon
+  bspc query -M -m $(basename $mon) &> /dev/null && . $mon
 done
 
 for script in $HOME/.config/bspwm/scripts/*
