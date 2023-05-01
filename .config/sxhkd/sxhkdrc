@@ -54,7 +54,7 @@ super + g
 
 # balance the desktop (see https://github.com/Chrysostomus/bspwm-scripts for the referenced script)
 super + b
-	euclid_balancer
+	bspc node @/ -B
 
 # insert a receptacle node
 super + i
