@@ -33,6 +33,10 @@ unset appendpath
 
 export PATH
 
+# Install packages under XDG-friendly dir tree with `npm install -g`
+export npm_config_prefix="$HOME/.local"
+export NODE_OPTIONS="--openssl-legacy-provider"
+
 if [[ $(which nvim) ]]
 then
   export EDITOR=nvim
