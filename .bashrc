@@ -1,23 +1,23 @@
 # .bashrc
 
+try_source() {
+  local _file=${1}
+
+  [ -n $_file -a -f $_file ] && . $_file
+}
+
 # Source global definitions
-if [ -f /etc/bash.bashrc ]; then
-  . /etc/bash.bashrc
-fi
+try_source /etc/bash.bashrc
 
 # Source git prompt definition
-if [ -f /usr/share/git/completion/git-prompt.sh ]; then
-  . /usr/share/git/completion/git-prompt.sh
-fi
+try_source /usr/share/git/completion/git-prompt.sh
 
 # Source local environment
-if [ -f "${HOME}/.profile" ]; then
-  . "${HOME}/.profile"
-fi
+try_source $HOME/.profile
 
-if [ -f ${HOME}/.local/bin/startup ]; then
-  . ${HOME}/.local/bin/startup || true
-fi
+# Source custom startup scripts
+# Don't bail if they break
+try_source $HOME/.local/bin/startup || true
 
 # Custom PS1
 export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__git_ps1 "(\[\e[37m\]%s\[\e[m\])")'$'\n\[\e[35m\]»\[\e[m\] '
