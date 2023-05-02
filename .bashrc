@@ -29,14 +29,6 @@ export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__g
 
 alias ls="ls --color=auto"
 
-hex-to-rgb() {
-  printf "%-3d %-3d %d" "0x${1:1:2}" "0x${1:3:2}" "0x${1:5:2}"
-}
-
-rgb-to-hex() {
-  printf "#%02X%02X%02X" "${1}" "${2}" "${3}"
-}
-
 is_running() {
   local _process=${1}
 
