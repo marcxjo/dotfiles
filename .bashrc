@@ -6,9 +6,6 @@ try_source() {
   [ -n $_file -a -f $_file ] && . $_file
 }
 
-# Source global definitions
-try_source /etc/bash.bashrc
-
 # Source git prompt definition
 try_source /usr/share/git/completion/git-prompt.sh
 

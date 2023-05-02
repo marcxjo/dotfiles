@@ -6,7 +6,7 @@ appendpath () {
     *)
       PATH="${PATH:+$PATH:}$1"
       ;;
-    esac
+  esac
 }
 
 # Add support for user paths to:
@@ -20,8 +20,7 @@ user_paths=(
   "${HOME}/.cargo/bin"
 )
 
-for path in ${user_paths[@]}
-do
+for path in ${user_paths[@]}; do
   [[ -d $path ]] && appendpath $path
 done
 
