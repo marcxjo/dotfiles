@@ -22,10 +22,7 @@ user_paths=(
 
 for path in ${user_paths[@]}
 do
-  if [[ -d $path ]]
-  then
-    appendpath $path
-  fi
+  [[ -d $path ]] && appendpath $path
 done
 
 unset user_paths
@@ -33,22 +30,7 @@ unset appendpath
 
 export PATH
 
-# Install packages under XDG-friendly dir tree with `npm install -g`
-export NODE_OPTIONS="--openssl-legacy-provider"
+command -v nvim &> /dev/null && export EDITOR=nvim && export VISUAL=vim
 
-if [[ $(which nvim) ]]
-then
-  export EDITOR=nvim
-else
-  export EDITOR=vim
-fi
-
-if [[ $(which nvim) ]]
-then
-  export VISUAL=nvim
-else
-  export VISUAL=vim
-fi
-
-export BROWSER=firefox
+command -v firefox &> /dev/null && export BROWSER=firefox
 
