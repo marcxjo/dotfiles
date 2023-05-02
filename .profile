@@ -1,5 +1,5 @@
 # Append custom paths
-appendpath () {
+append_path () {
   case ":$PATH:" in
     *:"$1":*)
       ;;
@@ -21,11 +21,11 @@ user_paths=(
 )
 
 for path in ${user_paths[@]}; do
-  [[ -d $path ]] && appendpath $path
+  [[ -d $path ]] && append_path $path
 done
 
 unset user_paths
-unset appendpath
+unset append_path
 
 export PATH
 
