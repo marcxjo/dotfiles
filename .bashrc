@@ -3,7 +3,7 @@
 try_source() {
   local _file=${1}
 
-  [ -n $_file -a -f $_file ] && . $_file
+  [ -f $_file ] && . $_file
 }
 
 # Source git prompt definition
