@@ -13,23 +13,24 @@ append_path () {
 # * Shell scripts
 # * Ruby gems
 # * Rust crates
-user_paths=(
-  "${HOME}/bin"
-  "${HOME}/.local/bin"
-  "${HOME}/.local/share/gem/ruby/3.0.0/bin"
-  "${HOME}/.cargo/bin"
-)
-
-for path in ${user_paths[@]}; do
-  [[ -d $path ]] && append_path $path
-done
+append_path "${HOME}/bin"
+append_path "${HOME}/.local/bin"
+append_path "${HOME}/.local/share/gem/ruby/3.0.0/bin"
+append_path "${HOME}/.cargo/bin"
 
 unset user_paths
 unset append_path
 
 export PATH
 
-command -v nvim &> /dev/null && export EDITOR=nvim && export VISUAL=nvim
+if command -v nvim &> /dev/null; then
+  export EDITOR=nvim
+  export VISUAL=nvim
+fi
 
-command -v firefox &> /dev/null && export BROWSER=firefox
+if command -v firefox &> /dev/null; then
+  export BROWSER=firefox
+fi
+
+[[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
 
