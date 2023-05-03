@@ -43,9 +43,9 @@ export SSH_AUTH_SOCK=${HOME}/.ssh/ssh_auth_sock
 
 # Key Registration #############################################################
 
-if [[ ! $(which pass 2>/dev/null) ]]
+if ! command -v pw &> /dev/null
 then
-  echo "pass is not installed"
+  echo "pw is not installed"
   echo "Can not register ssh-keys"
   exit 1
 fi
@@ -54,9 +54,8 @@ for key in $(ls_ssh_keys ${KEY_DIR})
 do
   domain_components=( $(get_key_domain $key) )
   fingerprint=$(get_ssh_key_fingerprint ${KEY_DIR}/${key})
-  is_loaded=$(check_key_loaded ${fingerprint})
 
-  if [[ ${is_loaded} -eq 0 ]]
+  if check_key_loaded ${fingerprint}
   then
     continue
   fi
@@ -64,7 +63,7 @@ do
   SSH_HOST=${domain_components[0]} \
   SSH_USER=${domain_components[1]} \
   SSH_ASKPASS_REQUIRE=force \
-  SSH_ASKPASS=$(which ssh-pass.sh) \
+  SSH_ASKPASS=$(command -v ssh-pass.sh) \
   ssh-add ${KEY_DIR}/${key} < /dev/null
 done
 
