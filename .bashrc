@@ -14,7 +14,7 @@ try_source $HOME/.profile
 
 # Source custom startup scripts
 # Don't bail if they break
-try_source $HOME/.local/bin/startup || true
+try_source $HOME/.config/startup/startuprc || true
 
 # Source Arch nvm init if present
 [[ -z $NVM_DIR ]] && try_source /usr/share/nvm/init-nvm.sh
