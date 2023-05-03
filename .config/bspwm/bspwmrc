@@ -7,13 +7,11 @@ set-monitor-layout
 # To adapt this script to your environment, these monitor configs
 # should just be named after the respective monitor name as returned by
 # XRandR (e.g., eDP-1)
-for mon in $HOME/.config/bspwm/monitors/*
-do
+for mon in $HOME/.config/bspwm/monitors/*; do
   bspc query -M -m $(basename $mon) &> /dev/null && . $mon
 done
 
-for script in $HOME/.config/bspwm/scripts/*
-do
+for script in $HOME/.config/bspwm/scripts/*; do
   . $script
 done
 
