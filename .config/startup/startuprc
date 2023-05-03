@@ -1,8 +1,5 @@
 #!/bin/sh
 
-STARTUP_LIB_DIR=${STARTUP_LIB_DIR:-${HOME}/.local/lib/startup}
-
-for module in $(ls ${STARTUP_LIB_DIR})
-do
-  . ${STARTUP_LIB_DIR}/${module}
+for script in $HOME/.config/startup/scripts/*; do
+  . $script
 done
