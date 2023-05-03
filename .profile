@@ -29,7 +29,7 @@ unset append_path
 
 export PATH
 
-command -v nvim &> /dev/null && export EDITOR=nvim && export VISUAL=vim
+command -v nvim &> /dev/null && export EDITOR=nvim && export VISUAL=nvim
 
 command -v firefox &> /dev/null && export BROWSER=firefox
 
