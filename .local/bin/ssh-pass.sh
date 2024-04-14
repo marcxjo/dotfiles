@@ -1,6 +1,9 @@
 #!/bin/bash
 
-PASS_CMD=$(which pass)
+# TODO: rename this script to ssh-pw.sh
+# It no longer depends directly on pass
+
+PW_CMD=$(command -v pw)
 
 if [[ ${SSH_HOST:-x} == "x" ]]
 then
@@ -16,4 +19,4 @@ then
   exit 1
 fi
 
-${PASS_CMD} ssh/${SSH_HOST}/${SSH_USER} | head -n1
+${PW_CMD} ssh ${SSH_HOST}/${SSH_USER} | head -n1
