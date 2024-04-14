@@ -8,21 +8,21 @@ function get_key_domain () {
   # Get the key's associated host/alias and username as a 2-array
   local keyname=${1}
 
-  echo ${keyname} | sed 's|id_rsa\.||;s|_| |'
+  echo ${keyname} | sed 's|id_[^\.]*\.||;s|__| |'
 }
 
 function ls_ssh_keys () {
   # List all key basenames (i.e., non-public keynames)
   local dir=${1}
 
-  ls ${dir} | grep -P '^id_rsa.*(?<!pub)$'
+  ls ${dir} | grep -P '^id_[^\.]*\..*(?<!\.pub)$'
 }
 
 function get_ssh_key_fingerprint () {
-  # Get and SSH key's fingerprint - must pass the full path string
+  # Get an SSH key's fingerprint - must pass the full path string
   keypath=${1}
 
-  ssh-keygen -lf ${keypath}  | awk '{print $2}'
+  ssh-keygen -lf ${keypath} | awk '{print $2}'
 }
 
 function check_key_loaded () {
