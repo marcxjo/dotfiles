@@ -1,5 +1,11 @@
 #!/bin/sh
 
+is_running() {
+  local _process=${1}
+
+  which $_process &> /dev/null && pgrep -x $_process &> /dev/null
+}
+
 # Bespoke script to handle monitor config
 set-monitor-layout
 
