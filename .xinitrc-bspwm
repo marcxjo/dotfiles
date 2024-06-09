@@ -1,5 +1,5 @@
 export LETS_WATCH_MEDIA_PLAYER=umpv
-export STULTO_DISABLE_HEADERBAR=1
+export STULTO_HEADERBAR_TYPE=2
 
 # I WANT MY DAMN NUM LOCK ON WHEN I LOG IN
 NUM_LOCK_STATE=$(xset -q | sed -n 's/^.*Num Lock:\s*\(\S*\).*$/\1/p')
