@@ -9,15 +9,16 @@ append_path () {
   esac
 }
 
-# Add support for user paths to:
-# * Shell scripts
-# * Ruby gems
-# * Rust crates
+export GOROOT="${HOME}/.go/go1.22.2"
+export GOPATH="${HOME}/.go"
+
+# Add support for user paths to user-installed commands
 append_path "${HOME}/bin"
 append_path "${HOME}/.local/bin"
 append_path "${HOME}/.local/share/gem/ruby/3.0.0/bin"
 append_path "${HOME}/.cargo/bin"
 append_path "${HOME}/.dotnet/tools"
+append_path "${GOROOT}/bin"
 
 unset user_paths
 unset append_path
