@@ -8,14 +8,16 @@ function get_key_domain () {
   # Get the key's associated host/alias and username as a 2-array
   local keyname=${1}
 
-  echo ${keyname} | sed 's|id_[^\.]*\.||;s|__| |'
+  echo ${keyname} | sed 's|__| |'
 }
 
 function ls_ssh_keys () {
   # List all key basenames (i.e., non-public keynames)
   local dir=${1}
 
-  ls ${dir} | grep -P '^id_[^\.]*\..*(?<!\.pub)$'
+  # List all the public keys since we can key off of their filenames to
+  # locate each respective private key
+  ls ${dir} | grep "\.pub$" | sed 's|\.pub$||'
 }
 
 function get_ssh_key_fingerprint () {
