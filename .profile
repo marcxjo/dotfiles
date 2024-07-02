@@ -9,6 +9,7 @@ append_path () {
   esac
 }
 
+export NVM_DIR="${HOME}/.nvm"
 export GOROOT="${HOME}/.go/go1.22.2"
 export GOPATH="${HOME}/.go"
 
