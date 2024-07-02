@@ -2,7 +2,9 @@
 
 # User specific aliases and functions
 
-alias ls="ls --color=auto"
+alias ls='ls --color=auto'
+
+alias proj='cd "$(~/.local/lib/common/proj)"'
 
 # Source git prompt definition
 GIT_PROMPT_FILE='/usr/share/git/completion/git-prompt.sh'
