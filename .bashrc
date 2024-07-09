@@ -4,7 +4,9 @@
 
 alias ls='ls --color=auto'
 
-alias proj='cd "$(~/.local/lib/common/proj)"'
+alias proj='cd "$(~/.local/lib/proj/select-dir.sh)"'
+alias proj_cache_update='cd "$(~/.local/lib/proj/update-cache.sh)"'
+alias proj_cache_purge='cd "$(~/.local/lib/proj/purge-cache.sh)"'
 
 # Source git prompt definition
 GIT_PROMPT_FILE='/usr/share/git/completion/git-prompt.sh'
