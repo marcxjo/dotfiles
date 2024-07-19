@@ -4,9 +4,19 @@
 
 alias ls='ls --color=auto'
 
-alias proj='cd "$(~/.local/lib/proj/select-dir.sh)"'
-alias proj_cache_update='cd "$(~/.local/lib/proj/update-cache.sh)"'
-alias proj_cache_purge='cd "$(~/.local/lib/proj/purge-cache.sh)"'
+proj() {
+  local -r _workspace_cache="$(git profile projs workspace cache get)"
+
+  [[ -z "$_workspace_cache" ]] &&
+    echo "Cache file does not exist" >&2 2>&1 &&
+    return 1
+
+  local -r _preview_cmd="GIT_DIR={}/.git git ls-files"
+
+  local -r _repo="$(fzf --preview="$_preview_cmd" <"$_workspace_cache")"
+
+  cd "$_repo"
+}
 
 # Source git prompt definition
 GIT_PROMPT_FILE='/usr/share/git/completion/git-prompt.sh'
