@@ -1,11 +1,10 @@
 # Append custom paths
-append_path () {
+prepend_path() {
   case ":$PATH:" in
-    *:"$1":*)
-      ;;
-    *)
-      PATH="${PATH:+$PATH:}$1"
-      ;;
+  *:"$1":*) ;;
+  *)
+    PATH="${1}${PATH:+:$PATH}"
+    ;;
   esac
 }
 
@@ -14,26 +13,25 @@ export GOROOT="${HOME}/.go/go1.22.2"
 export GOPATH="${HOME}/.go"
 
 # Add support for user paths to user-installed commands
-append_path "${HOME}/bin"
-append_path "${HOME}/.local/bin"
-append_path "${HOME}/.local/share/gem/ruby/3.0.0/bin"
-append_path "${HOME}/.cargo/bin"
-append_path "${HOME}/.dotnet/tools"
-append_path "${GOROOT}/bin"
+prepend_path "${HOME}/bin"
+prepend_path "${HOME}/.local/bin"
+prepend_path "${HOME}/.local/share/gem/ruby/3.0.0/bin"
+prepend_path "${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
+prepend_path "${HOME}/.cargo/bin"
+prepend_path "${HOME}/.dotnet/tools"
+prepend_path "${GOROOT}/bin"
 
-unset user_paths
-unset append_path
+unset prepend_path
 
 export PATH
 
-if command -v nvim &> /dev/null; then
+if command -v nvim &>/dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
 fi
 
-if command -v firefox &> /dev/null; then
+if command -v firefox &>/dev/null; then
   export BROWSER=firefox
 fi
 
-[[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
-
+[[ -f $HOME/.bashrc ]] && . "$HOME/.bashrc"
