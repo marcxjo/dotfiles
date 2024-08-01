@@ -4,14 +4,15 @@
 
 # terminal emulator
 super + Return
-	stulto
+	tym
 
 super + ctrl + Return
-        stupidterm -c $HOME/.config/stupidterm-light.ini
+        tym --role omnibox -u $HOME/.config/tym/omnibox-config.lua
 
 # program launcher
 alt + F2
-	/home/marcxjo/bin/rofi-scripts/rofi_wrapper
+	rofi -show run -lines 5 -threads 0 -columns 1 -width 10% -location 0
+
 
 # program launcher
 alt + Tab
