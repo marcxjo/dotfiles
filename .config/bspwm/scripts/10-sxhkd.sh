@@ -1,3 +1,3 @@
 # Start sxhkd if not running
-is_running sxhkd || sxhkd &
+is_not_running sxhkd && sxhkd &
 

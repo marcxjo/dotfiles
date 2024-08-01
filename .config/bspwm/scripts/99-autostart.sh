@@ -1,7 +1,7 @@
 # Start up desktop environment utilities if not running
 
 # Start compositor
-is_running picom || picom &
+is_not_running picom && picom &
 
 # Set background.
 set-background -t bspwm -w &
@@ -23,12 +23,12 @@ set-background -t bspwm -w &
 	. "$HOME/.local/share/themes/bspwm/post_theme" &
 
 # Start panels.
-is_running polybar || panel -s &
+is_not_running polybar && panel -s &
 
 # Start notifier.
-is_running dunst || ddunst &
+is_not_running dunst && ddunst &
 
-is_running xscreensaver || xscreensaver -no-splash &
+is_not_running xscreensaver && xscreensaver -no-splash &
 
-is_running pulseaudio || pulseadio --start
+is_not_running pulseaudio && pulseadio --start
 
