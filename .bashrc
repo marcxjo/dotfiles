@@ -1,8 +1,19 @@
 # .bashrc
 
-# User specific aliases and functions
+# Disable checking for non-constant source - not hardcoding my envars for no
+# shell linter
+# shellcheck disable=SC1090
 
+# Disable cd guard - we _want_ to fail if the proj dir doesn't exist
+# shellcheck disable=SC2164
+
+# User specific aliases and functions
+alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+
+run() {
+    setsid -f -- "$@" 0<&- &>/dev/null
+}
 
 proj() {
   local -r _workspace_cache="$(git profile projs workspace cache get)"
