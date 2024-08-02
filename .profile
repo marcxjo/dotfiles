@@ -33,3 +33,9 @@ if command -v firefox &>/dev/null; then
 fi
 
 [[ -f $HOME/.bashrc ]] && . "$HOME/.bashrc"
+
+if [[ -d $HOME/.config/profile.d ]]; then
+  for profile in $HOME/.config/profile/*.sh; do
+    [[ -r "$profile" ]] && . "$profile"
+  done
+fi
