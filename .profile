@@ -35,7 +35,7 @@ fi
 [[ -f $HOME/.bashrc ]] && . "$HOME/.bashrc"
 
 if [[ -d $HOME/.config/profile.d ]]; then
-  for profile in $HOME/.config/profile/*.sh; do
+  for profile in $HOME/.config/profile.d/*.sh; do
     [[ -r "$profile" ]] && . "$profile"
   done
 fi
