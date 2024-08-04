@@ -7,12 +7,11 @@ super + Return
 	tym
 
 super + ctrl + Return
-        tym --role omnibox -u $HOME/.config/tym/omnibox-config.lua
+        stulto -r omnibox
 
 # program launcher
 alt + F2
 	rofi -show run -lines 5 -threads 0 -columns 1 -width 10% -location 0
-
 
 # program launcher
 alt + Tab
@@ -90,8 +89,8 @@ super + bracket{left,right}
 	bspc node -f {prev,next}.local
 
 # focus the node in the provided cardinal direction relative to the current node
-alt + {Up,Down,Left,Right}
-	bspc node -f {north,south,west,east}.local
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}.local
 
 # focus the next/previous desktop in the current monitor
 alt + bracket{left,right}
@@ -157,13 +156,11 @@ ctrl + alt + Delete
 
 # raise volume
 XF86AudioRaiseVolume
-#	pamixer -i 5
-	amixer sset Master 5%+
+	pamixer -i 5
 
 # lower volume
 XF86AudioLowerVolume
-#	pamixer -d 5
-	amixer sset Master 5%-
+	pamixer -d 5
 
 # mute volume
 XF86AudioMute
