@@ -1,7 +1,7 @@
 mon=DP-1
 
-bspc config -m $mon top_padding     72
-bspc config -m $mon bottom_padding  72
+bspc config -m $mon top_padding     48
+bspc config -m $mon bottom_padding  16
 bspc config -m $mon left_padding  1288
 bspc config -m $mon right_padding  456
 
