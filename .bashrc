@@ -12,7 +12,22 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
 run() {
-    setsid -f -- "$@" 0<&- &>/dev/null
+  setsid -f -- "$@" 0<&- &>/dev/null
+}
+
+join_array() {
+  local -r _delimiter="$1"
+  local -ra _arr=("${@:2}")
+
+  (IFS="$_delimiter"; echo "${_arr[*]}")
+}
+
+build_path() {
+  local -ar _segments=("$@")
+
+  # HACK - overwriting a global variable with a local one
+  # Any cleaner way I can find to do this is also unnecessarily verbose
+  join_array '/' "${_segments[@]}"
 }
 
 proj() {
