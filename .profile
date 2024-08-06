@@ -8,16 +8,9 @@ prepend_path() {
   esac
 }
 
-export NVM_DIR="${HOME}/.nvm"
-
 # Add support for user paths to user-installed commands
 prepend_path "${HOME}/bin"
 prepend_path "${HOME}/.local/bin"
-prepend_path "${HOME}/.local/share/gem/ruby/3.0.0/bin"
-prepend_path "${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin"
-prepend_path "${HOME}/.cargo/bin"
-prepend_path "${HOME}/.dotnet/tools"
-prepend_path "${HOME}/.go/bin"
 
 unset prepend_path
 
