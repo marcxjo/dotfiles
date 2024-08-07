@@ -53,7 +53,7 @@ pcache() {
 
 # Source custom startup scripts
 # Don't bail if they break
-[ -r "$HOME/.config/startup/startuprc" ] && . "$HOME/.config/startup/startuprc"
+[ -r "$HOME/.local/share/startup.d/startuprc" ] && . "$HOME/.local/share/startup.d/startuprc"
 
 # Custom PS1
 export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__git_ps1 "(\[\e[37m\]%s\[\e[m\])")'$'\n\[\e[35m\]»\[\e[m\] '

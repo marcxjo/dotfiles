@@ -1,6 +1,0 @@
-#!/bin/sh
-
-for script in $HOME/.config/startup/scripts/*; do
-  . $script
-done
-
