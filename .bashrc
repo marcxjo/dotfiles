@@ -7,27 +7,11 @@
 # Disable cd guard - we _want_ to fail if the proj dir doesn't exist
 # shellcheck disable=SC2164
 
-# User specific aliases and functions
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
 run() {
   setsid -f -- "$@" 0<&- &>/dev/null
-}
-
-join_array() {
-  local -r _delimiter="$1"
-  local -ra _arr=("${@:2}")
-
-  (IFS="$_delimiter"; echo "${_arr[*]}")
-}
-
-build_path() {
-  local -ar _segments=("$@")
-
-  # HACK - overwriting a global variable with a local one
-  # Any cleaner way I can find to do this is also unnecessarily verbose
-  join_array '/' "${_segments[@]}"
 }
 
 proj() {
@@ -46,6 +30,37 @@ proj() {
 
 pcache() {
   git profile projs workspace default cache update
+}
+
+gethub() {
+  [[ ! -r $HOME/.local/lib/git-pclone/common.sh ]] &&
+    echo "Unable to source git-pclone library functions" &&
+    return 1
+
+  . "${HOME}/.local/lib/git-pclone/common.sh"
+
+  # This duplicates the offset logic in the `main` function of `git-pclone`
+  # almost verbatim, but I'd rather do this than try to extract weirdly specific
+  # args partitioning logic
+  local -ri _opts_separator_index=$(get_index '--' "$@")
+  local -ri _opts_offset=$((_opts_separator_index + 1))
+
+  local -a _git_clone_opts
+
+  if [[ $_opts_separator_index -gt 0 ]]; then
+    _git_clone_opts=("${@:1:${_opts_offset}}")
+  fi
+
+  shift $_opts_offset
+
+  [[ -r ${HOME}/.config/gethub/providers ]] &&
+    . "${HOME}/.config/gethub/providers"
+
+  local -r _repo_host="${GIT_PROVIDERS[$1]:-$1}"
+  local -ra _repo_path_segments=("${@:2}")
+  local -r _repo_path_root=$(git profile projs workspace root get)
+
+  GIT_PCLONE_SRC_ROOT="$_repo_path_root" git profile projs workspace pclone "${_git_clone_opts[@]}" "${_repo_host}" "${_repo_path_segments[@]}"
 }
 
 # Source git prompt definition
