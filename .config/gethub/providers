@@ -1,4 +1,4 @@
-declare -A _GIT_PROVIDERS=(
+declare -A GIT_PROVIDERS=(
 ['github.com']='github.com'
 ['github']='github.com'
 ['-g']='github.com'

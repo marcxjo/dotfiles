@@ -7,7 +7,7 @@ _gethub() {
 
   case $COMP_CWORD in
   0)
-    return
+    :
     ;;
   1)
     [[ -r ${HOME}/.config/gethub/providers ]] &&
@@ -27,7 +27,7 @@ _gethub() {
       return
     fi
 
-    [[ -f $HOME/.config/gethub/providers ]] &&
+    [[ -r $HOME/.config/gethub/providers ]] &&
       . "${HOME}/.config/gethub/providers"
 
     __gitcomp "${!GIT_PROVIDERS[*]}"
