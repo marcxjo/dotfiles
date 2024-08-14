@@ -1,0 +1,38 @@
+#!/bin/bash
+
+. /usr/share/bash-completion/completions/git
+
+_gethub() {
+  local -r cur="${COMP_WORDS[COMP_CWORD]}"
+
+  case $COMP_CWORD in
+  0)
+    return
+    ;;
+  1)
+    [[ -r ${HOME}/.config/gethub/providers ]] &&
+      . "${HOME}/.config/gethub/providers"
+
+    __gitcomp_builtin clone "${!GIT_PROVIDERS[*]}"
+    ;;
+  *)
+    local -ri PREV_COMP_CWORD=$((COMP_CWORD - 1))
+    local -r _prev="${COMP_WORDS[PREV_COMP_CWORD]}"
+
+    if [[ "$_prev" != '--' ]]; then
+      # Haven't found a cleaner way to add compreply words than to unquote the
+      # appended values
+      # shellcheck disable=SC2207
+      COMPREPLY+=($(compgen -o bashdefault -o default "$cur"))
+      return
+    fi
+
+    [[ -f $HOME/.config/gethub/providers ]] &&
+      . "${HOME}/.config/gethub/providers"
+
+    __gitcomp "${!GIT_PROVIDERS[*]}"
+    ;;
+  esac
+}
+
+complete -F _gethub gethub
