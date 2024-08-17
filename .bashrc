@@ -63,6 +63,15 @@ gethub() {
   GIT_PCLONE_SRC_ROOT="$_repo_path_root" git profile projs workspace pclone "${_git_clone_opts[@]}" "${_repo_host}" "${_repo_path_segments[@]}"
 }
 
+pw() {
+  local -r _config_root="${PW_CONFIG_ROOT:-${HOME}/.config/pass}"
+  local -r _pw_store_dir="${_config_root}/${1}"
+
+  shift 1
+
+  env PASSWORD_STORE_DIR="${_pw_store_dir}" pass "${@}"
+}
+
 # Source git prompt definition
 [ -r '/usr/share/git/completion/git-prompt.sh' ] && . '/usr/share/git/completion/git-prompt.sh'
 
