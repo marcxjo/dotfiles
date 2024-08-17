@@ -1,7 +1,5 @@
 # Basic UX config for bspwm
 
-bspc config split_ratio              0.50
-
 # Wasteful, but attractive.
 bspc config borderless_monocle      false
 bspc config gapless_monocle         false

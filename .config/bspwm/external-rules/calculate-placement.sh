@@ -21,17 +21,23 @@ while getopts :d opt; do
 done
 
 case $_window_name in
+'firefox')
+  _w=1168
+  _h=1352
+  _x=2240
+  _y=56
+  ;;
 'mpv')
   _w=800
   _h=640
-  _x=488
-  _y=80
+  _x=2152
+  _y=752
   ;;
 'omnibox')
   _w=800
   _h=640
-  _x=488
-  _y=752
+  _x=2152
+  _y=80
   ;;
 *)
   exit 1
