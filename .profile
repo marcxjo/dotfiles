@@ -1,16 +1,16 @@
 # Append custom paths
-prepend_path() {
+append_path() {
   case ":$PATH:" in
   *:"$1":*) ;;
   *)
-    PATH="${1}${PATH:+:$PATH}"
+    PATH="${PATH:+$PATH:}${1}"
     ;;
   esac
 }
 
 # Add support for user paths to user-installed commands
-prepend_path "${HOME}/bin"
-prepend_path "${HOME}/.local/bin"
+append_path "${HOME}/.local/bin"
+append_path "${HOME}/bin"
 
 unset prepend_path
 
