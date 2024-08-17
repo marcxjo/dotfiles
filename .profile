@@ -25,10 +25,8 @@ if command -v firefox &>/dev/null; then
   export BROWSER=firefox
 fi
 
-[[ -f $HOME/.bashrc ]] && . "$HOME/.bashrc"
-
 if [[ -d $HOME/.config/profile.d ]]; then
-  for profile in $HOME/.config/profile.d/*.sh; do
+  for profile in "$HOME/.config/profile.d"/*.sh; do
     # Shellcheck can't verify `source` on variable filenames
     # shellcheck disable=SC1090
     [[ -r "$profile" ]] && . "$profile"
