@@ -54,6 +54,9 @@ fi
 readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}" 'ssh_keys')"
 
 for key in "${ssh_keys[@]}"; do
+  # NOTE: we use `readarray` to build `ssh_keys` from a multi-line file
+  # `domain_components` is read in from a list of space-delimited words, hence
+  # the need for `read`
   read -a domain_components <<<"$(get_key_domain "$key")"
   fingerprint=$(get_ssh_key_fingerprint "${KEY_DIR}/${key}")
 
