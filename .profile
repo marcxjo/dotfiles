@@ -29,6 +29,8 @@ fi
 
 if [[ -d $HOME/.config/profile.d ]]; then
   for profile in $HOME/.config/profile.d/*.sh; do
+    # Shellcheck can't verify `source` on variable filenames
+    # shellcheck disable=SC1090
     [[ -r "$profile" ]] && . "$profile"
   done
 fi
