@@ -5,15 +5,15 @@ KEY_DIR=${KEY_DIR:-${HOME}/.ssh}
 # Functions ####################################################################
 
 get_key_domain() {
-  # Get the key's associated host/alias and username as a 2-array
-  local keyname=${1}
+  # Get the key's associated hostname/alias and username as a 2-array
+  local -r keyname="$1"
 
   echo "${keyname//__/ }"
 }
 
 ls_ssh_keys() {
   # List all key basenames (i.e., non-public keynames)
-  local dir=${1}
+  local -r dir="$1"
 
   # List all the public keys since we can key off of their filenames to
   # locate each respective private key
@@ -22,14 +22,14 @@ ls_ssh_keys() {
 
 get_ssh_key_fingerprint() {
   # Get an SSH key's fingerprint - must pass the full path string
-  keypath=${1}
+  keypath="$1"
 
   ssh-keygen -lf "${keypath}" | awk '{print $2}'
 }
 
 check_key_loaded() {
   # Check by fingerprint whether a key is already registered with the SSH agent
-  local fingerprint=${1}
+  local fingerprint="$1"
 
   ssh-add -l | grep -q "${fingerprint}"
 }
@@ -51,8 +51,10 @@ if ! command -v pw &>/dev/null; then
   return 1
 fi
 
-for key in $(ls_ssh_keys "${KEY_DIR}"); do
-  domain_components=($(get_key_domain $key))
+readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}" 'ssh_keys')"
+
+for key in "${ssh_keys[@]}"; do
+  read -a domain_components <<<"$(get_key_domain "$key")"
   fingerprint=$(get_ssh_key_fingerprint "${KEY_DIR}/${key}")
 
   if check_key_loaded "${fingerprint}"; then

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for script in "$HOME/.local/share/startup.d/scripts/"*; do
+for script in "$HOME/.local/share/startup.d/scripts"/*.sh; do
   # Suppress shellcheck warning re:sourcing on a variable filename
   # shellcheck disable=SC2086
   . $script
