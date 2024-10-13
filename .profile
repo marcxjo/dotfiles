@@ -32,3 +32,7 @@ if [[ -d $HOME/.config/profile.d ]]; then
     [[ -r "$profile" ]] && . "$profile"
   done
 fi
+
+# I don't want this on either way, but historically, when closing a solution in Rider,
+# my CPU goes absolutely nuts when this is _is_ toggled on
+export DOTNET_TELEMETRY_OPTOUT=1
