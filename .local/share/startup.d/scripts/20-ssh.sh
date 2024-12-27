@@ -37,7 +37,7 @@ check_key_loaded() {
 # Startup ######################################################################
 
 if [ ! -S "${HOME}/.ssh/ssh_auth_sock" ]; then
-  eval "$(ssh-agent -s)"
+  eval "$(DISPLAY="${DISPLAY:-:0}" ssh-agent -s)"
   ln -sf "$SSH_AUTH_SOCK" "${HOME}/.ssh/ssh_auth_sock"
 fi
 
