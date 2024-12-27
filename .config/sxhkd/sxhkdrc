@@ -7,7 +7,13 @@ super + Return
 	tym
 
 super + ctrl + Return
-        stulto -r omnibox
+        tym --role=omnibox
+
+super + t
+        tabc create $(bspc query -N -n .focused)
+
+super + d
+        tabc detach $(bspc query -N -n .focused)
 
 # program launcher
 alt + F2
@@ -171,8 +177,14 @@ XF86AudioPlay
 	playerctl play-pause
 
 #
-# custom placement
+# panel
+#
+super + p
+        panel -r
+
+#
+# mouse clicks
 #
 
-super + shift + p
-	finch-window
+~button3
+	/home/marcxjo/.config/bspwm/utils/open-desktop-menu
