@@ -6,6 +6,8 @@ is_not_running() {
   which $_process &> /dev/null && ! pgrep -x $_process &> /dev/null
 }
 
+PATH="${PATH}:${HOME}/.config/bspwm/bin"
+
 # Bespoke script to handle monitor config
 set-monitor-layout
 

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+get_wid_under_cursor() {
+  eval "$(xdotool getmouselocation --shell | grep WINDOW)"
+
+  echo "$WINDOW"
+}
+
+get_root_wid() {
+  xwininfo -root -int | awk 'NR==2 {print $4}'
+}
+
+open_menu() {
+  jgmenu_run
+}
+
+curs_wid="$(get_wid_under_cursor)"
+root_wid="$(get_root_wid)"
+
+if [ "$curs_wid" = "$root_wid" ]; then
+  open_menu
+fi
