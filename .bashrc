@@ -114,3 +114,8 @@ export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__g
 # Don't bail if they break
 [ -r "$HOME/.local/share/startup.d/startuprc" ] && . "$HOME/.local/share/startup.d/startuprc"
 
+[ -r "$HOME/.LESS_TERMCAP" ] && . "$HOME/.LESS_TERMCAP"
+
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook bash)"
+fi
