@@ -31,5 +31,3 @@ is_not_running dunst && ddunst &
 is_not_running xscreensaver && xscreensaver -no-splash &
 
 is_not_running pulseaudio && pulseadio --start
-
-is_not_running jgmenu && jgmenu --at-pointer &
