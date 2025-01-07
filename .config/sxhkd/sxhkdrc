@@ -15,6 +15,14 @@ super + t
 super + d
         tabc detach $(bspc query -N -n .focused)
 
+# lock screen
+ctrl + alt + l
+	xsecurelock
+
+# logout dialog
+ctrl + alt + Delete
+	rofi -show p -modi p:'rofi-power-menu' -lines 5 -threads 0 -columns 1 -width 10% -location 0
+
 # program launcher
 alt + F2
 	rofi -show drun -lines 5 -threads 0 -columns 1 -width 10% -location 0
@@ -99,7 +107,7 @@ super + {h,j,k,l}
 	bspc node -f {west,south,north,east}.local
 
 # focus the next/previous desktop in the current monitor
-alt + bracket{left,right}
+alt + {h,l}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
