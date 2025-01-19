@@ -36,3 +36,6 @@ fi
 # I don't want this on either way, but historically, when closing a solution in Rider,
 # my CPU goes absolutely nuts when this is _is_ toggled on
 export DOTNET_TELEMETRY_OPTOUT=1
+
+# Make FZF look snazzy
+export FZF_DEFAULT_OPTS='--border=rounded --layout=reverse --preview-window=down,75%,noinfo,wrap'
