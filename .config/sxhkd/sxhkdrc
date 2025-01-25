@@ -27,7 +27,11 @@ ctrl + alt + Delete
 alt + F2
 	rofi -show drun -lines 5 -threads 0 -columns 1 -width 10% -location 0
 
-# program launcher
+# icon selector
+super + i
+	rofi -show nerdy -lines 5 -threads 0 -columns 1 -width 10% -location 0
+
+# window selector
 alt + Tab
 	rofi -show window -lines 5 -threads 0 -columns 1 -width 10% -location 0
 
