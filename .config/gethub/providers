@@ -1,6 +1,8 @@
 declare -A GIT_PROVIDERS=(
 ['github.com']='github.com'
 ['github']='github.com'
+['gitlab.com']='gitlab.com'
+['gitlab']='gitlab.com'
 ['-g']='github.com'
 ['bitbucket.org']='bitbucket.org'
 ['bitbucket']='bitbucket.org'
