@@ -31,3 +31,6 @@ is_not_running dunst && ddunst &
 is_not_running xscreensaver && xscreensaver -no-splash &
 
 is_not_running pulseaudio && pulseadio --start
+
+command -v lock-key &&
+  lock-key num-lock on
