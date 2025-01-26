@@ -1,0 +1,49 @@
+#!/bin/bash
+
+declare BG_PIC=''
+declare -i STRETCH
+declare -i ZOOM=1
+declare    BG_DIR="${HOME}/.local/share/backgrounds"
+
+select_interactive() {
+  local -r dir="$1"
+
+  nsxiv -rqo "$dir"
+}
+
+while getopts :d:ip:rst:z o; do
+  case "${o}" in
+  d)
+    BG_DIR="${OPTARG}"
+    ;;
+  i)
+    BG_PIC="$(select_interactive $BG_DIR)"
+    ;;
+  p)
+    BG_PIC="${OPTARG}"
+    ;;
+  r)
+    setroot --restore
+    exit 0
+    ;;
+  s)
+    STRETCH=1
+    unset ZOOM
+    ;;
+  t)
+    BG_PIC="$(cat "${HOME}/.local/share/themes/${OPTARG}/wal")"
+    ;;
+  z)
+    unset STRETCH
+    ZOOM=1
+    ;;
+  *)
+    echo "Not a valid option"
+    exit 1
+    ;;
+  esac
+done
+
+xwallpaper ${STRETCH:+--stretch} ${ZOOM:+--zoom} "$BG_PIC"
+
+exit 0
