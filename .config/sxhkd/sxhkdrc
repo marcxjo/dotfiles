@@ -7,13 +7,13 @@ super + Return
 	tym
 
 super + ctrl + Return
-        tym --role=omnibox
+	tym --role=omnibox
 
 super + t
-        tabc create $(bspc query -N -n .focused)
+	tabc create $(bspc query -N -n .focused)
 
 super + d
-        tabc detach $(bspc query -N -n .focused)
+	tabc detach $(bspc query -N -n .focused)
 
 # lock screen
 ctrl + alt + l
@@ -72,7 +72,7 @@ super + g
 
 # balance the desktop (see https://github.com/Chrysostomus/bspwm-scripts for the referenced script)
 super + b
-	bspc node @/ -B
+	balance-layout
 
 # insert a receptacle node
 super + i
@@ -192,11 +192,17 @@ XF86AudioPlay
 # panel
 #
 super + p
-        panel -r
+	panel -r
 
 #
 # mouse clicks
 #
 
 ~button3
-	/home/marcxjo/.config/bspwm/utils/open-desktop-menu
+	open-desktop-menu
+
+~button4
+	switch-desktop prev
+
+~button5
+	switch-desktop next

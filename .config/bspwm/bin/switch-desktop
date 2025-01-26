@@ -12,13 +12,15 @@ get_root_wid() {
   xwininfo -root -int | awk 'NR==2 {print $4}'
 }
 
-open_menu() {
-  jgmenu_run
-}
-
 curs_wid="$(get_wid_under_cursor)"
 root_wid="$(get_root_wid)"
 
-if [ "$curs_wid" = "$root_wid" ]; then
-  open_menu
+declare -r dt_direction="$1"
+
+if [ "$curs_wid" != "$root_wid" ]; then
+  exit 0
+fi
+
+if [[ " prev next " =~ " ${dt_direction} " ]]; then
+  bspc desktop "$dt_direction" -f
 fi
