@@ -1,0 +1,45 @@
+#!/bin/bash
+
+PANELS=( top bottom )
+
+get_panel_pid() {
+  ps ax | awk -v pname="$1" '$5=="polybar" && $NF==pname {print $1; exit}'
+}
+
+start_panel() {
+  if [ -z "$(get_panel_pid $1)" ]; then
+    polybar "$1" &
+  fi
+}
+
+stop_panel() {
+  if [ -n "$(get_panel_pid $1)" ]; then
+    kill "$(get_panel_pid $1)"
+  fi
+}
+
+case "$1" in
+  -s|--start)
+    for x in ${PANELS[@]}; do
+      start_panel $x
+    done
+    ;;
+  -k|--kill|--stop)
+    for x in ${PANELS[@]}; do
+      stop_panel $x
+    done
+    ;;
+  -r|--reload|--refresh)
+    for x in ${PANELS[@]}; do
+      stop_panel $x
+    done
+    sleep "0.5s"
+    for x in ${PANELS[@]}; do
+      start_panel $x
+    done
+    ;;
+esac
+
+sleep "1s"
+
+exit 0
