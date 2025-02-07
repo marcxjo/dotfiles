@@ -76,6 +76,16 @@ tym.set_keymaps({
 		tym.reload()
 		tym.notify("Reset and reloaded configuration")
 	end,
+	["<Ctrl><Shift>l"] = function()
+		local old_bg = tym.get("color_background")
+		local old_fg = tym.get("color_foreground")
+
+		tym.set("color_background", old_fg)
+		tym.set("color_window_background", old_fg)
+		tym.set("color_foreground", old_bg)
+
+		tym.notify("Toggled light/dark mode")
+	end,
 	["<Ctrl><Shift>t"] = function()
 		local bg = tym.get("color_background")
 
