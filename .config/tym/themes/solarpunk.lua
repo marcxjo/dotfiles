@@ -1,5 +1,5 @@
-local fg = "#FBFADA"
-local bg = "rgba(14, 31, 19, 0.95)"
+local fg = "#fbfada"
+local bg = "#0e1f13"
 
 return {
 	color_foreground = fg,
@@ -8,18 +8,18 @@ return {
 
 	color_0 = "#445630",
 	color_1 = "#316749",
-	color_2 = "#50724F",
-	color_3 = "#6A7752",
+	color_2 = "#50724f",
+	color_3 = "#6a7752",
 	color_4 = "#967547",
-	color_5 = "#2F9465",
-	color_6 = "#6D8B65",
-	color_7 = "#8E956D",
-	color_8 = "#A39E6C",
-	color_9 = "#D5B16C",
-	color_10 = "#7B7983",
-	color_11 = "#65A896",
-	color_12 = "#A8B18A",
-	color_13 = "#CEB88A",
-	color_14 = "#B0CA9E",
-	color_15 = "#E7D9A1",
+	color_5 = "#2f9465",
+	color_6 = "#6d8b65",
+	color_7 = "#8e956d",
+	color_8 = "#a39e6c",
+	color_9 = "#d5b16c",
+	color_10 = "#7b7983",
+	color_11 = "#65a896",
+	color_12 = "#a8b18a",
+	color_13 = "#ceb88a",
+	color_14 = "#b0ca9e",
+	color_15 = "#e7d9a1",
 }

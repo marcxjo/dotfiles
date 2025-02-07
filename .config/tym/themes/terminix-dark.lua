@@ -1,5 +1,5 @@
 local fg = "#cfd6d9"
-local bg = "rgba(9, 17, 22, 0.95)"
+local bg = "#091116"
 
 return {
 	color_foreground = fg,
