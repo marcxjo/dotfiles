@@ -69,12 +69,12 @@ tym.set_config({
 tym.set_keymaps({
 	["<Ctrl><Shift>r"] = function()
 		tym.reload()
-		tym.notify("Reloaded")
+		tym.notify("Reloaded configuration")
 	end,
 	["<Ctrl><Alt><Shift>r"] = function()
 		tym.reset_config()
 		tym.reload()
-		tym.notify("Reset and Reloaded")
+		tym.notify("Reset and reloaded configuration")
 	end,
 	["<Ctrl><Shift>t"] = function()
 		local bg = tym.get("color_background")
@@ -84,15 +84,16 @@ tym.set_keymaps({
 
 			tym.set("color_background", new_bg)
 			tym.set("color_window_background", new_bg)
-			return
-		end
-
-		if is_hex(bg) then
+		elseif is_hex(bg) then
 			local new_bg = to_rgba(bg, 0.95)
 
 			tym.set("color_background", new_bg)
 			tym.set("color_window_background", new_bg)
+		else
+			return
 		end
+
+		tym.notify("Toggled transparency")
 	end,
 	["<Ctrl>equal"] = function()
 		tym.set("scale", 100)
