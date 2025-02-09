@@ -1,9 +1,15 @@
 #!/bin/bash
 
-declare BG_PIC=''
 declare -i STRETCH
 declare -i ZOOM=1
-declare    BG_DIR="${HOME}/.local/share/backgrounds"
+declare BG_DIR="${HOME}/.local/share/backgrounds"
+
+declare CACHE_DIR="${HOME}/.cache/bspwm"
+declare CACHE_FILE="${CACHE_DIR}/background"
+declare -i CACHE_BG=0
+
+declare BG_PIC=''
+declare -a CMD
 
 select_interactive() {
   local -r dir="$1"
@@ -11,13 +17,40 @@ select_interactive() {
   nsxiv -rqo "$dir"
 }
 
-while getopts :d:ip:rst:z o; do
+write_cache_file() {
+  local cmd="$*"
+
+  if [[ ! -d "$CACHE_DIR" ]]; then
+    mkdir -p "$CACHE_DIR"
+  fi
+
+  echo "$cmd" > "$CACHE_FILE"
+}
+
+source_cache_file() {
+  if [ ! -r "$CACHE_FILE" ]; then
+    return 1
+  fi
+
+  . "$CACHE_FILE"
+}
+
+while getopts :cd:ilp:rst:z o; do
   case "${o}" in
+  c)
+    CACHE_BG=1
+    ;;
   d)
     BG_DIR="${OPTARG}"
     ;;
   i)
     BG_PIC="$(select_interactive $BG_DIR)"
+    ;;
+  l)
+    source_cache_file && exit 0
+
+    echo "Cannot source cache file"
+    exit 1
     ;;
   p)
     BG_PIC="${OPTARG}"
@@ -44,6 +77,10 @@ while getopts :d:ip:rst:z o; do
   esac
 done
 
-xwallpaper ${STRETCH:+--stretch} ${ZOOM:+--zoom} "$BG_PIC"
+CMD=('xwallpaper' "${STRETCH:+--stretch}" "${ZOOM:+--zoom}" \'"${BG_PIC}"\')
+
+[ $CACHE_BG = 1 ] && write_cache_file "${CMD[@]}"
+
+eval "${CMD[@]}"
 
 exit 0

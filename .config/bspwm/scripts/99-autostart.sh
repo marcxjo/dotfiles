@@ -34,3 +34,6 @@ is_not_running pulseaudio && pulseadio --start
 
 command -v lock-key &&
   lock-key num-lock on
+
+command -v set-background &&
+  set-background -l
