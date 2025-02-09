@@ -27,6 +27,9 @@ ctrl + alt + Delete
 alt + F2
 	rofi -show drun -lines 5 -threads 0 -columns 1 -width 10% -location 0
 
+super + r
+	rofi -show drun -lines 5 -threads 0 -columns 1 -width 10% -location 0
+
 # icon selector
 super + e
 	rofi -show emoji -lines 5 -threads 0 -columns 1 -width 10% -location 0
