@@ -37,14 +37,16 @@ local function to_hex(rgba_color)
 	local matches = {}
 	local r, g, b
 	for match in string.gmatch(rgba_color, "%d+,") do
-		while i <= 3 do
-			local digits = string.gsub(match, ",", "")
-			digits = string.format("%02x", tonumber(digits))
-
-			matches[i] = digits
-
-			i = i + 1
+		if i > 3 then
+			break
 		end
+
+		local digits = string.gsub(match, ",", "")
+		digits = string.format("%02x", tonumber(digits))
+
+		matches[i] = digits
+
+		i = i + 1
 	end
 
 	r = matches[1]
@@ -55,7 +57,7 @@ local function to_hex(rgba_color)
 		return rgba_color
 	end
 
-	return "#" .. string.gsub(r, ",", "") .. string.gsub(r, ",", "") .. string.gsub(r, ",", "")
+	return "#" .. string.gsub(r, ",", "") .. string.gsub(g, ",", "") .. string.gsub(b, ",", "")
 end
 
 -- set by table
