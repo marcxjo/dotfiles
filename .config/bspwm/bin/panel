@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PANELS=( top )
+PANELS=( top bottom )
 
 get_panel_pid() {
   ps ax | awk -v pname="$1" '$5=="polybar" && $NF==pname {print $1; exit}'
