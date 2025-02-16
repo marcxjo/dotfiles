@@ -39,3 +39,5 @@ export DOTNET_TELEMETRY_OPTOUT=1
 
 # Make FZF look snazzy
 export FZF_DEFAULT_OPTS='--border=rounded --layout=reverse --preview-window=down,75%,noinfo,wrap'
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
