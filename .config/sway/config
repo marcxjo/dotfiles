@@ -261,7 +261,7 @@ bar {
         background #121212
         #background #00000000
         focused_workspace #121212 #18b218 #232627
-        active_workspace #121212 $color6 #232627
+        active_workspace #121212 $color_6 #232627
         inactive_workspace #121212 #7f8c8d #232627
     }
 }
@@ -276,10 +276,10 @@ hide_edge_borders none
 #
 # Colors
 #
-# class                   border   backgr.  text     indicator  child_border
-  client.focused          $colorbg $color8  $colorfg $color1    $colorbg
-  client.focused_inactive $colorbg $color8  $colorfg $color1    $colorbg
-  client.unfocused        $colorbg $colorbg $colorfg $color1    $colorbg
+# class                   border    backgr.   text      indicator   child_border
+  client.focused          $color_bg $color_8  $color_fg $color_1    $color_bg
+  client.focused_inactive $color_bg $color_8  $color_fg $color_1    $color_bg
+  client.unfocused        $color_bg $color_bg $color_fg $color_1    $color_bg
   client.urgent           #2f343a  #900000  #ffffff  #900000    #900000 
 
 gaps inner 20
