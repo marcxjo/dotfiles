@@ -29,8 +29,8 @@ output * bg $wallpaper fill
 # TODO: modularize this config so that outputs and other machine-spacific settings
 # are selectively applied
 #
-output HDMI-A-1 resolution 1920x1080 position    0,0
-output eDP-1    resolution 1920x1080 position 1920,0
+output eDP-1    resolution 1920x1080 position    0,0
+output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 #
 ### Input configuration
@@ -78,8 +78,7 @@ bindsym $mod+p exec kill -USR2 $(pgrep -x waybar)
 bindsym $mod+Alt+Escape exec swaynag -t warning -m 'Exit session?' -b 'Logout' 'swaymsg exit' -b 'Shut down' 'poweroff' -b 'Reboot' 'reboot'
 bindsym Control+Mod1+Backspace exec swaymsg exit
 
-# mpv Workspace - Media player
-assign [app_id="mpv"] 6
+assign [app_id="mpv"] 1
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -142,16 +141,16 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 workspace {
-  1 output HDMI-A-1
-  2 output HDMI-A-1
-  3 output HDMI-A-1
-  4 output HDMI-A-1
-  5 output HDMI-A-1
-  6 output eDP-1
-  7 output eDP-1
-  8 output eDP-1
-  9 output eDP-1
-  10 output eDP-1
+  1 output eDP-1
+  2 output eDP-1
+  3 output eDP-1
+  4 output eDP-1
+  5 output eDP-1
+  6 output HDMI-A-1
+  7 output HDMI-A-1
+  8 output HDMI-A-1
+  9 output HDMI-A-1
+  10 output HDMI-A-1
 }
 
 #
