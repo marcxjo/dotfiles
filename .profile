@@ -12,6 +12,9 @@ append_path() {
 append_path "${HOME}/.local/bin"
 append_path "${HOME}/bin"
 
+[[ -d $HOME/.local/opt/JetBrains/Toolbox/scripts ]] &&
+  append_path "${HOME}/.local/opt/JetBrains/Toolbox/scripts"
+
 unset prepend_path
 
 export PATH
