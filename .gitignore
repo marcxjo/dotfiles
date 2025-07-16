@@ -1,3 +1,10 @@
+# Color scheme symlinks
 colors.conf
+colors.css
 colors.ini
 theme.lua
+
+# Symlinks for machine-specific configs
+# (E.g., monitors, peripherals, etc.)
+inputs.conf
+outputs.conf

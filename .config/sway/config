@@ -1,3 +1,5 @@
+include /etc/sway/config.d/*
+
 include colors.conf
 
 #
@@ -14,35 +16,19 @@ set $menu wofi --show drun
 set $wallpaper ~/.wallpaper
 set $lock swaylock -f -i $wallpaper -s fill
 
-# Notification daemon
-exec mako
-# Panel
-exec waybar
-
 #
 ### Output configuration
 #
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $wallpaper fill
-#
-# TODO: modularize this config so that outputs and other machine-spacific settings
-# are selectively applied
-#
-output eDP-1    resolution 1920x1080 position    0,0
-output HDMI-A-1 resolution 1920x1080 position 1920,0
+include outputs.conf
 
 #
 ### Input configuration
 #
 
-input "1133:16502:Logitech_K540/K545" {
-  xkb_layout  "us,us,epo"
-  xkb_model   "pc105"
-  xkb_variant ",altgr-intl,"
-  xkb_options "grp:shifts_toggle"
-  xkb_numlock "enabled"
-}
+include inputs.conf
 
 #
 ### Key bindings
@@ -75,10 +61,8 @@ bindsym $mod+Escape reload
 bindsym $mod+p exec kill -USR2 $(pgrep -x waybar)
 
 # exit sway (logs you out of your Wayland session)
-bindsym $mod+Alt+Escape exec swaynag -t warning -m 'Exit session?' -b 'Logout' 'swaymsg exit' -b 'Shut down' 'poweroff' -b 'Reboot' 'reboot'
-bindsym Control+Mod1+Backspace exec swaymsg exit
-
-assign [app_id="mpv"] 1
+bindsym Ctrl+Alt+Backspace exec swaynag -t warning -m 'Exit session?' -b 'Logout' 'swaymsg exit' -b 'Shut down' 'poweroff' -b 'Reboot' 'reboot'
+bindsym $mod+Alt+Escape exec swaymsg exit
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -96,7 +80,7 @@ for_window [app_id="lutris"] floating enable
     
 bindsym $mod+F12 exec shutdown now
 bindsym Ctrl+Alt+L exec $lock
-bindsym Control+Mod1+Delete exec ksysguard
+bindsym Ctrl+Mod1+Delete exec ksysguard
 # bindsym $mod+F1 exec dolphin
 # bindsym $mod+F2 exec cantata
 # bindsym $mod+F3 exec mpv --player-operation-mode=pseudo-gui
@@ -108,7 +92,7 @@ bindsym Control+Mod1+Delete exec ksysguard
 # bindsym $mod+shift+F4 exec firefox --private-window
 bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/Screenshot_$(date +'%Y-%m-%d-%H%M%S.png')
 bindsym Alt+Print exec grim $(xdg-user-dir PICTURES)/Screenshot_$(date +'%Y-%m-%d-%H%M%S.png')
-bindsym Control+Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshot_$(date +'%Y-%m-%d-%H%M%S.png')
+bindsym Ctrl+Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshot_$(date +'%Y-%m-%d-%H%M%S.png')
 bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+tab workspace back_and_forth
 
@@ -139,46 +123,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-workspace {
-  1 output eDP-1
-  2 output eDP-1
-  3 output eDP-1
-  4 output eDP-1
-  5 output eDP-1
-  6 output HDMI-A-1
-  7 output HDMI-A-1
-  8 output HDMI-A-1
-  9 output HDMI-A-1
-  10 output HDMI-A-1
-}
-
-#
-# Workspaces:
-#
-# switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-# Note: workspaces can have any name you want, not just numbers.
 
 #
 # Layout stuff:
@@ -283,5 +227,4 @@ hide_edge_borders none
 
 gaps inner 20
 
-include /etc/sway/config.d/*
-
+include autostart.conf
