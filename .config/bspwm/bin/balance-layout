@@ -1,6 +1,0 @@
-#!/bin/bash
-
-bspc node @/ -r 0.68
-
-bspc node @/1/ -B
-bspc node @/2/ -B

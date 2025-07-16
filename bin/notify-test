@@ -1,7 +1,0 @@
-#!/bin/bash
-
-dunstify -u 0 "ALL SYSTEMS GO" "Steady as she goes, Number One."
-dunstify -u 1 "YELLOW ALERT" "Open a channel and scan all subspace frequencies."
-dunstify -u 2 "RED ALERT" "SHIELDS UP, ARM PHOTON TORPEDOES."
-
-exit 0
