@@ -1,0 +1,53 @@
+#!/bin/bash
+
+declare -r CONFIG_DIR="${HOME}/.config/tym"
+declare -r THEMES_DIR="${CONFIG_DIR}/themes"
+
+declare -r CURRENT_THEME_FILE="${CONFIG_DIR}/theme.lua"
+
+declare THEME
+
+list_tym_themes() {
+  # shellcheck disable=SC2012
+  # Theme files _should_ have alphanum-only names
+  ls "${THEMES_DIR}" | sed 's/.lua//'
+}
+
+build_theme_path() {
+  local -r _theme_name="$1"
+
+  echo "${THEMES_DIR}/${_theme_name}.lua"
+}
+
+set_tym_theme() {
+  local -r _theme="$1"
+
+  if [[ ! -r "${_theme}" ]]; then
+    echo "Theme does not exist!"
+    exit 1
+  fi
+
+  ln -sfn "$_theme" "$CURRENT_THEME_FILE"
+}
+
+while getopts :ls: o; do
+  case "$o" in
+  l)
+    list_tym_themes
+    exit 0
+    ;;
+  s)
+    if [[ ! -L "${CURRENT_THEME_FILE}" ]]; then
+      echo "Theme file is not a symlink!"
+      exit 1
+    fi
+
+    THEME="$(build_theme_path "$OPTARG")"
+    set_tym_theme "$THEME"
+    exit 0
+    ;;
+  *)
+    exit 0
+    ;;
+  esac
+done
