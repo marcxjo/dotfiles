@@ -71,12 +71,10 @@ tym.set_config({
 tym.set_keymaps({
 	["<Ctrl><Shift>r"] = function()
 		tym.reload()
-		tym.notify("Reloaded configuration")
 	end,
 	["<Ctrl><Alt><Shift>r"] = function()
 		tym.reset_config()
 		tym.reload()
-		tym.notify("Reset and reloaded configuration")
 	end,
 	["<Ctrl><Shift>l"] = function()
 		local old_bg = tym.get("color_background")
@@ -85,8 +83,6 @@ tym.set_keymaps({
 		tym.set("color_background", old_fg)
 		tym.set("color_window_background", old_fg)
 		tym.set("color_foreground", old_bg)
-
-		tym.notify("Toggled light/dark mode")
 	end,
 	["<Ctrl><Shift>t"] = function()
 		local bg = tym.get("color_background")
@@ -104,22 +100,17 @@ tym.set_keymaps({
 		else
 			return
 		end
-
-		tym.notify("Toggled transparency")
 	end,
 	["<Ctrl>equal"] = function()
 		tym.set("scale", 100)
-		tym.notify("Reset font scale")
 	end,
 	["<Ctrl><Shift>plus"] = function()
 		local s = tym.get("scale") + 10
 		tym.set("scale", s)
-		tym.notify("Scale:" .. s)
 	end,
 	["<Ctrl>minus"] = function()
 		local s = tym.get("scale") - 10
 		tym.set("scale", s)
-		tym.notify("Scale:" .. s)
 	end,
 })
 
