@@ -112,9 +112,9 @@
         "numlock": true,
         "capslock": true,
         "format": {
-            "numlock": "num {icon}",
-            "capslock": "cap {icon}",
-            "scrolllock": "scr {icon}"
+            "numlock": "{icon} num",
+            "capslock": "{icon} cap",
+            "scrolllock": "{icon} scr"
         },
         "format-icons": {
             "locked": "",

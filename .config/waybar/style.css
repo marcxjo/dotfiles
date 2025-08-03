@@ -82,6 +82,10 @@ tooltip {
     color: #1d2021;
 }
 
+#keyboard-state label {
+  padding: 2px;
+}
+
 #cpu.critical,
 #memory.critical {
     background-color: #c9af82;
