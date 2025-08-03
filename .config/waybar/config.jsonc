@@ -126,6 +126,6 @@
     "backlight": {
 	"device": "intel_backlight",
         "format": " {percent}%",
-	"scroll-step": 1.0
+	"scroll-step": 5.0
     }
 }
