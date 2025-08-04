@@ -44,6 +44,7 @@ bindsym $mod+w kill
 
 # start your launcher
 bindsym $mod+r exec $menu
+bindsym $mod+e exec wofi-emoji
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -225,6 +226,6 @@ hide_edge_borders none
   client.unfocused        $color_bg $color_bg $color_fg $color_1    $color_bg
   client.urgent           #2f343a  #900000  #ffffff  #900000    #900000 
 
-gaps inner 20
+gaps inner 24
 
 include autostart.conf
