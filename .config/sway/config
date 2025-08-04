@@ -190,7 +190,7 @@ bindsym $mod+n mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    mode hide
+    mode invisible
     position bottom
     hidden_state hide
     modifier $mod

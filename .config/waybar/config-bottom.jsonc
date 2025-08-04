@@ -1,0 +1,80 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "position": "bottom",
+    "height": 0,
+
+    "margin-top": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+
+    "modules-left": [
+        "mpris"
+    ],
+
+    "modules-center": [
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+	"backlight"
+    ],
+
+    "mpris": {
+	"format": "{player_icon} [{player}] {title}",
+	"format-paused": "{status_icon} <i>[{player}] {title}</i>",
+	"player-icons": {
+		"default": "<span foreground=\"#89e234\">▶</span>",
+		"cmus": "🎵"
+	},
+	"status-icons": {
+		"paused": "<span foreground=\"#ededeb\">⏸</span>"
+	}
+    },
+
+    "cpu": {
+        "format": "<span foreground=\"#ac7ea8\"></span> {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": "<span foreground=\"#ef2828\"></span> {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "battery": {
+        "format": "<span foreground=\"#89e234\">󱐋</span> {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi" : "<span foreground=\"#729ecf\"></span> {bandwidthDownBits}",
+        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-disconnected" : "no network",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "backlight": {
+	"device": "intel_backlight",
+        "format": "<span foreground=\"#fbe84f\"></span> {percent}%",
+	"scroll-step": 5.0
+    }
+}

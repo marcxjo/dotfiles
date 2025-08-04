@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "spacing": 0,
+    "position": "top",
     "height": 0,
 
     "margin-top": 0,
@@ -19,18 +20,13 @@
 
     "modules-right": [
         "tray",
-        "cpu",
-        "memory",
-        "battery",
-        "network",
         "pulseaudio",
 	"sway/language",
-	"keyboard-state",
-	"backlight"
+	"keyboard-state"
     ],
 
     "sway/window": {
-        "format": " {title}",
+        "format": "<span foreground=\"#34e2e2\"></span> {title}",
         "max-length": 128
     },
 
@@ -57,46 +53,10 @@
 	]
     },
 
-    "cpu": {
-        "format": " {usage}%",
-        "interval": 2,
-
-        "states": {
-            "critical": 90
-        }
-    },
-
-    "memory": {
-        "format": " {percentage}%",
-        "interval": 2,
-
-        "states": {
-            "critical": 80
-        }
-    },
-
-    "battery": {
-        "format": "󱐋 {capacity}%",
-        "interval": 5,
-        "states": {
-            "warning": 20,
-            "critical": 10
-        },
-        "tooltip": false
-    },
-
-    "network": {
-        "format-wifi" : " {bandwidthDownBits}",
-        "format-ethernet": "enth {bandwidthDownBits}",
-        "format-disconnected" : "no network",
-        "interval": 5,
-        "tooltip": false
-    },
-
     "pulseaudio": {
         "scroll-step": 5,
         "max-volume": 150,
-        "format": " {volume}%",
+        "format": "<span foreground=\"#fbe84f\"> </span>{volume}%",
         "format-bluetooth": "vol {volume}%",
         "nospacing": 1,
         "on-click": "pavucontrol",
@@ -104,7 +64,7 @@
     },
 
     "sway/language": {
-        "format": "󰌌 {short} {variant}",
+        "format": "<span foreground=\"#729ecf\">󰌌</span> {short} {variant}",
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
 
@@ -117,15 +77,9 @@
             "scrolllock": "{icon} scr"
         },
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "<span foreground=\"#fbe84f\"></span>",
+            "unlocked": "<span foreground=\"#ededeb\"></span>"
         },
 	"device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
-    },
-
-    "backlight": {
-	"device": "intel_backlight",
-        "format": " {percent}%",
-	"scroll-step": 5.0
     }
 }
