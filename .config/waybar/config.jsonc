@@ -21,14 +21,9 @@
     "modules-right": [
         "tray",
         "pulseaudio",
-	"sway/language",
-	"keyboard-state"
+        "sway/language",
+        "keyboard-state"
     ],
-
-    "sway/window": {
-        "format": "<span foreground=\"#34e2e2\"></span> {title}",
-        "max-length": 128
-    },
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -36,21 +31,26 @@
         "tooltip": false
     },
 
-    "tray": {
-        "spacing": 10,
-        "tooltip": false
+    "sway/window": {
+        "format": "<span foreground=\"#34e2e2\"></span> {title}",
+        "max-length": 128
     },
 
     "clock": {
-	"interval": 1,
-        "format": "{:%a, %d %b %Y %I:%M:%S %p %Z}",
+        "interval": 1,
+        "format": "{:%a %b %d %Y %I:%M:%S %p %Z}",
         "tooltip-format": "{tz_list}",
-	"timezones": [
+        "timezones": [
             "America/Denver",
             "America/New_York",
-	    "UTC",
-	    "Australia/Sydney"
-	]
+            "UTC",
+            "Australia/Sydney"
+        ]
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
     },
 
     "pulseaudio": {
@@ -72,14 +72,16 @@
         "numlock": true,
         "capslock": true,
         "format": {
+            // HACK: fix weird label spacing
+            // CSS just makes it worse
+            "capslock": "{icon} cap  ",
             "numlock": "{icon} num",
-            "capslock": "{icon} cap",
             "scrolllock": "{icon} scr"
         },
         "format-icons": {
             "locked": "<span foreground=\"#fbe84f\"></span>",
             "unlocked": "<span foreground=\"#ededeb\"></span>"
         },
-	"device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
+    "device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
     }
 }

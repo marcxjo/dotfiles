@@ -21,19 +21,20 @@
         "memory",
         "battery",
         "network",
-	"backlight"
+        "backlight"
     ],
 
     "mpris": {
-	"format": "{player_icon} [{player}] {title}",
-	"format-paused": "{status_icon} <i>[{player}] {title}</i>",
-	"player-icons": {
-		"default": "<span foreground=\"#89e234\">▶</span>",
-		"cmus": "🎵"
-	},
-	"status-icons": {
-		"paused": "<span foreground=\"#ededeb\">⏸</span>"
-	}
+        "format": "{player_icon} [{player}] {title}",
+        "format-paused": "{status_icon} <i>[{player}] {title}</i>",
+        "title-len": 128,
+        "player-icons": {
+            "default": "<span foreground=\"#89e234\">▶</span>",
+            "cmus": "🎵"
+        },
+        "status-icons": {
+            "paused": "<span foreground=\"#ededeb\">⏸</span>"
+        }
     },
 
     "cpu": {
@@ -73,8 +74,8 @@
     },
 
     "backlight": {
-	"device": "intel_backlight",
+        "device": "intel_backlight",
         "format": "<span foreground=\"#fbe84f\"></span> {percent}%",
-	"scroll-step": 5.0
+        "scroll-step": 5.0
     }
 }
