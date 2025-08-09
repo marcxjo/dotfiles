@@ -2,7 +2,7 @@
 # bspwm-specific config
 #
 
-if [[ "${XDG_SESSION_DESKTOP,,}" != "bspwm" ]]; then
+if [[ ! ":${XDG_CURRENT_DESKTOP,,}:" =~ ":bspwm:" ]]; then
   return
 fi
 

@@ -2,7 +2,7 @@
 # GNOME-specific config
 #
 
-if [[ "${XDG_CURRENT_DESKTOP,,}" != "gnome" ]]; then
+if [[ ! ":${XDG_CURRENT_DESKTOP,,}:" =~ ":gnome:" ]]; then
   return
 fi
 

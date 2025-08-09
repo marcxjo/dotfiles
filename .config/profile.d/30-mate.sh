@@ -2,7 +2,7 @@
 # MATE-specific config
 #
 
-if [[ "${XDG_CURRENT_DESKTOP,,}" != "mate" ]]; then
+if [[ ! ":${XDG_CURRENT_DESKTOP,,}:" =~ ":mate:" ]]; then
   return
 fi
 
