@@ -60,6 +60,11 @@ local function to_hex(rgba_color)
 	return "#" .. string.gsub(r, ",", "") .. string.gsub(g, ",", "") .. string.gsub(b, ",", "")
 end
 
+local function set_bg_color(new_bg_color)
+	tym.set("color_background", new_bg_color)
+	tym.set("color_window_background", new_bg_color)
+end
+
 -- set by table
 tym.set_config({
 	font = "JetBrains Mono 9",
@@ -80,8 +85,7 @@ tym.set_keymaps({
 		local old_bg = tym.get("color_background")
 		local old_fg = tym.get("color_foreground")
 
-		tym.set("color_background", old_fg)
-		tym.set("color_window_background", old_fg)
+		set_bg_color(old_fg)
 		tym.set("color_foreground", old_bg)
 	end,
 	["<Ctrl><Shift>t"] = function()
@@ -90,13 +94,11 @@ tym.set_keymaps({
 		if is_rgba(bg) then
 			local new_bg = to_hex(bg)
 
-			tym.set("color_background", new_bg)
-			tym.set("color_window_background", new_bg)
+			set_bg_color(new_bg)
 		elseif is_hex(bg) then
 			local new_bg = to_rgba(bg, 0.95)
 
-			tym.set("color_background", new_bg)
-			tym.set("color_window_background", new_bg)
+			set_bg_color(new_bg)
 		else
 			return
 		end
@@ -119,3 +121,12 @@ tym.set_keymaps({
 --   function(p)
 --   end
 -- )
+
+-- Set transparency on startup
+local bg = tym.get("color_background")
+
+if is_hex(bg) then
+	local new_bg = to_rgba(bg, 0.95)
+
+	set_bg_color(new_bg)
+end
