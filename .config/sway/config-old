@@ -1,6 +1,6 @@
 include /etc/sway/config.d/*
 
-include colors.conf
+include modules/colors.conf
 
 #
 ### Variables
@@ -9,6 +9,7 @@ include colors.conf
 # Super key 
 set $mod Mod4
 set $term tym
+set $term2 kermit
 set $uifont "JetBrains Mono 9"
 font $uifont
 
@@ -22,13 +23,13 @@ set $lock swaylock -f -i $wallpaper -s fill
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $wallpaper fill
-include outputs.conf
+include modules/outputs.conf
 
 #
 ### Input configuration
 #
 
-include inputs.conf
+include modules/inputs.conf
 
 #
 ### Key bindings
@@ -38,6 +39,7 @@ include inputs.conf
 #
 # start a terminal
 bindsym $mod+Return exec $term
+bindsym Ctrl+$mod+Return exec $term2
 
 # kill focused window
 bindsym $mod+w kill
@@ -80,8 +82,7 @@ for_window [class="Wine"] floating enable
 for_window [app_id="lutris"] floating enable
     
 bindsym $mod+F12 exec shutdown now
-bindsym Ctrl+Alt+L exec $lock
-bindsym Ctrl+Mod1+Delete exec ksysguard
+bindsym Ctrl+Alt+Delete exec $lock
 # bindsym $mod+F1 exec dolphin
 # bindsym $mod+F2 exec cantata
 # bindsym $mod+F3 exec mpv --player-operation-mode=pseudo-gui
@@ -226,6 +227,6 @@ hide_edge_borders none
   client.unfocused        $color_bg $color_8  $color_fg $color_1    $color_bg
   client.urgent           #2f343a  #900000  #ffffff  #900000    #900000 
 
-gaps inner 24
+gaps inner 16
 
-include autostart.conf
+include modules/autostart.conf
