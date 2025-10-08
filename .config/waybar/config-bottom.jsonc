@@ -20,8 +20,7 @@
         "cpu",
         "memory",
         "battery",
-        "network",
-        "backlight"
+        "network"
     ],
 
     "mpris": {
@@ -71,11 +70,5 @@
         "format-disconnected" : "no network",
         "interval": 5,
         "tooltip": false
-    },
-
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "<span foreground=\"#fbe84f\"></span> {percent}%",
-        "scroll-step": 5.0
     }
 }

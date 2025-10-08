@@ -19,6 +19,7 @@
     ],
 
     "modules-right": [
+        "backlight",
         "tray",
         "pulseaudio",
         "sway/language",
@@ -46,6 +47,12 @@
             "UTC",
             "Australia/Sydney"
         ]
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "<span foreground=\"#fbe84f\"></span> {percent}%",
+        "scroll-step": 5.0
     },
 
     "tray": {
