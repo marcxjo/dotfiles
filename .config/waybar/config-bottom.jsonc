@@ -1,4 +1,8 @@
 {
+    "include": [
+        "~/.config/waybar/modules/*.jsonc"
+    ],
+
     "layer": "top",
     "spacing": 0,
     "position": "bottom",
@@ -10,34 +14,41 @@
     "margin-left": 0,
 
     "modules-left": [
-        "mpris"
+        "mpris",
+        "custom/bottom_right_div#1"
     ],
 
     "modules-center": [
     ],
 
     "modules-right": [
+        "custom/bottom_left_div#1",
         "cpu",
+        "custom/bottom_left_div#2",
         "memory",
+        "custom/bottom_left_div#3",
         "battery",
+        "custom/bottom_left_div#4",
         "network"
     ],
 
     "mpris": {
         "format": "{player_icon} [{player}] {title}",
+        "format-stopped": "{player_icon} stopped",
         "format-paused": "{status_icon} <i>[{player}] {title}</i>",
         "title-len": 128,
         "player-icons": {
-            "default": "<span foreground=\"#89e234\">▶</span>",
+            "default": "▶",
             "cmus": "🎵"
         },
         "status-icons": {
-            "paused": "<span foreground=\"#ededeb\">⏸</span>"
+            "paused": "⏸",
+            "stopped": ""
         }
     },
 
     "cpu": {
-        "format": "<span foreground=\"#ac7ea8\"></span> {usage}%",
+        "format": " {usage}%",
         "interval": 2,
 
         "states": {
@@ -46,7 +57,7 @@
     },
 
     "memory": {
-        "format": "<span foreground=\"#ef2828\"></span> {percentage}%",
+        "format": " {percentage}%",
         "interval": 2,
 
         "states": {
@@ -55,7 +66,7 @@
     },
 
     "battery": {
-        "format": "<span foreground=\"#89e234\">󱐋</span> {capacity}%",
+        "format": "󱐋 {capacity}%",
         "interval": 5,
         "states": {
             "warning": 20,
@@ -65,7 +76,7 @@
     },
 
     "network": {
-        "format-wifi" : "<span foreground=\"#729ecf\"></span> {bandwidthDownBits}",
+        "format-wifi" : " {bandwidthDownBits}",
         "format-ethernet": "enth {bandwidthDownBits}",
         "format-disconnected" : "no network",
         "interval": 5,

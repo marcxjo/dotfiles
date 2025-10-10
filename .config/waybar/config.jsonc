@@ -1,4 +1,8 @@
 {
+    "include": [
+        "~/.config/waybar/modules/*.jsonc"
+    ],
+
     "layer": "top",
     "spacing": 0,
     "position": "top",
@@ -11,17 +15,24 @@
 
     "modules-left": [
         "sway/workspaces",
-        "sway/window"
+        "custom/top_right_div#1",
+        "sway/window",
+        "custom/top_right_div#2"
     ],
 
     "modules-center": [
-        "clock"
+        "custom/top_left_div#1",
+        "clock",
+        "custom/top_right_div#3"
     ],
 
     "modules-right": [
-        "backlight",
         "tray",
+        "custom/top_left_div#2",
+        "backlight",
+        "custom/top_left_div#3",
         "pulseaudio",
+        "custom/top_left_div#4",
         "sway/language",
         "keyboard-state"
     ],
@@ -29,11 +40,17 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "tooltip": false
+        "tooltip": false,
+        "persistent-workspaces": {
+          "1.Dev": ["HDMI-A-1"],
+          "2.Web": ["HDMI-A-1"],
+          "3.Work": ["eDP-1"],
+          "4.Media": ["eDP-1"]
+        }
     },
 
     "sway/window": {
-        "format": "<span foreground=\"#34e2e2\"></span> {title}",
+        "format": " {title}",
         "max-length": 128
     },
 
@@ -51,7 +68,7 @@
 
     "backlight": {
         "device": "intel_backlight",
-        "format": "<span foreground=\"#fbe84f\"></span> {percent}%",
+        "format": " {percent}%",
         "scroll-step": 5.0
     },
 
@@ -63,7 +80,7 @@
     "pulseaudio": {
         "scroll-step": 5,
         "max-volume": 150,
-        "format": "<span foreground=\"#fbe84f\"> </span>{volume}%",
+        "format": " {volume}%",
         "format-bluetooth": "vol {volume}%",
         "nospacing": 1,
         "on-click": "pavucontrol",
@@ -71,7 +88,7 @@
     },
 
     "sway/language": {
-        "format": "<span foreground=\"#729ecf\">󰌌</span> {short} {variant}",
+        "format": "󰌌 {short} {variant}",
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
 
@@ -81,13 +98,13 @@
         "format": {
             // HACK: fix weird label spacing
             // CSS just makes it worse
-            "capslock": "{icon} cap  ",
+            "capslock": "{icon} cap ",
             "numlock": "{icon} num",
             "scrolllock": "{icon} scr"
         },
         "format-icons": {
-            "locked": "<span foreground=\"#fbe84f\"></span>",
-            "unlocked": "<span foreground=\"#ededeb\"></span>"
+            "locked": "",
+            "unlocked": ""
         },
     "device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
     }
