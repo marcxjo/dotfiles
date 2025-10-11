@@ -216,18 +216,6 @@ bar {
 # Titlebars
 #
 
-default_border pixel
-default_floating_border pixel
-hide_edge_borders none
-#
-# Colors
-#
-# class                   border    backgr.   text      indicator   child_border
-  client.focused          $color_bg $color_bg $color_fg $color_1    $color_bg
-  client.focused_inactive $color_bg $color_bg $color_fg $color_1    $color_bg
-  client.unfocused        $color_bg $color_8  $color_fg $color_1    $color_bg
-  client.urgent           #2f343a  #900000  #ffffff  #900000    #900000 
-
-gaps inner 16
+include modules/chrome.conf
 
 include modules/autostart.conf
