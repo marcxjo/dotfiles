@@ -22,7 +22,7 @@
 
     "clock#time": {
         "interval": 1,
-        "format": "{:%I:%M %p}",
+        "format": "{:%I:%M %p %Z}",
         "tooltip-format": "{tz_list}",
         "timezones": [
             "America/Denver",
