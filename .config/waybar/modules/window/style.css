@@ -1,0 +1,8 @@
+window#waybar #window {
+    background-color: @window;
+}
+
+#custom-right_div.window {
+  color: @window;
+  background-color: transparent;
+}

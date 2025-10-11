@@ -1,0 +1,9 @@
+#pulseaudio {
+    background-color: @volume;
+}
+
+#custom-left_div.volume {
+  background-color: @backlight;
+  color: @volume;
+}
+

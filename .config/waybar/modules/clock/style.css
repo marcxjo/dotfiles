@@ -1,0 +1,11 @@
+#clock {
+    color: @colorfg;
+    background-color: @clock;
+}
+
+#custom-left_div.clock,
+#custom-right_div.clock {
+  color: @clock;
+  background-color: transparent;
+}
+

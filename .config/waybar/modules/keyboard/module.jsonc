@@ -1,0 +1,28 @@
+{
+    "custom/left_div#keyboard": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "sway/language": {
+        "format": "󰌌 {short} {variant}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": {
+            // HACK: fix weird label spacing
+            // CSS just makes it worse
+            "capslock": "{icon} cap ",
+            "numlock": "{icon} num",
+            "scrolllock": "{icon} scr"
+        },
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        },
+    "device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
+    }
+}

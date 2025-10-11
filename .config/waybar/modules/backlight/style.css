@@ -1,0 +1,9 @@
+#backlight {
+    background-color: @backlight;
+}
+
+#custom-left_div.backlight {
+  background-color: @transparent;
+  color: @backlight;
+}
+

@@ -1,0 +1,11 @@
+{
+    "sway/window": {
+        "format": " {app_id}",
+        "max-length": 128
+    },
+
+    "custom/right_div#window": {
+        "format": "",
+        "tooltip": false
+    }
+}

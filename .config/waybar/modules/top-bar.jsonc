@@ -1,0 +1,34 @@
+{
+    "include": [
+        "modules/workspaces/module.jsonc",
+        "modules/window/module.jsonc",
+        "modules/clock/module.jsonc",
+        "modules/backlight/module.jsonc",
+        "modules/volume/module.jsonc",
+        "modules/keyboard/module.jsonc"
+    ],
+
+    "modules-left": [
+        "sway/workspaces",
+        "custom/right_div#workspaces",
+        "sway/window",
+        "custom/right_div#window"
+    ],
+
+    "modules-center": [
+        "custom/left_div#clock",
+        "clock",
+        "custom/right_div#clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/left_div#backlight",
+        "backlight",
+        "custom/left_div#volume",
+        "pulseaudio",
+        "custom/left_div#keyboard",
+        "sway/language",
+        "keyboard-state"
+    ]
+}

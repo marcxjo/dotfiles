@@ -6,7 +6,7 @@
     "layer": "top",
     "spacing": 0,
     "position": "bottom",
-    "height": 0,
+    "height": 30,
 
     "margin-top": 0,
     "margin-right": 0,
@@ -33,9 +33,9 @@
     ],
 
     "mpris": {
-        "format": "{player_icon} [{player}] {title}",
-        "format-stopped": "{player_icon} stopped",
-        "format-paused": "{status_icon} <i>[{player}] {title}</i>",
+        "format": "{player_icon} {player}",
+        "format-stopped": "{player_icon} <i>{mpv}</i>",
+        "format-paused": "{status_icon} <i>{player}</i>",
         "title-len": 128,
         "player-icons": {
             "default": "▶",

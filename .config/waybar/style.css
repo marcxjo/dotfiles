@@ -1,4 +1,5 @@
-@import 'colors.css';
+@import "colors.css";
+@import "modules/style.css";
 
 * {
     border: none;
@@ -38,101 +39,9 @@ tooltip {
     padding: 1px 8px;
 }
 
-#custom-top_right_div,
-#custom-top_left_div,
-#custom-bottom_right_div,
-#custom-bottom_left_div {
-  font-size: 10pt;
-}
-
-#workspaces {
-  background-color: @color6;
-}
-
-#workspaces button {
-    all: initial;
-    padding-left: 8px;
-    padding-right: 8px;
-    color: @colorfg;
-    background-color: @color6;
-}
-
-#workspaces button.focused {
-    color: @color9;
-}
-
-#workspaces button.urgent {
-    background-color: @color1;
-}
-
-#custom-top_right_div.1 {
-  background-color: @color4;
-  color: @color6;
-}
-
-window#waybar #window {
-    background-color: @color4;
-    border: none;
-}
-
-#custom-top_right_div.2 {
-  background-color: transparent;
-  color: @color4;
-}
-
-#custom-top_left_div.1 {
-  background-color: transparent;
-  color: @color4;
-}
-
-#clock {
-    background-color: @color4;
-    color: @colorfg;
-}
-
-#custom-top_right_div.3 {
-  background-color: transparent;
-  color: @color4;
-}
-
-#custom-top_left_div.2 {
-  background-color: transparent;
-  color: @color3;
-}
-
-#backlight {
-    background-color: @color3;
-    color: @colorfg;
-}
-
-#custom-top_left_div.3 {
-  background-color: @color3;
-  color: @color9;
-}
-
-#pulseaudio {
-    background-color: @color9;
-    color: @colorfg;
-}
-
 #battery {
     background-color: transparent;
     border: none;
-    color: @colorfg;
-}
-
-#custom-top_left_div.4 {
-  background-color: @color9;
-  color: @color5;
-}
-
-#keyboard-state {
-  padding-left: 0;
-}
-
-#language,
-#keyboard-state {
-    background-color: @color5;
     color: @colorfg;
 }
 
@@ -171,24 +80,9 @@ window#waybar #window {
     border: none;
 }
 
-#custom-bottom_right_div.1 {
-  background-color: transparent;
-  color: @color4;
-}
-
-#custom-bottom_left_div.1 {
-  background-color: transparent;
-  color: @color5;
-}
-
 #cpu {
     background-color: @color5;
     border: none;
-}
-
-#custom-bottom_left_div.2 {
-  background-color: @color5;
-  color: @color1;
 }
 
 #memory {
@@ -196,19 +90,9 @@ window#waybar #window {
     border: none;
 }
 
-#custom-bottom_left_div.3 {
-  background-color: @color1;
-  color: @color2;
-}
-
 #battery {
     background-color: @color2;
     border: none;
-}
-
-#custom-bottom_left_div.4 {
-  background-color: @color2;
-  color: @color4;
 }
 
 #network {

@@ -1,0 +1,24 @@
+{
+
+    "custom/left_div#clock": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%a %b %d %Y %I:%M:%S %p %Z}",
+        "tooltip-format": "{tz_list}",
+        "timezones": [
+            "America/Denver",
+            "America/New_York",
+            "UTC",
+            "Australia/Sydney"
+        ]
+    },
+
+    "custom/right_div#clock": {
+        "format": "",
+        "tooltip": false
+    }
+}

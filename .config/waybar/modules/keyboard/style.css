@@ -1,0 +1,14 @@
+#language,
+#keyboard-state {
+    background-color: @keyboard;
+}
+
+#keyboard-state {
+  padding-left: 0;
+}
+
+#custom-left_div.keyboard {
+  background-color: @volume;
+  color: @keyboard;
+}
+

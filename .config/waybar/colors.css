@@ -1,0 +1,14 @@
+@import "colors/theme.css";
+
+/* Component colors */
+@define-color workspaces @color6;
+@define-color window     @color4;
+@define-color clock      @color4;
+@define-color backlight  @color3;
+@define-color volume     @color9;
+@define-color keyboard   @color5;
+
+/* Status colors */
+@define-color  focused_fg @color9;
+@define-color  urgent_bg  @color1;
+

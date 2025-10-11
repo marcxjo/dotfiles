@@ -1,0 +1,11 @@
+@import 'workspaces/style.css';
+@import 'window/style.css';
+@import 'clock/style.css';
+@import 'backlight/style.css';
+@import 'volume/style.css';
+@import 'keyboard/style.css';
+
+#custom-right_div,
+#custom-left_div {
+  font-size: 12pt;
+}
