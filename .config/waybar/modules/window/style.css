@@ -1,8 +1,14 @@
 window#waybar #window {
-    background-color: @window;
+  color: @colorfg;
+  background-color: @window;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-#custom-right_div.window {
+#custom-tail.window {
+  background-color: @window;
+}
+
+#custom-head.window {
   color: @window;
-  background-color: transparent;
 }

@@ -1,0 +1,20 @@
+{
+    "custom/head#cpu": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "custom/tail#cpu": {
+        "format": "",
+        "tooltip": false
+    }
+}

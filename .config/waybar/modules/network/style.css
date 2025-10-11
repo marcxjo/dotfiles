@@ -1,0 +1,14 @@
+#network {
+  color: @colorfg;
+  background-color: @network;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#custom-tail.network {
+  background-color: @network;
+}
+
+#custom-head.network {
+  color: @network;
+}

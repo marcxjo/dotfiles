@@ -1,0 +1,18 @@
+#memory {
+  color: @colorfg;
+  background-color: @ram;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#memory.critical {
+  color: @colorfg;
+}
+
+#custom-head.ram {
+  color: @ram;
+}
+
+#custom-tail.ram {
+  background-color: @ram;
+}

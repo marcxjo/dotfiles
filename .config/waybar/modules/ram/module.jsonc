@@ -1,0 +1,20 @@
+{
+    "custom/head#ram": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "custom/tail#ram": {
+        "format": "",
+        "tooltip": false
+    }
+}

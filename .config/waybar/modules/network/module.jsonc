@@ -1,0 +1,19 @@
+{
+    "custom/head#network": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi" : " {bandwidthDownBits}",
+        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-disconnected" : "no network",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "custom/tail#network": {
+        "format": "",
+        "tooltip": false
+    }
+}

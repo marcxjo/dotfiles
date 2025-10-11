@@ -1,9 +1,15 @@
 #backlight {
-    background-color: @backlight;
+  color: @colorfg;
+  background-color: @backlight;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-#custom-left_div.backlight {
-  background-color: @transparent;
+#custom-head.backlight {
   color: @backlight;
+}
+
+#custom-tail.backlight {
+  background-color: @backlight;
 }
 

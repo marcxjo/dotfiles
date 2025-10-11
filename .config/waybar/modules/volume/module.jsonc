@@ -1,5 +1,5 @@
 {
-    "custom/left_div#volume": {
+    "custom/head#volume": {
         "format": "",
         "tooltip": false
     },
@@ -11,6 +11,11 @@
         "format-bluetooth": "vol {volume}%",
         "nospacing": 1,
         "on-click": "pavucontrol",
+        "tooltip": false
+    },
+
+    "custom/tail#volume": {
+        "format": "",
         "tooltip": false
     }
 }

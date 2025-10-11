@@ -1,0 +1,21 @@
+{
+    "custom/head#battery": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "󱐋 {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+    "custom/tail#battery": {
+        "format": "",
+        "tooltip": false
+    }
+}

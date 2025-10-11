@@ -1,0 +1,20 @@
+#battery {
+  color: @colorfg;
+  background-color: @battery;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  color: @colorfg;
+}
+
+#custom-head.battery {
+  color: @battery;
+}
+
+#custom-tail.battery {
+  background-color: @battery;
+}

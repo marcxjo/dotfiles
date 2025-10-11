@@ -1,12 +1,19 @@
 @import "colors/theme.css";
 
 /* Component colors */
-@define-color workspaces @color6;
-@define-color window     @color4;
-@define-color clock      @color4;
-@define-color backlight  @color3;
-@define-color volume     @color9;
-@define-color keyboard   @color5;
+@define-color workspaces   @color3;
+@define-color window       @color4;
+@define-color date         @color4;
+@define-color time         @color4;
+@define-color backlight    @color5;
+@define-color volume       @color2;
+@define-color keyboard     @color1;
+@define-color media_player @color3;
+@define-color cpu          @color4;
+@define-color ram          @color5;
+@define-color battery      @color2;
+@define-color network      @color1;
+@define-color distro       @color3;
 
 /* Status colors */
 @define-color  focused_fg @color9;

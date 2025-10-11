@@ -1,10 +1,15 @@
 {
-    "sway/window": {
-        "format": " {app_id}",
-        "max-length": 128
+    "custom/tail#window": {
+        "format": "",
+        "tooltip": false
     },
 
-    "custom/right_div#window": {
+    "sway/window": {
+        "format": " {title}",
+        "max-length": 48
+    },
+
+    "custom/head#window": {
         "format": "",
         "tooltip": false
     }

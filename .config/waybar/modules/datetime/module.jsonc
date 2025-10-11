@@ -1,0 +1,39 @@
+{
+    "custom/head#date": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "clock#date": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d}",
+        "tooltip-format": "{:%a %b %d %Y}"
+    },
+
+    "custom/tail#date": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/tail#time": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "{tz_list}",
+        "timezones": [
+            "America/Denver",
+            "America/New_York",
+            "UTC",
+            "Australia/Sydney"
+        ]
+    },
+
+    "custom/head#time": {
+        "format": "",
+        "tooltip": false
+    }
+}

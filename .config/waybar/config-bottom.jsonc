@@ -32,30 +32,6 @@
         "network"
     ],
 
-    "mpris": {
-        "format": "{player_icon} {player}",
-        "format-stopped": "{player_icon} <i>{mpv}</i>",
-        "format-paused": "{status_icon} <i>{player}</i>",
-        "title-len": 128,
-        "player-icons": {
-            "default": "▶",
-            "cmus": "🎵"
-        },
-        "status-icons": {
-            "paused": "⏸",
-            "stopped": ""
-        }
-    },
-
-    "cpu": {
-        "format": " {usage}%",
-        "interval": 2,
-
-        "states": {
-            "critical": 90
-        }
-    },
-
     "memory": {
         "format": " {percentage}%",
         "interval": 2,
@@ -75,11 +51,4 @@
         "tooltip": false
     },
 
-    "network": {
-        "format-wifi" : " {bandwidthDownBits}",
-        "format-ethernet": "enth {bandwidthDownBits}",
-        "format-disconnected" : "no network",
-        "interval": 5,
-        "tooltip": false
-    }
 }

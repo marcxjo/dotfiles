@@ -1,5 +1,5 @@
 {
-    "custom/left_div#backlight": {
+    "custom/head#backlight": {
         "format": "",
         "tooltip": false
     },
@@ -8,5 +8,10 @@
         "device": "intel_backlight",
         "format": " {percent}%",
         "scroll-step": 5.0
+    },
+
+    "custom/tail#backlight": {
+        "format": "",
+        "tooltip": false
     }
 }

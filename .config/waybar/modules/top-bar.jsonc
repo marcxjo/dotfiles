@@ -2,7 +2,13 @@
     "include": [
         "modules/workspaces/module.jsonc",
         "modules/window/module.jsonc",
-        "modules/clock/module.jsonc",
+
+        "modules/cpu/module.jsonc",
+        "modules/ram/module.jsonc",
+        "modules/battery/module.jsonc",
+        "modules/distro/module.jsonc",
+        "modules/datetime/module.jsonc",
+
         "modules/backlight/module.jsonc",
         "modules/volume/module.jsonc",
         "modules/keyboard/module.jsonc"
@@ -10,25 +16,55 @@
 
     "modules-left": [
         "sway/workspaces",
-        "custom/right_div#workspaces",
+        "custom/head#workspaces",
+
+        "custom/tail#window",
         "sway/window",
-        "custom/right_div#window"
+        "custom/head#window"
     ],
 
     "modules-center": [
-        "custom/left_div#clock",
-        "clock",
-        "custom/right_div#clock"
+        "custom/head#date",
+        "clock#date",
+        "custom/tail#date",
+
+        "custom/head#distro-left",
+        "custom/distro",
+        "custom/head#distro-right",
+
+        "custom/tail#time",
+        "clock#time",
+        "custom/head#time"
     ],
 
     "modules-right": [
         "tray",
-        "custom/left_div#backlight",
+
+        "custom/head#backlight",
         "backlight",
-        "custom/left_div#volume",
+        "custom/tail#backlight",
+
+        "custom/head#volume",
         "pulseaudio",
-        "custom/left_div#keyboard",
+        "custom/tail#volume",
+
+        "custom/head#keyboard",
         "sway/language",
         "keyboard-state"
-    ]
+    ],
+
+    "layer": "top",
+    "spacing": 0,
+    "position": "top",
+    "height": 0,
+
+    "margin-top": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    }
 }

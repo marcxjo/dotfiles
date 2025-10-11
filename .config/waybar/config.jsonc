@@ -1,21 +1,12 @@
-{
+[
+  {
     "include": [
-        "modules/top-bar.jsonc"
-    ],
-
-    "layer": "top",
-    "spacing": 0,
-    "position": "top",
-    "height": 30,
-
-    "margin-top": 0,
-    "margin-right": 0,
-    "margin-bottom": 0,
-    "margin-left": 0,
-
-    "tray": {
-        "spacing": 10,
-        "tooltip": false
-    },
-
-}
+      "modules/top-bar.jsonc"
+    ]
+  },
+  {
+    "include": [
+      "modules/bottom-bar.jsonc"
+    ]
+  }
+]

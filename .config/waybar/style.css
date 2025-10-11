@@ -12,90 +12,14 @@
 }
 
 window#waybar {
-    background: alpha(@colorbg, 0.9);
+    background: @colorbg;
 }
 
 window#waybar > box {
     margin: 4px;
-    background: transparent;
+    background-color: transparent;
 }
 
 tooltip {
     background-color: alpha(@colorbg, 0.9);
-}
-
-#window,
-#clock,
-#tray,
-#cpu,
-#memory,
-#battery,
-#network,
-#pulseaudio,
-#language,
-#keyboard-state,
-#backlight,
-#mpris {
-    padding: 1px 8px;
-}
-
-#battery {
-    background-color: transparent;
-    border: none;
-    color: @colorfg;
-}
-
-#window,
-#tray,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#language,
-#keyboard-state,
-#backlight,
-#mpris {
-    /* background-color: transparent; */
-    border: none;
-    color: @colorfg;
-}
-
-#cpu.critical,
-#memory.critical {
-    background-color: transparent;
-    border: none;
-    color: @colorfg;
-}
-
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-    background-color: transparent;
-    border: none;
-    color: @colorfg;
-}
-
-#mpris {
-    background-color: @color4;
-    border: none;
-}
-
-#cpu {
-    background-color: @color5;
-    border: none;
-}
-
-#memory {
-    background-color: @color1;
-    border: none;
-}
-
-#battery {
-    background-color: @color2;
-    border: none;
-}
-
-#network {
-    background-color: @color4;
-    border: none;
 }

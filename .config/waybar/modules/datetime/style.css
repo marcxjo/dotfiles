@@ -1,0 +1,29 @@
+#clock {
+  color: @colorfg;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#clock.date {
+  background-color: @date;
+}
+
+#clock.time {
+  background-color: @time;
+}
+
+#custom-tail.date {
+  background-color: @date;
+}
+
+#custom-head.date {
+  color: @date;
+}
+
+#custom-tail.time {
+  background-color: @time;
+}
+
+#custom-head.time {
+  color: @time;
+}

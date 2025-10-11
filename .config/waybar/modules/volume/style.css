@@ -1,9 +1,14 @@
 #pulseaudio {
-    background-color: @volume;
+  color: @colorfg;
+  background-color: @volume;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-#custom-left_div.volume {
-  background-color: @backlight;
+#custom-head.volume {
   color: @volume;
 }
 
+#custom-tail.volume {
+  background-color: @volume;
+}

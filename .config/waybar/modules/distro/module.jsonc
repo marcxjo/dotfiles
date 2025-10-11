@@ -1,0 +1,16 @@
+{
+    "custom/head#distro-left": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/distro": {
+        "format": "󰣇",
+        "tooltip": false
+    },
+
+    "custom/head#distro-right": {
+        "format": "",
+        "tooltip": false
+    }
+}

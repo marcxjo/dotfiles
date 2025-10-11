@@ -1,0 +1,9 @@
+#custom-distro {
+  color: @colorfg;
+  background-color: @distro;
+}
+
+#custom-head.distro-left,
+#custom-head.distro-right {
+  color: @distro;
+}

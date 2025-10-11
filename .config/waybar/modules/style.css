@@ -1,11 +1,28 @@
 @import 'workspaces/style.css';
 @import 'window/style.css';
-@import 'clock/style.css';
+@import 'media-player/style.css';
+@import 'network/style.css';
+
+@import 'datetime/style.css';
+@import 'distro/style.css';
+
+@import 'cpu/style.css';
+@import 'ram/style.css';
+@import 'battery/style.css';
 @import 'backlight/style.css';
 @import 'volume/style.css';
 @import 'keyboard/style.css';
 
-#custom-right_div,
-#custom-left_div {
-  font-size: 12pt;
+#custom-head,
+#custom-tail {
+  font-size: 14px;
 }
+
+#custom-head {
+  background-color: transparent;
+}
+
+#custom-tail {
+  color: @colorbg;
+}
+

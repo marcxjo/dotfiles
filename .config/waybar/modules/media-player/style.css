@@ -1,0 +1,14 @@
+#mpris {
+  color: @colorfg;
+  background-color: @media_player;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#custom-tail.media-player {
+  background-color: @media_player;
+}
+
+#custom-head.media-player {
+  color: @media_player;
+}

@@ -1,0 +1,18 @@
+#cpu {
+  color: @colorfg;
+  background-color: @cpu;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#cpu.critical {
+  color: @colorfg;
+}
+
+#custom-head.cpu {
+  color: @cpu;
+}
+
+#custom-tail.cpu {
+  background-color: @cpu;
+}
