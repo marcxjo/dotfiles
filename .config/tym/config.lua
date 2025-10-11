@@ -115,18 +115,3 @@ tym.set_keymaps({
 		tym.set("scale", s)
 	end,
 })
-
--- tym.set_hook(
---   "signal",
---   function(p)
---   end
--- )
-
--- Set transparency on startup
-local bg = tym.get("color_background")
-
-if is_hex(bg) then
-	local new_bg = to_rgba(bg, 0.95)
-
-	set_bg_color(new_bg)
-end
