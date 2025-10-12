@@ -5,7 +5,7 @@
     },
 
     "network": {
-        "format-wifi" : " {bandwidthDownBits}",
+        "format-wifi" : " {ifname} | {ipaddr} | {bandwidthDownBytes}  {bandwidthUpBytes} ",
         "format-ethernet": "enth {bandwidthDownBits}",
         "format-disconnected" : "no network",
         "interval": 5,
