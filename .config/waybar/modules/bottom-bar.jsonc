@@ -4,6 +4,7 @@
 
         "modules/cpu/module.jsonc",
         "modules/ram/module.jsonc",
+
         "modules/battery/module.jsonc",
         "modules/network/module.jsonc"
     ],
@@ -14,6 +15,9 @@
     ],
 
     "modules-center": [
+        "custom/head#network-left",
+        "network",
+        "custom/head#network-right"
     ],
 
     "modules-right": [
@@ -26,11 +30,7 @@
         "custom/tail#ram",
 
         "custom/head#battery",
-        "battery",
-        "custom/tail#battery",
-
-        "custom/head#network",
-        "network"
+        "battery"
     ],
 
     "layer": "top",

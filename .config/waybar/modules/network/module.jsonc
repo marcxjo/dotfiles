@@ -1,5 +1,5 @@
 {
-    "custom/head#network": {
+    "custom/head#network-left": {
         "format": "",
         "tooltip": false
     },
@@ -12,8 +12,8 @@
         "tooltip": false
     },
 
-    "custom/tail#network": {
-        "format": "",
+    "custom/head#network-right": {
+        "format": "",
         "tooltip": false
     }
 }

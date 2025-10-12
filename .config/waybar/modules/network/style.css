@@ -5,10 +5,7 @@
   padding-right: 8px;
 }
 
-#custom-tail.network {
-  background-color: @network;
-}
-
-#custom-head.network {
+#custom-head.network-left,
+#custom-head.network-right {
   color: @network;
 }

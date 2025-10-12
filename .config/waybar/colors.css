@@ -9,10 +9,10 @@
 @define-color volume       @color2;
 @define-color keyboard     @color1;
 @define-color media_player @color3;
-@define-color cpu          @color4;
-@define-color ram          @color5;
-@define-color battery      @color2;
-@define-color network      @color1;
+@define-color cpu          @color5;
+@define-color ram          @color2;
+@define-color battery      @color1;
+@define-color network      @color4;
 @define-color distro       @color3;
 
 /* Status colors */
