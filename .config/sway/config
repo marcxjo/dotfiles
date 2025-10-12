@@ -9,7 +9,6 @@ include modules/colors.conf
 # Super key 
 set $mod Mod4
 set $term tym
-set $term2 kermit
 set $uifont "JetBrains Mono 9"
 font $uifont
 
@@ -40,7 +39,6 @@ include modules/inputs.conf
 #
 # start a terminal
 bindsym $mod+Return exec $term
-bindsym Ctrl+$mod+Return exec $term2
 
 # kill focused window
 bindsym $mod+w kill
