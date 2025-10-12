@@ -1,6 +1,7 @@
 {
     "include": [
         "modules/workspaces/module.jsonc",
+        "modules/launchers/module.jsonc",
         "modules/window/module.jsonc",
 
         "modules/cpu/module.jsonc",
@@ -17,6 +18,11 @@
     "modules-left": [
         "sway/workspaces",
         "custom/head#workspaces",
+
+        "custom/tail#launchers",
+        "custom/launcher#terminal",
+        "custom/launcher#browser",
+        "custom/head#launchers",
 
         "custom/tail#window",
         "sway/window",

@@ -2,7 +2,8 @@
 
 /* Component colors */
 @define-color workspaces   @color3;
-@define-color window       @color4;
+@define-color launchers    @color4;
+@define-color window       @color5;
 @define-color date         @color4;
 @define-color time         @color4;
 @define-color backlight    @color5;

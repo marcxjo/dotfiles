@@ -1,4 +1,5 @@
 @import 'workspaces/style.css';
+@import 'launchers/style.css';
 @import 'window/style.css';
 @import 'media-player/style.css';
 @import 'network/style.css';

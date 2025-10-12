@@ -1,0 +1,23 @@
+{
+    "custom/tail#launchers": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/launcher#terminal": {
+      "format": "",
+      "on-click": "tym",
+      "tooltip": false
+    },
+
+    "custom/launcher#browser": {
+      "format": "",
+      "on-click": "firefox",
+      "tooltip": false
+    },
+
+    "custom/head#launchers": {
+        "format": "",
+        "tooltip": false
+    }
+}
