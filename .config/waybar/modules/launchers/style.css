@@ -5,6 +5,10 @@
   padding-right: 8px;
 }
 
+#custom-launcher:hover {
+  color: @focused_fg;
+}
+
 #custom-tail.launchers {
   background-color: @launchers;
 }
