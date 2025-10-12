@@ -1,14 +1,28 @@
 {
-    "sway/workspaces": {
+    "sway/workspaces#list": {
         "disable-scroll": true,
         "all-outputs": false,
         "tooltip": false,
-        "persistent-workspaces": {
+       "persistent-workspaces": {
           "": ["HDMI-A-1"],
           "": ["HDMI-A-1"],
           "": ["eDP-1"],
           "": ["eDP-1"]
+        },
+        "format": "{icon}",
+        "format-icons": {
+          "default": "",
+          "focused": "",
+          "urgent": ""
         }
+    },
+
+    "sway/workspaces#current": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "tooltip": false,
+        "format": "{name}",
+        "current-only": true
     },
 
     "custom/head#workspaces": {

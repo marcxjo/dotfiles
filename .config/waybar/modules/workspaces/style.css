@@ -1,22 +1,20 @@
-#workspaces {
+#workspaces.list,
+#workspaces.current {
   color: @colorfg;
   background-color: @workspaces;
 }
 
-#workspaces button {
-  all: initial;
+#workspaces.list button {
   padding-left: 8px;
   padding-right: 8px;
-  color: @colorfg;
-  background-color: @workspaces;
 }
 
-#workspaces button.focused {
-  color: @color9;
+#workspaces.list button.urgent {
+  background-color: @color9;
 }
 
-#workspaces button.urgent {
-  background-color: @color1;
+#workspaces.current {
+  padding-left: 4px;
 }
 
 #custom-head.workspaces {

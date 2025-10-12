@@ -16,7 +16,8 @@
     ],
 
     "modules-left": [
-        "sway/workspaces",
+        "sway/workspaces#list",
+        "sway/workspaces#current",
         "custom/head#workspaces",
 
         "custom/tail#launchers",
