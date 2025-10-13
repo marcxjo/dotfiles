@@ -15,9 +15,12 @@
 }
 
 #workspaces button:hover label {
-  color: @focused_fg;
   background-color: @workspaces;
   text-shadow: none;
+}
+
+#workspaces.list button:hover label {
+  color: @focused_fg;
 }
 
 #custom-head.workspaces {
