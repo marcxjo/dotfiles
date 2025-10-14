@@ -17,3 +17,24 @@
 @define-color color13 #b48ead;
 @define-color color14 #8fbcbb;
 @define-color color15 #eceff4;
+
+/* Component colors */
+@define-color workspaces   @color3;
+@define-color launchers    @color4;
+@define-color window       @color5;
+@define-color date         @color4;
+@define-color time         @color4;
+@define-color backlight    @color5;
+@define-color volume       @color2;
+@define-color keyboard     @color1;
+@define-color media_player @color3;
+@define-color cpu          @color5;
+@define-color ram          @color2;
+@define-color battery      @color1;
+@define-color network      @color4;
+@define-color distro       @color3;
+
+/* Status colors */
+@define-color  focused_fg @color9;
+@define-color  urgent_bg  @color1;
+

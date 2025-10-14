@@ -3,7 +3,7 @@
 declare -r CONFIG_DIR="${HOME}/.config/waybar"
 declare -r THEMES_DIR="${CONFIG_DIR}/colors"
 
-declare -r CURRENT_THEME_FILE="${THEMES_DIR}/theme.css"
+declare -r CURRENT_THEME_FILE="${CONFIG_DIR}/colors.css"
 
 declare THEME
 
@@ -37,10 +37,10 @@ while getopts :ls: o; do
     exit 0
     ;;
   s)
-    if [[ ! -L "${CURRENT_THEME_FILE}" ]]; then
-      echo "Theme file is not a symlink!"
+    [[ -x "$CURRENT_THEME_FILE" ]] &&
+      [[ ! -L "${CURRENT_THEME_FILE}" ]] &&
+      echo "Theme file is not a symlink!" &&
       exit 1
-    fi
 
     THEME="$(build_theme_path "$OPTARG")"
     set_waybar_theme "$THEME"
