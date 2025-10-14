@@ -200,8 +200,8 @@ bar {
         statusline #ffffff
         background #121212
         #background #00000000
-        focused_workspace #121212 #18b218 #232627
-        active_workspace #121212 $color_6 #232627
+        focused_workspace  #121212 #18b218 #232627
+        active_workspace   #121212 $color6 #232627
         inactive_workspace #121212 #7f8c8d #232627
     }
 }
