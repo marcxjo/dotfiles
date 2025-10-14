@@ -13,15 +13,11 @@ set $uifont "JetBrains Mono 9"
 font $uifont
 
 set $menu wofi --show drun
-set $wallpaper /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
-set $lock swaylock -f -i $wallpaper -s fill
+set $lock lock-screen
 
 #
 ### Output configuration
 #
-
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec ~/.wallpaper
 
 include modules/outputs.conf
 
@@ -60,7 +56,7 @@ focus_follows_mouse no
 bindsym $mod+Escape reload
 
 # reload panel configuration
-bindsym $mod+p exec kill -USR2 $(pgrep -x waybar)
+bindsym $mod+p exec pkill -USR2 waybar
 
 # exit sway (logs you out of your Wayland session)
 bindsym Ctrl+Alt+Backspace exec swaynag -t warning -m 'Exit session?' -b 'Logout' 'swaymsg exit' -b 'Shut down' 'poweroff' -b 'Reboot' 'reboot'
