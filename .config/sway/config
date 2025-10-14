@@ -1,6 +1,6 @@
 include /etc/sway/config.d/*
 
-include modules/colors.conf
+include theme.conf
 
 #
 ### Variables
