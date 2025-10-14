@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+pgrep waybar >/dev/null &&
+  exit 0
+
+exec waybar

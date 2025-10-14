@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+[ -f ~/.cache/swaybg ] && read -r wallpaper < ~/.cache/swaybg
+exec swaylock -f -i "$wallpaper" -s fill
