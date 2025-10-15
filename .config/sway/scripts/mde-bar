@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 start_bar() {
-  pgrep waybar >/dev/null || exec waybar
+  pgrep -x waybar >/dev/null || exec waybar
 }
 
 reload_bar() {
