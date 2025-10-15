@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-pkill swaybg
-[ -f ~/.cache/swaybg ] && read -r wallpaper < ~/.cache/swaybg
-swaybg -o 'eDP-1' -i "$wallpaper" -m fill &
-swaybg -o 'HDMI-A-1' -i "$wallpaper" -m fill &

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+MDE_BG_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/mde/background"
+
+load_bg() {
+  [ -r "$MDE_BG_CONFIG" ] && read -r bg <"$MDE_BG_CONFIG"
+
+  pkill swaybg
+
+  swaybg -o '*' -i "$bg" -m fill &
+}
+
+start_bg_watcher() {
+  # shellcheck disable=SC2034
+  # We know we're not reading the event, but we can't not set a variable at all
+  inotifywait -qme close_write "$MDE_BG_CONFIG" |
+    while read -r event; do
+      load_bg
+    done
+}
+
+set_bg() {
+  local bg="$1"
+
+  echo "$bg" >"$MDE_BG_CONFIG"
+}
+
+case "$1" in
+'set')
+  set_bg "$2"
+  ;;
+'reload')
+  load_bg
+  ;;
+'start')
+  start_bg_watcher
+  ;;
+*)
+  echo 'Unsupported command!'
+  exit 1
+  ;;
+esac

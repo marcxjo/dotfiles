@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+start_bar() {
+  pgrep waybar >/dev/null || exec waybar
+}
+
+reload_bar() {
+  pkill -USR2 waybar
+}
+
+case "$1" in
+'start')
+  start_bar
+  ;;
+'reload')
+  reload_bar
+  ;;
+esac

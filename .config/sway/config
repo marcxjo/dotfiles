@@ -13,7 +13,7 @@ set $uifont "JetBrains Mono 9"
 font $uifont
 
 set $menu wofi --show drun
-set $lock lock-screen
+set $lock 'mde-screen lock'
 
 #
 ### Output configuration
@@ -53,10 +53,10 @@ floating_modifier $mod normal
 focus_follows_mouse no
 
 # reload the configuration file
-bindsym $mod+Escape reload
+bindsym $mod+Shift+c reload
 
-# reload panel configuration
-bindsym $mod+p exec pkill -USR2 waybar
+# reload bar configuration
+bindsym $mod+p exec mde-bar reload
 
 # exit sway (logs you out of your Wayland session)
 bindsym Ctrl+Alt+Backspace exec swaynag -t warning -m 'Exit session?' -b 'Logout' 'swaymsg exit' -b 'Shut down' 'poweroff' -b 'Reboot' 'reboot'
