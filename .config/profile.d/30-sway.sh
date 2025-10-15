@@ -15,3 +15,4 @@ SWAY_SCRIPTS_DIR="${HOME}/.config/sway/scripts"
 unset SWAY_SCRIPTS_DIR
 
 export MEDIA_PLAYER='umpv'
+export MDE_BG_PICTURES_DIR="${HOME}/.local/share/backgrounds"

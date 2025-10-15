@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 MDE_BG_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/mde/background"
+MDE_BG_PICTURES_DIR="${MDE_BG_PICTURES_DIR:-$(xdg-user-dir PICTURES)}"
 
 load_bg() {
   [ -r "$MDE_BG_CONFIG" ] && read -r bg <"$MDE_BG_CONFIG"
@@ -25,6 +26,10 @@ set_bg() {
   echo "$bg" >"$MDE_BG_CONFIG"
 }
 
+select_bg() {
+  imv_config="${HOME}/.config/imv/mde-bg-select.config" imv -r "$MDE_BG_PICTURES_DIR"
+}
+
 case "$1" in
 'set')
   set_bg "$2"
@@ -34,6 +39,9 @@ case "$1" in
   ;;
 'start')
   start_bg_watcher
+  ;;
+'select')
+  select_bg
   ;;
 *)
   echo 'Unsupported command!'
