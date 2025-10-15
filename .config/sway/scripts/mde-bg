@@ -38,6 +38,9 @@ case "$1" in
   load_bg
   ;;
 'start')
+  # Since we're starting the watcher,
+  # make sure we have a background in the first place
+  load_bg
   start_bg_watcher
   ;;
 'select')
