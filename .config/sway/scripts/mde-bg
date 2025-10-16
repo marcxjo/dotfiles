@@ -6,7 +6,7 @@ MDE_BG_PICTURES_DIR="${MDE_BG_PICTURES_DIR:-$(xdg-user-dir PICTURES)}"
 load_bg() {
   [ -r "$MDE_BG_CONFIG" ] && read -r bg <"$MDE_BG_CONFIG"
 
-  pkill swaybg
+  pkill -x swaybg
 
   swaybg -o '*' -i "$bg" -m fill &
 }

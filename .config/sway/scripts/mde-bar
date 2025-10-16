@@ -5,7 +5,7 @@ start_bar() {
 }
 
 reload_bar() {
-  pkill -USR2 waybar
+  pkill -x -USR2 waybar
 }
 
 case "$1" in
