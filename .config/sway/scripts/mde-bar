@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+declare -i FORCE_RELOAD
+
 start_bar() {
   pgrep -x waybar >/dev/null || exec waybar
 }
@@ -8,11 +10,33 @@ reload_bar() {
   pkill -x -USR2 waybar
 }
 
-case "$1" in
+declare -r cmd="$1"
+shift
+
+while getopts :f opt; do
+  case "$opt" in
+  f)
+    FORCE_RELOAD=1
+    ;;
+  *)
+    echo "Unrecognized option $opt"
+    ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+case "$cmd" in
 'start')
   start_bar
   ;;
 'reload')
-  reload_bar
+  if ! reload_bar && [[ $FORCE_RELOAD -ge 1 ]]; then
+    start_bar
+  fi
+  ;;
+*)
+  echo "Unrecognized command $cmd"
+  exit 1
   ;;
 esac
