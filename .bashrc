@@ -24,6 +24,10 @@ proj() {
   local -r _preview_cmd="GIT_DIR={}/.git git ls-files"
   local -r _repo="$(fzf --prompt='Repository: ' --preview="$_preview_cmd" <"$_workspace_cache")"
 
+  [[ ! "$_repo" ]] &&
+    echo "That's it, back to Winnipeg!" &&
+    return
+
   cd "$_repo"
 }
 
