@@ -30,9 +30,25 @@ select_bg() {
   imv_config="${HOME}/.config/imv/mde-bg-select.config" imv -r "$MDE_BG_PICTURES_DIR"
 }
 
-case "$1" in
+declare -r cmd="$1"
+shift
+
+while getopts :d: opt; do
+  case "$opt" in
+    d)
+      MDE_BG_PICTURES_DIR="$OPTARG"
+      ;;
+    *)
+      echo "Unrecognized option $opt"
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+case "$cmd" in
 'set')
-  set_bg "$2"
+  set_bg "$1"
   ;;
 'reload')
   load_bg
