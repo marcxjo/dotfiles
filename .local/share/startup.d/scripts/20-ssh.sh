@@ -51,7 +51,7 @@ if ! command -v pw &>/dev/null; then
   return 1
 fi
 
-readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}" 'ssh_keys')"
+readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}")"
 
 for key in "${ssh_keys[@]}"; do
   # NOTE: we use `readarray` to build `ssh_keys` from a multi-line file
