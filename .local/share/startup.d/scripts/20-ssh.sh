@@ -54,18 +54,15 @@ fi
 readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}")"
 
 for key in "${ssh_keys[@]}"; do
-  # NOTE: we use `readarray` to build `ssh_keys` from a multi-line file
-  # `domain_components` is read in from a list of space-delimited words, hence
-  # the need for `read`
-  read -a domain_components <<<"$(get_key_domain "$key")"
+  read -r key_host key_user <<<"$(get_key_domain "$key")"
   fingerprint=$(get_ssh_key_fingerprint "${KEY_DIR}/${key}")
 
   if check_key_loaded "${fingerprint}"; then
     continue
   fi
 
-  SSH_HOST=${domain_components[0]} \
-    SSH_USER=${domain_components[1]} \
+  SSH_HOST=${key_host} \
+    SSH_USER=${key_user} \
     SSH_ASKPASS_REQUIRE=force \
     SSH_ASKPASS=$(command -v ssh-pass.sh) \
     ssh-add "${KEY_DIR}/${key}" </dev/null
