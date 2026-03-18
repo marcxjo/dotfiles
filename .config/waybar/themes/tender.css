@@ -20,10 +20,10 @@
 
 /* Component colors */
 @define-color workspaces   @color3;
-@define-color launchers    @color4;
+@define-color launchers    @color6;
 @define-color window       @color5;
-@define-color date         @color4;
-@define-color time         @color4;
+@define-color date         @color6;
+@define-color time         @color6;
 @define-color backlight    @color5;
 @define-color volume       @color2;
 @define-color keyboard     @color1;
@@ -31,7 +31,7 @@
 @define-color cpu          @color5;
 @define-color ram          @color2;
 @define-color battery      @color1;
-@define-color network      @color4;
+@define-color network      @color6;
 @define-color distro       @color3;
 
 /* Status colors */
