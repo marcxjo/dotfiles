@@ -1,0 +1,52 @@
+#!/bin/bash
+
+. /usr/share/bash-completion/completions/git
+
+_mde() {
+  local -r cur="${COMP_WORDS[COMP_CWORD]}"
+  local mde_command
+  local -a mde_commands=()
+
+  case $COMP_CWORD in
+  0)
+    :
+    ;;
+  1)
+    for file in "${HOME}/.local/lib/mde"/*.sh; do
+      cmd_name="${file##*/}"
+      cmd_name="${cmd_name%.sh}"
+      mde_commands+=("$cmd_name")
+    done
+
+    COMPREPLY=($(compgen -W "${mde_commands[*]}" -- "$cur"))
+    ;;
+  2)
+    mde_command="${COMP_WORDS[1]}"
+
+    case "$mde_command" in
+    'bar')
+      COMPREPLY=($(compgen -W 'reload start' -- "$cur"))
+      ;;
+    'bg')
+      COMPREPLY=($(compgen -W 'reload select set start' -- "$cur"))
+      ;;
+    esac
+    ;;
+  3)
+    mde_command="${COMP_WORDS[1]}"
+
+    case "$mde_command" in
+    'bar')
+      if [ "${COMP_WORDS[2]}" == 'reload' ]; then
+        COMPREPLY+=($(compgen -W '-f --force' -- "$cur"))
+      fi
+      ;;
+    'bg')
+      COMPREPLY+=($(compgen -W '-d --directory' -- "$cur"))
+      ;;
+    esac
+    ;;
+  esac
+}
+
+complete -F _mde mde

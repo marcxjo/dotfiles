@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ ${#@} -eq 0 ]]; then
+  echo "No command specified!"
+  exit 1
+fi
+
+declare -r MDE_LIB_DIR="${HOME}/.local/lib/mde"
+declare -r MDE_COMMAND="${MDE_LIB_DIR}/${1}.sh"
+
+if [ ! -x "$MDE_COMMAND" ]; then
+  echo "No such command!"
+  exit 1
+fi
+
+# shellcheck disable=1090
+. "$MDE_COMMAND" "${@:2}"
+
+exit 0
