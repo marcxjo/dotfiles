@@ -1,5 +1,5 @@
 #!/bin/sh
 Selection=true
-LoginShell=/bin/bash --login
+LoginShell='/bin/bash --login'
 
-exec $@
+exec "$@"
