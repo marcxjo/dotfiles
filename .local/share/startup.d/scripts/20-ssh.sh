@@ -17,7 +17,7 @@ ls_ssh_keys() {
 
   # List all the public keys since we can key off of their filenames to
   # locate each respective private key
-  ls "${dir}" | grep "\.pub$" | sed 's|\.pub$||'
+  find "${dir}"/ -type f -name "*.pub" -exec basename -as ".pub" {} +
 }
 
 get_ssh_key_fingerprint() {
@@ -45,13 +45,23 @@ export SSH_AUTH_SOCK=${HOME}/.ssh/ssh_auth_sock
 
 # Key Registration #############################################################
 
+if ! command -v ssh-add &>/dev/null; then
+  return
+fi
+
+# I don't know of any distros that split these commands out of the monolithic
+# ssh package, but let's just not risk it
+if ! command -v ssh-keygen &>/dev/null; then
+  return
+fi
+
 if ! command -v pw &>/dev/null; then
   echo "pw is not installed"
   echo "Can not register ssh-keys"
-  return 1
+  return
 fi
 
-readarray -t ssh_keys <<<"$(ls_ssh_keys "${KEY_DIR}")"
+IFS='' readarray -t ssh_keys < <(ls_ssh_keys "${KEY_DIR}")
 
 for key in "${ssh_keys[@]}"; do
   read -r key_host key_user <<<"$(get_key_domain "$key")"

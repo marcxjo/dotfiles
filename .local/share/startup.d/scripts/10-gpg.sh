@@ -1,5 +1,14 @@
+#!/bin/bash
+
+if ! command -v gpg-agent >/dev/null; then
+  return
+fi
+
 # Set GPG TTY
-export GPG_TTY=$(tty)
+declare GPG_TTY
+GPG_TTY=$(tty)
+
+export GPG_TTY
 
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
@@ -8,4 +17,3 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 if ! pgrep -x -u "$USER" gpg-agent &>/dev/null; then
   gpg-connect-agent /bye >/dev/null 2>&1
 fi
-
