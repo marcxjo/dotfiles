@@ -8,3 +8,4 @@ theme.lua
 # (E.g., monitors, peripherals, etc.)
 inputs.conf
 outputs.conf
+bar.conf
