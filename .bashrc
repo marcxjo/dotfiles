@@ -112,7 +112,15 @@ pw() {
 [ -r '/usr/share/git/completion/git-prompt.sh' ] && . '/usr/share/git/completion/git-prompt.sh'
 
 # Custom PS1
-export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__git_ps1 "(\[\e[37m\]%s\[\e[m\])")'$'\n\[\e[35m\]»\[\e[m\] '
+# Add git prompt if we can locate it
+if ! type -t __git_ps1 >/dev/null; then
+  if [ -r /usr/share/git/git-prompt.sh ]; then
+    . /usr/share/git/git-prompt.sh
+    export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\] $(__git_ps1 "(\[\e[37m\]%s\[\e[m\])")'$'\n\[\e[35m\]»\[\e[m\] '
+  else
+    export PS1='\[\e[33m\]\u\[\e[m\]@\[\e[34m\]\h\[\e[m\]:\[\e[32m\]\W\[\e[m\]'$'\n\[\e[35m\]»\[\e[m\] '
+  fi
+fi
 
 # Source custom startup scripts
 # Don't bail if they break
