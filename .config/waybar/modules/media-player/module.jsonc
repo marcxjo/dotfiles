@@ -1,26 +1,19 @@
 {
-    "custom/tail#media-player": {
-        "format": "",
+    "custom/icon#media-player": {
+        "format": "󰝚",
         "tooltip": false
     },
-
     "mpris": {
         "format": "{player_icon} [{player}] {title}",
         "format-paused": "{status_icon} <i>[{player}] {title}</i>",
         "format-stopped": "{status_icon} {player}",
         "title-len": 32,
         "player-icons": {
-            "default": "▶",
-            "cmus": "🎵"
+            "default": "▶"
         },
         "status-icons": {
             "paused": "⏸",
             "stopped": ""
         }
-    },
-
-    "custom/head#media-player": {
-        "format": "",
-        "tooltip": false
     }
 }
