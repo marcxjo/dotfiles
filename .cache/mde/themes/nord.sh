@@ -1,0 +1,19 @@
+export colorfg=#c7e1ff
+export colorbg=#2e3440
+
+export color0=#3b4252
+export color1=#bf616a
+export color2=#a3be8c
+export color3=#ebcb8b
+export color4=#81a1c1
+export color5=#b48ead
+export color6=#88c0d0
+export color7=#e5e9f0
+export color8=#4c566a
+export color9=#bf616a
+export color10=#a3be8c
+export color11=#ebcb8b
+export color12=#81a1c1
+export color13=#b48ead
+export color14=#8fbcbb
+export color15=#eceff4
