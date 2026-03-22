@@ -1,0 +1,41 @@
+{
+  "include": [
+    "modules/workspaces/module.jsonc",
+    "modules/window/module.jsonc",
+    "modules/media-player/module.jsonc",
+    "modules/datetime/module.jsonc",
+    "modules/network/module.jsonc",
+    "modules/cpu/module.jsonc",
+    "modules/ram/module.jsonc",
+    "modules/battery/module.jsonc",
+    "modules/distro/module.jsonc",
+    "modules/backlight/module.jsonc",
+    "modules/volume/module.jsonc",
+    "modules/keyboard/module.jsonc"
+  ],
+  "modules-left": [
+    "sway/workspaces#list",
+    "custom/icon#window",
+    "sway/window",
+    "custom/icon#media-player",
+    "mpris"
+  ],
+  "modules-center": [
+    "custom/icon#datetime",
+    "clock#datetime",
+    "custom/icon#network",
+    "network"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/icon#volume",
+    "pulseaudio",
+    "custom/icon#keyboard",
+    "sway/language",
+    "keyboard-state",
+    "custom/icon#battery",
+    "battery",
+    "custom/icon#backlight",
+    "backlight"
+  ]
+}

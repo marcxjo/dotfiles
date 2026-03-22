@@ -17,6 +17,7 @@
     "sway/workspaces#list",
     "custom/icon#window",
     "sway/window",
+    "custom/icon#media-player",
     "mpris"
   ],
   "modules-center": [
@@ -31,22 +32,6 @@
     "pulseaudio",
     "custom/icon#keyboard",
     "sway/language",
-    "keyboard-state",
-    "custom/icon#battery",
-    "battery",
-    "custom/icon#backlight",
-    "backlight",
-  ],
-  "layer": "top",
-  "spacing": 0,
-  "position": "top",
-  "height": 0,
-  "margin-top": 0,
-  "margin-right": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "tray": {
-    "spacing": 10,
-    "tooltip": false
-  }
+    "keyboard-state"
+  ]
 }
