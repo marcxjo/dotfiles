@@ -35,6 +35,15 @@ pcache() {
   git profile projs workspace default cache update
 }
 
+proot() {
+  if ! proj_root="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+    echo "Can't cd - not in a git repository"
+    return 1
+  fi
+
+  cd "$proj_root"
+}
+
 join_array() {
   local -r _delimiter="$1"
   local -ra _arr=("${@:2}")
