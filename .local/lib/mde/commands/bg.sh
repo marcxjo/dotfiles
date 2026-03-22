@@ -35,7 +35,7 @@ if [[ ${#@} -eq -0 ]]; then
   return 1
 fi
 
-declare -r cmd="$1"
+declare -r subcmd="$1"
 shift
 
 case "$1" in
@@ -54,26 +54,30 @@ case "$1" in
   ;;
 esac
 
-case "$cmd" in
-'set')
-  set_bg "$1"
-  ;;
-'reload')
-  load_bg
-  ;;
-'start')
-  # Since we're starting the watcher,
-  # make sure we have a background in the first place
-  load_bg
-  start_bg_watcher
-  ;;
-'select')
-  select_bg
-  ;;
-*)
-  echo 'Unsupported command!'
-  return 1
-  ;;
-esac
+main() {
+  local -r subcmd="$1"
 
-return 0
+  case "$subcmd" in
+  'set')
+    set_bg "$1"
+    ;;
+  'reload')
+    load_bg
+    ;;
+  'start')
+    # Since we're starting the watcher,
+    # make sure we have a background in the first place
+    load_bg
+    start_bg_watcher
+    ;;
+  'select')
+    select_bg
+    ;;
+  *)
+    echo 'Unsupported command!'
+    return 1
+    ;;
+  esac
+}
+
+main "$subcmd"
