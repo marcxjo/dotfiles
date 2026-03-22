@@ -1,0 +1,7 @@
+set $color_fg_normal $color_fg
+set $color_bg_normal $color_3
+set $color_fg_active $color_fg
+set $color_bg_active $color_4
+set $color_fg_urgent $color_fg
+set $color_bg_urgent $color_1
+set $color_indicator $color_1
