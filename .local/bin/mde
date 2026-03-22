@@ -5,15 +5,19 @@ if [[ ${#@} -eq 0 ]]; then
   exit 1
 fi
 
-declare -r MDE_LIB_DIR="${HOME}/.local/lib/mde"
-declare -r MDE_COMMAND="${MDE_LIB_DIR}/${1}.sh"
+declare -r cmd_name="$1"
+shift
 
-if [ ! -x "$MDE_COMMAND" ]; then
+declare -r MDE_LIB_DIR="${HOME}/.local/lib/mde"
+
+declare -r cmd="${MDE_LIB_DIR}/commands/${cmd_name}.sh"
+
+if [ ! -x "$cmd" ]; then
   echo "No such command!"
   exit 1
 fi
 
 # shellcheck disable=1090
-. "$MDE_COMMAND" "${@:2}"
+. "$cmd" "${@}"
 
 exit 0
