@@ -1,17 +1,11 @@
 {
-    "custom/head#backlight": {
-        "format": "",
+    "custom/icon#backlight": {
+        "format": "",
         "tooltip": false
     },
-
     "backlight": {
         "device": "intel_backlight",
-        "format": " {percent}%",
+        "format": "{percent}%",
         "scroll-step": 5.0
-    },
-
-    "custom/tail#backlight": {
-        "format": "",
-        "tooltip": false
     }
 }

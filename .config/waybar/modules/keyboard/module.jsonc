@@ -1,14 +1,12 @@
 {
-    "custom/head#keyboard": {
-        "format": "",
+    "custom/icon#keyboard": {
+        "format": "󰌌",
         "tooltip": false
     },
-
     "sway/language": {
-        "format": "󰌌 {short} {variant}",
+        "format": "{short} {variant}",
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
-
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -23,6 +21,6 @@
             "locked": "",
             "unlocked": ""
         },
-    "device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
+        "device-path": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-kbd"
     }
 }

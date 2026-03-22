@@ -1,16 +1,9 @@
-#language,
 #keyboard-state {
   color: @colorfg;
-  background-color: @keyboard;
-  padding-left: 8px;
-  padding-right: 8px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-#keyboard-state {
-  padding-left: 0;
-}
-
-#custom-head.keyboard {
+#custom-icon.keyboard {
   color: @keyboard;
 }
-

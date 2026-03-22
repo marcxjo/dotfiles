@@ -8,7 +8,7 @@
         "format": "{player_icon} [{player}] {title}",
         "format-paused": "{status_icon} <i>[{player}] {title}</i>",
         "format-stopped": "{status_icon} {player}",
-        "title-len": 64,
+        "title-len": 32,
         "player-icons": {
             "default": "▶",
             "cmus": "🎵"

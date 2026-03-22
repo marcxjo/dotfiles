@@ -14,6 +14,19 @@
 @import 'volume/style.css';
 @import 'keyboard/style.css';
 
+#clock.date {
+  margin-right: 0;
+}
+
+#clock.time {
+  margin-left: 0;
+}
+
+#custom-icon {
+  margin-right: 0;
+  padding-right: 0;
+}
+
 #custom-head,
 #custom-tail {
   font-size: 16px;
@@ -26,4 +39,3 @@
 #custom-tail {
   color: @colorbg;
 }
-

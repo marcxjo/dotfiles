@@ -1,19 +1,13 @@
 {
-    "custom/head#network-left": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "network": {
-        "format-wifi" : " {ifname} | {ipaddr} | {bandwidthDownBytes}  {bandwidthUpBytes} ",
-        "format-ethernet": "enth {bandwidthDownBits}",
-        "format-disconnected" : "no network",
-        "interval": 5,
-        "tooltip": false
-    },
-
-    "custom/head#network-right": {
-        "format": "",
-        "tooltip": false
-    }
+  "custom/icon#network": {
+    "format": "",
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "{ifname} | {ipaddr} | {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-ethernet": "{ifname} | {ipaddr} | {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-disconnected": "[disconnected]",
+    "interval": 5,
+    "tooltip": false
+  }
 }

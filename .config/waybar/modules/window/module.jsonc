@@ -1,16 +1,10 @@
 {
-    "custom/tail#window": {
-        "format": "",
+    "custom/icon#window": {
+        "format": "",
         "tooltip": false
     },
-
     "sway/window": {
-        "format": " {title}",
-        "max-length": 48
-    },
-
-    "custom/head#window": {
-        "format": "",
-        "tooltip": false
+        "format": "{title}",
+        "max-length": 32
     }
 }

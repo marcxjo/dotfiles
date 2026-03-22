@@ -1,77 +1,52 @@
 {
-    "include": [
-        "modules/workspaces/module.jsonc",
-        "modules/launchers/module.jsonc",
-        "modules/window/module.jsonc",
-
-        "modules/cpu/module.jsonc",
-        "modules/ram/module.jsonc",
-        "modules/battery/module.jsonc",
-        "modules/distro/module.jsonc",
-        "modules/datetime/module.jsonc",
-
-        "modules/backlight/module.jsonc",
-        "modules/volume/module.jsonc",
-        "modules/keyboard/module.jsonc"
-    ],
-
-    "modules-left": [
-        "sway/workspaces#list",
-        "sway/workspaces#current",
-        "custom/head#workspaces",
-
-        "custom/tail#launchers",
-        "custom/launcher#terminal",
-        "custom/launcher#browser",
-        "custom/head#launchers",
-
-        "custom/tail#window",
-        "sway/window",
-        "custom/head#window"
-    ],
-
-    "modules-center": [
-        "custom/head#date",
-        "clock#date",
-        "custom/tail#date",
-
-        "custom/head#distro-left",
-        "custom/distro",
-        "custom/head#distro-right",
-
-        "custom/tail#time",
-        "clock#time",
-        "custom/head#time"
-    ],
-
-    "modules-right": [
-        "tray",
-
-        "custom/head#backlight",
-        "backlight",
-        "custom/tail#backlight",
-
-        "custom/head#volume",
-        "pulseaudio",
-        "custom/tail#volume",
-
-        "custom/head#keyboard",
-        "sway/language",
-        "keyboard-state"
-    ],
-
-    "layer": "top",
-    "spacing": 0,
-    "position": "top",
-    "height": 0,
-
-    "margin-top": 0,
-    "margin-right": 0,
-    "margin-bottom": 0,
-    "margin-left": 0,
-
-    "tray": {
-        "spacing": 10,
-        "tooltip": false
-    }
+  "include": [
+    "modules/workspaces/module.jsonc",
+    "modules/window/module.jsonc",
+    "modules/media-player/module.jsonc",
+    "modules/datetime/module.jsonc",
+    "modules/network/module.jsonc",
+    "modules/cpu/module.jsonc",
+    "modules/ram/module.jsonc",
+    "modules/battery/module.jsonc",
+    "modules/distro/module.jsonc",
+    "modules/backlight/module.jsonc",
+    "modules/volume/module.jsonc",
+    "modules/keyboard/module.jsonc"
+  ],
+  "modules-left": [
+    "sway/workspaces#list",
+    "custom/icon#window",
+    "sway/window",
+    "mpris"
+  ],
+  "modules-center": [
+    "custom/icon#datetime",
+    "clock#datetime",
+    "custom/icon#network",
+    "network"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/icon#volume",
+    "pulseaudio",
+    "custom/icon#keyboard",
+    "sway/language",
+    "keyboard-state",
+    "custom/icon#battery",
+    "battery",
+    "custom/icon#backlight",
+    "backlight",
+  ],
+  "layer": "top",
+  "spacing": 0,
+  "position": "top",
+  "height": 0,
+  "margin-top": 0,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "tray": {
+    "spacing": 10,
+    "tooltip": false
+  }
 }
