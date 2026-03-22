@@ -3,10 +3,5 @@
     "include": [
       "modules/top-bar.jsonc"
     ]
-  },
-  {
-    "include": [
-      "modules/bottom-bar.jsonc"
-    ]
   }
 ]
