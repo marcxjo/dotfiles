@@ -22,12 +22,12 @@
   ],
   "modules-center": [
     "custom/icon#datetime",
-    "clock#datetime",
-    "custom/icon#network",
-    "network"
+    "clock#datetime"
   ],
   "modules-right": [
     "tray",
+    "custom/icon#network",
+    "network",
     "custom/icon#volume",
     "pulseaudio",
     "custom/icon#keyboard",
