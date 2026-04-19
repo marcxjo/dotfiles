@@ -1,0 +1,2 @@
+set $color_fg $colorbg
+set $color_bg $colorfg

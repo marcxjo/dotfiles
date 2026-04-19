@@ -1,0 +1,12 @@
+# Unlike sway, i3 does not enable setting variables by indirection
+# Hence we have to set literal values for semantic colors
+# This makes the indexed palette redundant, but we need to think through
+# a mechanism that allows us to easily swap out semantic colors at a
+# glance
+set $color_fg_normal $colorfg
+set $color_bg_normal $colorbg
+set $color_fg_active $colorfg
+set $color_bg_active $color4
+set $color_fg_urgent $colorfg
+set $color_bg_urgent $color1
+set $color_indicator $color1
