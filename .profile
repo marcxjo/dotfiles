@@ -12,7 +12,7 @@ append_path() {
 append_path "${HOME}/.local/bin"
 append_path "${HOME}/bin"
 
-[[ -d $HOME/.local/opt/JetBrains/Toolbox/scripts ]] &&
+[[ -d "$HOME/.local/opt/JetBrains/Toolbox/scripts" ]] &&
   append_path "${HOME}/.local/opt/JetBrains/Toolbox/scripts"
 
 unset prepend_path
@@ -28,7 +28,7 @@ if command -v firefox &>/dev/null; then
   export BROWSER=firefox
 fi
 
-if [[ -d $HOME/.config/profile.d ]]; then
+if [[ -d "$HOME/.config/profile.d" ]]; then
   for profile in "$HOME/.config/profile.d"/*.sh; do
     # Shellcheck can't verify `source` on variable filenames
     # shellcheck disable=SC1090
