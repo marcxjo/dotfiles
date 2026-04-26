@@ -6,18 +6,16 @@ if [ ! "$(lsb_release -d | awk '{$1=""; gsub(/^ */, "", $0); print}')" == "Void 
   return
 fi
 
-# We don't need session services if we're just SSHing in
-# I might eventually wire up support for SSH-specific services if a compelling
-# need arises
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  return
-fi
-
 # Enable running user-specific services when running `runit` commands
 # unprivileged
 export SVDIR="${HOME}/.local/state/service"
 export RUNSVDIR="${HOME}/.local/share/runit/runsvdir"
 
-mkdir -p "/run/user/${UID}/runit"
+# Don't attempt to start our services if they're already spun up
+if pgrep -xu "$USER" runsvdir >/dev/null; then
+  return
+fi
 
-runsvdir -P "$SVDIR" &
+mkdir -p "${XDG_RUNTIME_DIR:-/run/user/${UID}}/runit"
+
+runsvdir -P "$SVDIR" & 2>/dev/null
