@@ -4,6 +4,7 @@ declare -r CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 declare -r MDE_THEMEGEN_DIR="${MDE_THEMEGEN_DIR:-${HOME}/.local/lib/mde/themegen}"
 
 declare -A APP_CONFIG_DIRS=(
+  ['i3']="${CONFIG_HOME}/i3"
   ['sway']="${CONFIG_HOME}/sway"
   ['tym']="${CONFIG_HOME}/tym"
   ['waybar']="${CONFIG_HOME}/waybar"
@@ -60,7 +61,7 @@ __gen_app_theme() {
 
   varlist="$(__get_theme_variables "$theme_name")"
 
-  pushd "${MDE_THEMEGEN_DIR}/${app_name}" >/dev/null || return 1
+  pushd "${MDE_LIB_DIR}/theme/${app_name}" >/dev/null || return 1
 
   for file in *.in; do
     cat "$file" | envsubst "$varlist" >>"${destdir}/${file%.in}"
@@ -89,6 +90,28 @@ ls_tym_themes() {
   local -r themes_dir="${APP_CONFIG_DIRS['tym']}/themes"
 
   find "${themes_dir}" -exec basename {} .lua \;
+}
+
+# i3 #########################################################################
+
+gen_i3_theme() {
+  local -r app_name='i3'
+  local -r theme_name="$1"
+
+  __gen_app_theme "$app_name" "$theme_name"
+}
+
+set_i3_theme() {
+  local -r app_name='i3'
+  local -r theme_name="$1"
+
+  __set_app_theme "$app_name" "$theme_name"
+}
+
+ls_i3_themes() {
+  local -r themes_dir="${APP_CONFIG_DIRS['i3']}/themes"
+
+  find "${themes_dir}" -exec basename {} .conf \;
 }
 
 # sway #########################################################################
@@ -142,6 +165,7 @@ set_theme() {
   shift
 
   set_tym_theme "$theme_name"
+  set_i3_theme "$theme_name"
   set_sway_theme "$theme_name"
   set_waybar_theme "$theme_name"
 }
@@ -151,6 +175,7 @@ gen_theme() {
   shift
 
   gen_tym_theme "$theme_name"
+  gen_i3_theme "$theme_name"
   gen_sway_theme "$theme_name"
   gen_waybar_theme "$theme_name"
 }

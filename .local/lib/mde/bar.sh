@@ -2,13 +2,7 @@
 
 declare -i FORCE_RELOAD
 
-start_bar() {
-  pgrep -x waybar >/dev/null || exec waybar
-}
-
-reload_bar() {
-  pkill -x -USR2 waybar
-}
+. "${MDE_LIB_DIR}/bar/${XDG_SESSION_DESKTOP}.sh"
 
 if [[ ${#@} -eq -0 ]]; then
   echo "mde-bar: Must specify subcommand"
@@ -24,8 +18,6 @@ case "$1" in
   shift
   ;;
 *)
-  echo "Unrecognized option $1"
-  shift
   ;;
 esac
 
