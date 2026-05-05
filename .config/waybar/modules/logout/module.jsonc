@@ -1,0 +1,17 @@
+{
+    "custom/head#logout-left": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/logout": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wofi-power-menu"
+    },
+
+    "custom/head#logout-right": {
+        "format": "",
+        "tooltip": false
+    }
+}

@@ -1,0 +1,8 @@
+#custom-logout {
+  color: @logout;
+}
+
+#custom-head.logout-left,
+#custom-head.logout-right {
+  color: @logout;
+}
