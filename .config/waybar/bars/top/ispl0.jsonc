@@ -15,8 +15,8 @@
     "modules/logout/module.jsonc"
   ],
   "modules-left": [
-    "custom/distro",
-    "sway/workspaces#list",
+    "custom/distro#arch",
+    "sway/workspaces#ispl0",
     "custom/icon#window",
     "sway/window",
     "custom/icon#media-player",

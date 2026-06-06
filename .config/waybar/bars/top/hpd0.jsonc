@@ -14,7 +14,8 @@
     "modules/keyboard/module.jsonc"
   ],
   "modules-left": [
-    "sway/workspaces#list",
+    "custom/distro#void",
+    "sway/workspaces#hpd0",
     "custom/icon#window",
     "sway/window",
     "custom/icon#media-player",
