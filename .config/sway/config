@@ -15,17 +15,7 @@ font $uifont
 set $menu wofi --show drun
 set $lock 'mde-screen lock'
 
-#
-### Output configuration
-#
-
-include modules/outputs.conf
-
-#
-### Input configuration
-#
-
-include modules/inputs.conf
+include modules/current.conf
 
 #
 ### Key bindings
@@ -181,12 +171,6 @@ mode "resize" {
 }
 bindsym $mod+n mode "resize"
 
-# include modules/bar.conf
-
 #
 # Titlebars
 #
-
-include modules/chrome.conf
-
-include modules/autostart.conf
