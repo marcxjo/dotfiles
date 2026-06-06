@@ -16,4 +16,11 @@ unset SWAY_SCRIPTS_DIR
 
 export MEDIA_PLAYER='umpv'
 export MDE_BG_PICTURES_DIR="${HOME}/.local/share/backgrounds"
-export TMP_FILE_EDITOR='writer'
+export JOT_EDITOR='writer'
+
+# Make Firefox behave, otherwise all of its context menus go nuts
+export MOZ_ENABLE_WAYLAND=1
+
+if [ -n "$XDG_RUNTIME_DIR" ] && [ ! -f "${XDG_RUNTIME_DIR}/sway-env" ]; then
+  printenv | grep -E '^(WAYLAND_DISPLAY|XDG_RUNTIME_DIR|DBUS_SESSION_BUS_ADDRESS|SWAYSOCK)=' > "${XDG_RUNTIME_DIR}/sway-env"
+fi
