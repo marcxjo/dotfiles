@@ -1,5 +1,6 @@
 {
   "include": [
+    "modules/distro/module.jsonc",
     "modules/workspaces/module.jsonc",
     "modules/window/module.jsonc",
     "modules/media-player/module.jsonc",
@@ -8,12 +9,13 @@
     "modules/cpu/module.jsonc",
     "modules/ram/module.jsonc",
     "modules/battery/module.jsonc",
-    "modules/distro/module.jsonc",
     "modules/backlight/module.jsonc",
     "modules/volume/module.jsonc",
-    "modules/keyboard/module.jsonc"
+    "modules/keyboard/module.jsonc",
+    "modules/logout/module.jsonc"
   ],
   "modules-left": [
+    "custom/distro",
     "sway/workspaces#list",
     "custom/icon#window",
     "sway/window",
@@ -30,12 +32,13 @@
     "network",
     "custom/icon#volume",
     "pulseaudio",
+    "custom/icon#backlight",
+    "backlight",
     "custom/icon#keyboard",
     "sway/language",
     "keyboard-state",
     "custom/icon#battery",
     "battery",
-    "custom/icon#backlight",
-    "backlight"
+    "custom/logout"
   ]
 }
