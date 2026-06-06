@@ -7,6 +7,7 @@ declare -A APP_CONFIG_DIRS=(
   ['i3']="${CONFIG_HOME}/i3"
   ['sway']="${CONFIG_HOME}/sway"
   ['tym']="${CONFIG_HOME}/tym"
+  ['polybar']="${CONFIG_HOME}/polybar"
   ['waybar']="${CONFIG_HOME}/waybar"
 )
 
@@ -136,6 +137,28 @@ ls_sway_themes() {
   find "${themes_dir}" -exec basename {} .conf \;
 }
 
+# polybar #######################################################################
+
+gen_polybar_theme() {
+  local -r app_name='polybar'
+  local -r theme_name="$1"
+
+  __gen_app_theme "$app_name" "$theme_name"
+}
+
+set_polybar_theme() {
+  local -r app_name='polybar'
+  local -r theme_name="$1"
+
+  __set_app_theme "$app_name" "$theme_name"
+}
+
+ls_polybar_themes() {
+  local -r themes_dir="${APP_CONFIG_DIRS['polybar']}/colors"
+
+  find "${themes_dir}" -exec basename {} .css \;
+}
+
 # waybar #######################################################################
 
 gen_waybar_theme() {
@@ -167,6 +190,7 @@ set_theme() {
   set_tym_theme "$theme_name"
   set_i3_theme "$theme_name"
   set_sway_theme "$theme_name"
+  set_polybar_theme "$theme_name"
   set_waybar_theme "$theme_name"
 }
 
@@ -177,6 +201,7 @@ gen_theme() {
   gen_tym_theme "$theme_name"
   gen_i3_theme "$theme_name"
   gen_sway_theme "$theme_name"
+  gen_polybar_theme "$theme_name"
   gen_waybar_theme "$theme_name"
 }
 
