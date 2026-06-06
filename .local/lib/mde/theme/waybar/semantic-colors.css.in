@@ -13,5 +13,6 @@
 @define-color ram               @color2;
 @define-color battery           @color2;
 @define-color network           @color4;
-@define-color distro            @color4;
+@define-color distro_arch       @color4;
+@define-color distro_void       @color2;
 @define-color logout            @color1;
