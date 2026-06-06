@@ -18,4 +18,4 @@ __pass() {
   PASSWORD_STORE_DIR="$HOME/.config/pass/ssh" pass "$@"
 }
 
-__pass ${SSH_HOST}/${SSH_USER} | head -n1
+__pass $(hostname)/${SSH_HOST}/${SSH_USER} | head -n1
