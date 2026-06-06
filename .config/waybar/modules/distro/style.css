@@ -1,5 +1,9 @@
-#custom-distro {
-  color: @distro;
+#custom-distro.arch {
+  color: @distro_arch;
+}
+
+#custom-distro.void {
+  color: @distro_void;
 }
 
 #custom-head.distro-left,

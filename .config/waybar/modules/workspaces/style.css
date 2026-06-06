@@ -1,14 +1,14 @@
-#workspaces.list button label {
+#workspaces button label {
   color: @workspace_default;
   padding-left: 8px;
   padding-right: 8px;
 }
 
-#workspaces.list button.focused label {
+#workspaces button.focused label {
   color: @workspace_focused;
 }
 
-#workspaces.list button.urgent label {
+#workspaces button.urgent label {
   color: @workspace_urgent;
 }
 
@@ -17,6 +17,6 @@
   text-shadow: none;
 }
 
-#workspaces.list button:hover label {
+#workspaces button:hover label {
   color: @workspace_focused;
 }
