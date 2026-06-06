@@ -12,9 +12,6 @@ if [[ ${#@} -eq -0 ]]; then
   return 1
 fi
 
-declare subcmd="$1"
-shift
-
 case "$1" in
 '-d' | '--directory')
   if [[ -z "$2" ]]; then
@@ -37,6 +34,9 @@ case "$1" in
 *)
   ;;
 esac
+
+declare subcmd="$1"
+shift
 
 main() {
   local -r subcmd="$1"
