@@ -45,3 +45,6 @@ fi
 if command -v direnv &>/dev/null; then
   eval "$(direnv hook bash)"
 fi
+
+# ff - Flexible File Finder
+[ -r "${HOME}/.config/ff/ff.sh" ] && . "${HOME}/.config/ff/ff.sh"
