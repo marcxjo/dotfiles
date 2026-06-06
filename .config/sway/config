@@ -1,21 +1,7 @@
 include /etc/sway/config.d/*
 
 include theme.conf
-
-#
-### Variables
-#
-
-# Super key 
-set $mod Mod4
-set $term tym
-set $uifont "JetBrains Mono 9"
-font $uifont
-
-set $menu wofi --show drun
-set $lock 'mde-screen lock'
-
-include modules/current.conf
+include modules.conf
 
 #
 ### Key bindings
