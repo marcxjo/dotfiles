@@ -6,6 +6,7 @@
 
 @import 'datetime/style.css';
 @import 'distro/style.css';
+@import 'logout/style.css';
 
 @import 'cpu/style.css';
 @import 'ram/style.css';
