@@ -1,6 +1,5 @@
 #custom-distro {
-  color: @colorfg;
-  background-color: @distro;
+  color: @distro;
 }
 
 #custom-head.distro-left,
